@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: CaveWater2
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 7771362628338820677, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -3891906856672038926, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -2970349312764174767, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -8330373036282290769, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -5058303468092196875, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -2259979894278914424, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 1484361595027875920, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -873632310102959595, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -1030014918819908929, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 9106992515904229556, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: -5621284285269764857, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 1188721222266191349, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 5473453820086180894, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 123144879833882973, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 6162595291840112160, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 4729496278410952046, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 3339998547370140265, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  - {fileID: 7770896585986550282, guid: 27e7e5c9628f76a499ccca8dec5e54f3, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 6
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 2

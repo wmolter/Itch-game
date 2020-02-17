@@ -1,0 +1,7 @@
+.vs/
+*.csproj
+*.sln
+Library/
+obj/
+Packages/
+Assets/2d-extras-master/
