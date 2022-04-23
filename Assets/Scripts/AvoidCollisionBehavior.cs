@@ -19,7 +19,7 @@ namespace Itch {
         }
 
         IEnumerator EvasiveManeuvers() {
-            oldMotionDir = mainControl.motionDir;
+            oldMotionDir = moveControl.motionDir;
             while(enabled) {
                 yield return null;
             }
@@ -34,7 +34,7 @@ namespace Itch {
         }
 
         public override void OnFinish() {
-            mainControl.motionDir = oldMotionDir;
+            moveControl.motionDir = oldMotionDir;
         }
 
         public float stuckDurationToActivate = 1f;

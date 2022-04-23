@@ -16,7 +16,11 @@ namespace OneKnight.UI {
         // Use this for initialization
 
         public void SetInventory(Inventory toDisplay) {
+            if(inventory != null)
+                inventory.OnChange -= OnInventoryChanged;
             inventory = toDisplay;
+            if(inventory != null)
+                inventory.OnChange += OnInventoryChanged;
             Validate();
         }
 
@@ -67,6 +71,10 @@ namespace OneKnight.UI {
             ItemDisplayLight disp = elementManager.ObjectAt(index).GetComponent<ItemDisplayLight>();
             disp.Init(slotInv);
             disp.gameObject.SetActive(true);
+        }
+
+        private void OnInventoryChanged(Inventory i, ItemSlot slot) {
+            Validate();
         }
         
         /*

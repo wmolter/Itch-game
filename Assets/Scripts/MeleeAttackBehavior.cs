@@ -18,7 +18,7 @@ namespace Itch {
         }
 
         public override void DoBehavior() {
-            mainControl.motionDir = Vector2.zero;
+            moveControl.motionDir = Vector2.zero;
             if(!attacking && Time.time >= nextAttackTime) {
                 StartCoroutine(Attack());
             }

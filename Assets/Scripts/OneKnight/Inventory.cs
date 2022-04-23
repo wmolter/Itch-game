@@ -4,10 +4,12 @@ using System.Collections.Generic;
 namespace OneKnight {
     [System.Serializable]
     public class Inventory {
-        
+
         //private event ItemSlot.SlotAction OnAdd;
         //private event ItemSlot.SlotAction OnRemove;
-        
+
+        public event InventoryEvent OnChange;
+        public delegate void InventoryEvent(Inventory i, ItemSlot slot);
         List<ItemSlot> items;
         private int selected;
         public int SelectedIndex {
@@ -76,7 +78,7 @@ namespace OneKnight {
         }
 
         protected virtual void OnItemChanged(ItemSlot changed) {
-
+            OnChange(this, changed);
         }
 
         public List<InventoryItem> SetCapacity(int capacity) {

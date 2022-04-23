@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using TMPro;
 
 namespace OneKnight.UI {
     public class ItemDisplayLight : MonoBehaviour, IPointerClickHandler {
 
         public event UnityAction<ItemSlot, PointerEventData> OnClick;
         ItemSlot slot;
-        public Text text;
+        public TMP_Text text;
         // Use this for initialization
 
         public void Init(ItemSlot slot) {

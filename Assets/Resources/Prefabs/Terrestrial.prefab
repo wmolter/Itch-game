@@ -157,7 +157,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
-  m_Mode: 1
+  m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!19719996 &1714199258446613759
@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 1714199258889404891}
   - component: {fileID: 1714199258889404888}
   - component: {fileID: 1714199258889404889}
+  - component: {fileID: 229973358}
   m_Layer: 9
   m_Name: Terrestrial
   m_TagString: Untagged
@@ -236,12 +237,20 @@ MonoBehaviour:
   map: {fileID: 1714199258446613754}
   allTerrainData:
   - tile: {fileID: 11400000, guid: c13c109e5fcac3347a7c1651443f6f2e, type: 2}
-    objectChance: 0.02
+    objectChance: 0.03
     spawns:
-    - weight: 5
+    - weight: 10
       type: Tuft
     - weight: 1
       type: Cavern
+    - weight: 1
+      type: Squirrel Nest
+    - weight: 20
+      type: Tree
+    - weight: 5
+      type: Bush
+    - weight: 2
+      type: Mushrooms
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 54509a7627f77904cb8faca77d377b2d, type: 2}
@@ -255,7 +264,15 @@ MonoBehaviour:
       type: Tuft
     - weight: 1.5
       type: Gold
-    effect: {fileID: 0}
+    - weight: 1.5
+      type: Wolf Spawner
+    - weight: 3
+      type: Camel Spawner
+    - weight: 0.1
+      type: Obelisk
+    - weight: 0.1
+      type: Caravan Spawner
+    effect: {fileID: 229973358}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: b3a852511d725de45981faa185d4554a, type: 2}
     objectChance: 0.03
@@ -272,23 +289,63 @@ MonoBehaviour:
       type: Copper
     - weight: 4
       type: Cavern
+    - weight: 100
+      type: Pebbles
+    - weight: 1
+      type: Wolf Spawner
+    - weight: 1
+      type: Eagle Spawner
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: b9f74bb2f5067cc4c8654f36d276c440, type: 2}
-    objectChance: 0.007
+    objectChance: 0.1
     spawns:
     - weight: 1
       type: AetherPortal
     - weight: 4
       type: Silver
+    - weight: 1
+      type: Wolf Spawner
+    - weight: 20
+      type: Snow Mound
+    - weight: 0.3
+      type: Wolf Den
+    - weight: 4
+      type: Yeti Spawner
+    - weight: 20
+      type: Evergreen Tree
     effect: {fileID: 0}
     totalWeight: 0
   settings:
+    method: 10
+    octaves: 1
+    frequency: 0.007
+    lacunarity: 1
+    persistence: 1
+  voronoiMode: 0
+  vorFreq: 0.1
+  noise2:
     method: 4
-    octaves: 3
-    frequency: 0.025
-    lacunarity: 3
-    persistence: 0.2
+    octaves: 1
+    frequency: 1
+    lacunarity: 1
+    persistence: 1
+  weight: 0
+  offset: 0.5
   player: {fileID: 0}
-  noiseOffset: {x: 0, y: 0, z: 0}
+  noiseOffset: {x: -12.4, y: 121, z: -439.2738}
   SightModifier: 1
+--- !u!114 &229973358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714199258889404838}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee306d593b7b6c41b7e54b2804b7bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentage: 0.75
+  id: 100

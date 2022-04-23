@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4973907126764994791}
   - component: {fileID: -1927738851041672009}
   - component: {fileID: -4536008067665156620}
+  - component: {fileID: -2475252283379376420}
   m_Layer: 12
   m_Name: Goblin
   m_TagString: Untagged
@@ -106,6 +107,8 @@ MonoBehaviour:
   speed: 2
   acceleration: 4
   motionDir: {x: 0, y: 0}
+  defaultRotation: {x: 1, y: 0}
+  rotate: 0
   enemyLayers:
   - Player
   home: {x: 0, y: 0, z: 0}
@@ -147,6 +150,7 @@ MonoBehaviour:
   - {fileID: 4973907126764994783}
   - {fileID: 4973907126764994777}
   interruptible: 0
+  parentRedecidesOnExit: 0
 --- !u!114 &4973907126764994777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +166,7 @@ MonoBehaviour:
   mainControl: {fileID: 4973907126764994778}
   children: []
   interruptible: 1
+  parentRedecidesOnExit: 0
   standstillChance: 0.5
   durationRange: {x: 2, y: 5}
   angleChangeRange: 90
@@ -180,6 +185,7 @@ MonoBehaviour:
   mainControl: {fileID: 0}
   children: []
   interruptible: 0
+  parentRedecidesOnExit: 0
   range: 1
   attackTime: 0.5
   damage: 10
@@ -201,6 +207,7 @@ MonoBehaviour:
   children:
   - {fileID: 4973907126764994782}
   interruptible: 0
+  parentRedecidesOnExit: 0
   aggroRange: 5
   endAggroRange: 7
 --- !u!58 &4973907126764994791
@@ -243,3 +250,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2475252283379376420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973907126764994780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 50
+  current: 50

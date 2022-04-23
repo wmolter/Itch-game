@@ -18,6 +18,7 @@ namespace Itch {
         public PlayerManager player;
         public Vector3 noiseOffset;
         public float SightModifier = 1;
+        public float gravity = 5;
         int xpPerTile = 1;
         // Start is called before the first frame update
         void Start() {

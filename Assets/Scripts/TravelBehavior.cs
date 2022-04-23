@@ -29,7 +29,7 @@ namespace Itch {
         IEnumerator Travel() {
             while(enabled) {
                 if(Random.value < restChance) {
-                    mainControl.motionDir = Vector2.zero;
+                    moveControl.motionDir = Vector2.zero;
                     endRestTime = Random.Range(restDurationRange.x, restDurationRange.y) + Time.time;
                     resting = true;
                 } else {
@@ -37,7 +37,7 @@ namespace Itch {
                     float travelAngle = Vector2.SignedAngle(Vector2.right, travelDirection);
                     float newAngle = travelAngle + Random.Range(-angleDeviation, angleDeviation);
                     float radians = newAngle*Mathf.PI/180;
-                    mainControl.motionDir = new Vector2(Mathf.Cos(newAngle), Mathf.Sin(newAngle));
+                    moveControl.motionDir = new Vector2(Mathf.Cos(newAngle), Mathf.Sin(newAngle));
                 }
                 yield return new WaitForSeconds(Random.Range(travelDurationRange.x, travelDurationRange.y));
             }

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -1927738851041672009}
   - component: {fileID: 6118345614156502368}
   - component: {fileID: 3755443619690239901}
+  - component: {fileID: -6844233735836636503}
   m_Layer: 12
   m_Name: Ranged Goblin
   m_TagString: Untagged
@@ -106,6 +107,8 @@ MonoBehaviour:
   speed: 2
   acceleration: 4
   motionDir: {x: 0, y: 0}
+  defaultRotation: {x: 1, y: 0}
+  rotate: 0
   enemyLayers:
   - Player
   home: {x: 0, y: 0, z: 0}
@@ -254,3 +257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6844233735836636503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973907126764994780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 50
+  current: 50

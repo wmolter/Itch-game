@@ -19,7 +19,7 @@ namespace Itch {
         }
 
         public override void DoBehavior() {
-            mainControl.motionDir = (MoveDirection(toChase.transform)).normalized;
+            moveControl.motionDir = (MoveDirection(toChase.transform)).normalized;
 
         }
 
@@ -30,7 +30,7 @@ namespace Itch {
         public override void OnFinish() {
             toChase = null;
             candidate = null;
-            mainControl.motionDir = Vector2.zero;
+            moveControl.motionDir = Vector2.zero;
         }
 
         public abstract Vector2 MoveDirection(Transform relation);

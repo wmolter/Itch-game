@@ -5,6 +5,7 @@ namespace Itch {
     public abstract class BehaviorTreeNode : MonoBehaviour {
 
         public Enemy mainControl;
+        public Movement moveControl;
         public List<BehaviorTreeNode> children;
         BehaviorTreeNode parent;
         public bool interruptible;
@@ -15,6 +16,8 @@ namespace Itch {
             foreach(BehaviorTreeNode child in children) {
                 child.parent = this;
                 child.mainControl = mainControl;
+                if(child.moveControl == null)
+                    child.moveControl = moveControl;
             }
         }
 

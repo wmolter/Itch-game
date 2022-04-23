@@ -7,7 +7,7 @@ namespace Itch {
 
         public float max;
         public float current;
-        public event UnityAction OnDeath;
+        public UnityEvent OnDeath;
         // Use this for initialization
         void Start() {
 

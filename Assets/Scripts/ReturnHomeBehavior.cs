@@ -12,7 +12,7 @@ namespace Itch {
         }
 
         public override void DoBehavior() {
-            mainControl.motionDir = (mainControl.home - transform.position).normalized;
+            moveControl.motionDir = (mainControl.home - transform.position).normalized;
         }
 
         public override bool CheckEnd() {

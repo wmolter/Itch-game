@@ -41,7 +41,7 @@ namespace Itch {
             }
         }
         public float interactRadius;
-        public ValueTextDisplay xpReadout;
+        public TMP_ValueTextDisplay xpReadout;
         public Dictionary<string, int> abilities;
         public string[] skills;
         Inventory inventory;
@@ -83,6 +83,7 @@ namespace Itch {
             StartCoroutine(ExploreXPCounter());
             inventoryManager.SetInventory(inventory);
             inventoryManager.AddListener(ItemClicked);
+            OnLevel += MakeLevelChanges;
         }
 
         // Update is called once per frame
@@ -288,7 +289,8 @@ namespace Itch {
         }
 
         public void DropItems(List<InventoryItem> items) {
-            Planes.CurrentPlane.PlaceItems(items, CurrentTile, interactRadius);
+            if(items.Count > 0)
+                Planes.CurrentPlane.PlaceItems(items, CurrentTile, interactRadius);
         }
 
         public void DropItem(InventoryItem item) {
