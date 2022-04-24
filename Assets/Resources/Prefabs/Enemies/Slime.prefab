@@ -19,6 +19,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8251126895703028753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981763889999326709}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03e1035b6563ea49944aebef9efe216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainControl: {fileID: 0}
+  moveControl: {fileID: 0}
+  children: []
+  interruptible: 1
+  parentRedecidesOnExit: 1
+  aggroRange: 5
+  endAggroRange: 10
 --- !u!114 &-7821201006771750990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,8 +57,48 @@ MonoBehaviour:
   rotate: 0
   range: {x: 1, y: 3}
   launchAngle: 75.3
+  windupTime: 0.5
   maxJumpError: 1
   collision: {fileID: 4981763889999326670}
+--- !u!114 &-5529842343539528400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981763889999326709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8280768339690050726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981763889999326709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quantity: 1
+  gatherSteps: 5
+  stepDuration: 1
+  gatherXP: 0
+  capabilityRequired: Handling
+  levelRequired: 3
+  oneHarvest:
+  - id: slime_gel_blue
+    count: 3
+  buffName: 
+  buffStrength: 1
+  buffDuration: 10
+  depletedSprite: {fileID: 0}
+  destroyOnDeplete: 0
+  alreadyHarvested: No resources left.
 --- !u!1001 &10161621080714537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,11 +106,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: children.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: moveControl
       value: 
       objectReference: {fileID: -7821201006771750990}
+    - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: children.Array.data[1]
+      value: 
+      objectReference: {fileID: 4981763889999326704}
+    - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: children.Array.data[0]
+      value: 
+      objectReference: {fileID: -8251126895703028753}
+    - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: enemyLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: enemyLayers.Array.data[0]
+      value: Tribe3
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: m_Name
@@ -131,6 +220,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 10161621080714537}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4981763889999326704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4973907126764994777, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 10161621080714537}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981763889999326709}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448f91315d2eeec45ac2509eadab51e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4981763889999326670 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 4973907126764994791, guid: ceb2c8b2abcb1af46945974dcacac3ba,

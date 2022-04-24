@@ -56,7 +56,7 @@ PrefabInstance:
     - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: buffStrength
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}

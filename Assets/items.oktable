@@ -53,3 +53,43 @@ Testing/wheat
 0
 0
 20
+
+slime_gel_blue
+40
+Material
+Testing/wheat
+0
+0
+10
+
+yeti_gem
+50
+Material
+Testing/wheat
+0
+0
+1
+
+berry
+1000
+Consumable
+Testing/antimony
+10
+0
+20
+
+mushroom
+1001
+Consumable
+Testing/antimony
+5
+0
+20
+properties
+3
+buffName string
+Sight
+buffStrength float
+5
+buffDuration float
+60

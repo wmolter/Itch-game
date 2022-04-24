@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!60 &5696513927377646974
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637998993271461188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1875, y: 1}
+    newSize: {x: 1.1875, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.59375, y: -0.5}
+      - {x: 0.24131411, y: -0.5}
+      - {x: 0.42218816, y: -0.40625}
+      - {x: 0.42218852, y: -0.3060543}
+      - {x: -0.36398816, y: -0.3160833}
+--- !u!114 &1917021726314257796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637998993271461188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialsNeeded:
+  - id: silver_ore
+    count: 5
+  craftTime: 4
+  unlockedComponent: {fileID: 3823567223927332411}
+  craftedSprite: {fileID: 5045073161074915229, guid: 29de39b178f415342bda005f9f0b96c4,
+    type: 3}
+--- !u!114 &3823567223927332411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637998993271461188}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quantity: 1
+  gatherSteps: 3
+  stepDuration: 0.25
+  gatherXP: 3000
+  capabilityRequired: Sorcery
+  levelRequired: 2
+  oneHarvest:
+  - id: yeti_crystal
+    count: 1
+  buffName: 
+  buffStrength: 1
+  buffDuration: 10
+  depletedSprite: {fileID: -1089752354001653685, guid: 29de39b178f415342bda005f9f0b96c4,
+    type: 3}
+  destroyOnDeplete: 0
+  alreadyHarvested: No resources left.
+--- !u!114 &7271048197802064614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637998993271461188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &4003290278516760749
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4136844608256951943, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6834524911116659543, guid: 29de39b178f415342bda005f9f0b96c4,
+        type: 3}
+    - target: {fileID: -4136844608256951943, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: -4136844608256951943, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393060857205536233, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_Name
+      value: Yeti Treasure
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194279297773528990, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: spawnRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: 2067edc622410ef45957fd8eb5122aaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2067edc622410ef45957fd8eb5122aaf, type: 3}
+--- !u!1 &1637998993271461188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2393060857205536233, guid: 2067edc622410ef45957fd8eb5122aaf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4003290278516760749}
+  m_PrefabAsset: {fileID: 0}

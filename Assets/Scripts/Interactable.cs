@@ -2,6 +2,7 @@
 using System.Collections;
 
 namespace Itch {
+    [RequireComponent(typeof(Collider2D))]
     public class Interactable : MonoBehaviour {
 
         public delegate void InteractionAction(PlayerManager player);

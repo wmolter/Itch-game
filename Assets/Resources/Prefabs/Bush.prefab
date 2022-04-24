@@ -113,7 +113,7 @@ MonoBehaviour:
   quantity: 5
   gatherSteps: 1
   stepDuration: 0.25
-  gatherXP: 0
+  gatherXP: 12
   capabilityRequired: Gathering
   levelRequired: 3
   oneHarvest:

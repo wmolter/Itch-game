@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 5374177834721027421}
   - component: {fileID: -1323856518479927668}
   - component: {fileID: -6242655891503564904}
+  - component: {fileID: 5869890637770928389}
   m_Layer: 14
   m_Name: Wolf
   m_TagString: Untagged
@@ -108,11 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behavior: {fileID: 0}
-  speed: 3
-  acceleration: 4
-  motionDir: {x: 0, y: 0}
-  defaultRotation: {x: 1, y: 0}
-  rotate: 0
   enemyLayers:
   - Player
   - Tribe1
@@ -151,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 5869890637770928389}
   children:
   - {fileID: -9059734097428455828}
   - {fileID: -5189596493808681586}
@@ -170,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 0
@@ -189,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 0
   parentRedecidesOnExit: 0
@@ -210,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children:
   - {fileID: 4973907126764994782}
   interruptible: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children:
   - {fileID: 4973907126764994783}
   - {fileID: -1323856518479927668}
@@ -278,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 0
@@ -321,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 1
@@ -341,3 +344,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 50
   current: 50
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5869890637770928389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973907126764994780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efa13deec24164fbdf6c5487f81981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  acceleration: 3
+  motionDir: {x: 0, y: 0}
+  defaultRotation: {x: 1, y: 0}
+  rotate: 0

@@ -7,6 +7,7 @@ using OneKnight.Loading;
 using OneKnight.PropertyManagement;
 using OneKnight.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Itch {
     public class PlayerManager : MonoBehaviour {
@@ -24,7 +25,7 @@ namespace Itch {
         public float baseLOS = 5;
         public float LOS {
             get {
-                return baseLOS + properties.AdjustProperty("Sight", abilities["Sight"])*LOSLevelFactor;
+                return properties.AdjustProperty("LOS", baseLOS + properties.AdjustProperty("Sight", abilities["Sight"])*LOSLevelFactor);
             }
         }
         public float SqrSightRange {
@@ -37,10 +38,12 @@ namespace Itch {
         public float speedPerLevel;
         public float Speed {
             get {
-                return properties.AdjustProperty("Speed", baseSpeed + speedPerLevel*abilities["Speed"]);
+                return properties.AdjustProperty("Movement", baseSpeed + speedPerLevel*properties.AdjustProperty("Speed", abilities["Speed"]));
             }
         }
         public float interactRadius;
+        List<Interactable> interactingWith;
+
         public TMP_ValueTextDisplay xpReadout;
         public Dictionary<string, int> abilities;
         public string[] skills;
@@ -56,7 +59,7 @@ namespace Itch {
             SavingUtils.NewGame("Test");
             inventory = new Inventory(baseInvCapacity);
             abilities = new Dictionary<string, int>();
-            xpReadout.toDisplay = delegate () { return xp; };
+            xpReadout.SetToDisplay(delegate () { return xp; });
             foreach(string skill in skills) {
                 abilities[skill] = 0;
             }
@@ -84,11 +87,19 @@ namespace Itch {
             inventoryManager.SetInventory(inventory);
             inventoryManager.AddListener(ItemClicked);
             OnLevel += MakeLevelChanges;
+
+            interactingWith = new List<Interactable>();
         }
 
         // Update is called once per frame
         void Update() {
             SqrSightRange = LOS*LOS;
+            if(interactingWith.Count > 0) {
+                for(int i = 0; i < interactingWith.Count; i++) {
+                    if((interactingWith[i].transform.position - transform.position).magnitude > interactRadius)
+                        StopInteracting();
+                }
+            }
         }
 
         private void OnDestroy() {
@@ -98,6 +109,8 @@ namespace Itch {
         public void ItemClicked(ItemSlot slot, PointerEventData data) {
             if(data.button == PointerEventData.InputButton.Right) {
                 DropItem(slot.RemoveItem());
+            } else if(data.button == PointerEventData.InputButton.Left) {
+                TryUseItem(slot);
             }
         }
 
@@ -137,13 +150,20 @@ namespace Itch {
             return xp >= XpToLevel(ability);
         }
 
-        public void OnInteract() {
-            interacting = !interacting;
+        public void StopInteracting() {
+            interactingWith.Clear();
+            interacting = false;
+        }
+
+        public void OnInteract(InputValue value) {
+            interactingWith.Clear();
+            interacting = value.isPressed;
             if(interacting) {
                 Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRadius);
                 foreach(Collider2D hit in hits) {
                     Interactable actable = hit.GetComponent<Interactable>();
                     if(actable != null) {
+                        interactingWith.Add(actable);
                         actable.Interact(this);
                     }
                 }
@@ -171,6 +191,10 @@ namespace Itch {
             return HasCapability(ability) && properties.AdjustProperty(ability, abilities[ability]) >= level;
         }
 
+        public void GiveHealth(float healing) {
+            GetComponent<Health>().Heal(healing);
+        }
+
         class Buff {
             public string buffName { get; private set; }
             public List<float> strengths;
@@ -190,7 +214,8 @@ namespace Itch {
             }
 
             public void UpdateBuffs(PropertyManager manager, float time) {
-                manager.RemoveAdjustment(buffName, sourceId);
+                if(manager.HasAdjustment(buffName))
+                    manager.RemoveAdjustment(buffName, sourceId);
                 int index = 0;
                 while(index < strengths.Count) {
                     if(endTimes[index] <= time) {
@@ -208,6 +233,10 @@ namespace Itch {
         }
 
         public void GiveBuff(string name, float str, float dur) {
+            GiveBuff(name, str, dur, transform.position);
+        }
+
+        public void GiveBuff(string name, float str, float dur, Vector2 notifPos) {
             Buff already = allBuffs.Find(delegate (Buff b) { return b.buffName == name; });
             if(already == null) {
                 Buff newBuff = new Buff(name);
@@ -219,6 +248,7 @@ namespace Itch {
             already.UpdateBuffs(properties, Time.time);
             MakeLevelChanges(name);
             StartCoroutine(CheckBuffs(dur));
+            Notifications.CreatePositive(notifPos, "+" + str + " " + name + " for " + dur + " seconds");
         }
 
         IEnumerator CancelBuff(string buffName, float strength, float duration, int sourceId) {
@@ -295,6 +325,11 @@ namespace Itch {
 
         public void DropItem(InventoryItem item) {
             Planes.CurrentPlane.PlaceItem(item, CurrentTile, interactRadius);
+        }
+
+        public void TryUseItem(ItemSlot slot) {
+            if(!Consumables.TryUse(slot))
+                Notifications.CreateError(transform.position, "Item cannot be used.");
         }
     }
 }

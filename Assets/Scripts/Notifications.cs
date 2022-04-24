@@ -15,6 +15,10 @@ namespace Itch {
             instance.CreateNotif(position, text, instance.errorColor);
         }
 
+        public static void CreateNegative(Vector2 position, string text) {
+            instance.CreateNotif(position, text, instance.negativeColor);
+        }
+
         public static void CreatePositive(Vector2 position, string text) {
             instance.CreateNotif(position, text, instance.positiveColor);
         }
@@ -36,6 +40,7 @@ namespace Itch {
         public Text textPrefab;
         public Vector2 stackSpacing;
         public Color errorColor;
+        public Color negativeColor;
         public Color stdColor;
         public Color positiveColor;
 

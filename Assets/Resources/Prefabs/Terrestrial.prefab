@@ -251,6 +251,8 @@ MonoBehaviour:
       type: Bush
     - weight: 2
       type: Mushrooms
+    - weight: 0.3
+      type: Slime Spawner
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 54509a7627f77904cb8faca77d377b2d, type: 2}
@@ -300,7 +302,7 @@ MonoBehaviour:
   - tile: {fileID: 11400000, guid: b9f74bb2f5067cc4c8654f36d276c440, type: 2}
     objectChance: 0.1
     spawns:
-    - weight: 1
+    - weight: 0.1
       type: AetherPortal
     - weight: 4
       type: Silver
@@ -310,10 +312,12 @@ MonoBehaviour:
       type: Snow Mound
     - weight: 0.3
       type: Wolf Den
-    - weight: 4
+    - weight: 0.1
       type: Yeti Spawner
     - weight: 20
       type: Evergreen Tree
+    - weight: 0.1
+      type: Yeti Treasure
     effect: {fileID: 0}
     totalWeight: 0
   settings:
@@ -335,6 +339,7 @@ MonoBehaviour:
   player: {fileID: 0}
   noiseOffset: {x: -12.4, y: 121, z: -439.2738}
   SightModifier: 1
+  gravity: 5
 --- !u!114 &229973358
 MonoBehaviour:
   m_ObjectHideFlags: 0

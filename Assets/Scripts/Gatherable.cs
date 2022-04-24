@@ -101,8 +101,7 @@ namespace Itch {
                 }
             }
             if(buffName != "") {
-                player.GiveBuff(buffName, buffStrength, buffDuration);
-                Notifications.CreatePositive(transform.position, "+" + buffStrength + " " + buffName + " for " + buffDuration + " seconds");
+                player.GiveBuff(buffName, buffStrength, buffDuration, transform.position);
             }
             CheckDepleted();
         }

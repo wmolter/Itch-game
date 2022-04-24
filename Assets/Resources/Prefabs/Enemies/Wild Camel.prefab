@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7605684073581855728}
   - component: {fileID: 354492855463823461}
   - component: {fileID: -6329941210520102832}
+  - component: {fileID: -1025593669456803302}
   m_Layer: 15
   m_Name: Wild Camel
   m_TagString: Untagged
@@ -103,11 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behavior: {fileID: 0}
-  speed: 1
-  acceleration: 2
-  motionDir: {x: 0, y: 0}
-  defaultRotation: {x: 1, y: 0}
-  rotate: 0
   enemyLayers: []
   home: {x: 0, y: 0, z: 0}
 --- !u!50 &4973907126764994779
@@ -144,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: -1025593669456803302}
   children:
   - {fileID: 7605684073581855728}
   - {fileID: 4973907126764994777}
@@ -162,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 0
@@ -209,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 0
@@ -240,3 +239,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 50
   current: 50
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1025593669456803302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973907126764994780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efa13deec24164fbdf6c5487f81981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  acceleration: 1
+  motionDir: {x: 0, y: 0}
+  defaultRotation: {x: 1, y: 0}
+  rotate: 0

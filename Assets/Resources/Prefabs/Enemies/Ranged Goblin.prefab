@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6118345614156502368}
   - component: {fileID: 3755443619690239901}
   - component: {fileID: -6844233735836636503}
+  - component: {fileID: -4743107218092685857}
   m_Layer: 12
   m_Name: Ranged Goblin
   m_TagString: Untagged
@@ -104,11 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behavior: {fileID: 0}
-  speed: 2
-  acceleration: 4
-  motionDir: {x: 0, y: 0}
-  defaultRotation: {x: 1, y: 0}
-  rotate: 0
   enemyLayers:
   - Player
   home: {x: 0, y: 0, z: 0}
@@ -146,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: -4743107218092685857}
   children:
   - {fileID: 4973907126764994783}
   - {fileID: 4973907126764994777}
@@ -164,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 1
   parentRedecidesOnExit: 0
@@ -183,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children:
   - {fileID: 6118345614156502368}
   interruptible: 0
@@ -230,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainControl: {fileID: 4973907126764994778}
+  moveControl: {fileID: 0}
   children: []
   interruptible: 0
   parentRedecidesOnExit: 0
@@ -271,3 +271,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 50
   current: 50
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-4743107218092685857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973907126764994780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efa13deec24164fbdf6c5487f81981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.5
+  acceleration: 3
+  motionDir: {x: 0, y: 0}
+  defaultRotation: {x: 1, y: 0}
+  rotate: 0
