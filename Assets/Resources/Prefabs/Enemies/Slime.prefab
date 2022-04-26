@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   acceleration: 5
+  turnAcceleration: 5
   motionDir: {x: 0, y: 0}
   defaultRotation: {x: 1, y: 0}
   rotate: 0
@@ -84,12 +85,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Handling
+  levelRequired: 3
   quantity: 1
   gatherSteps: 5
   stepDuration: 1
   gatherXP: 0
-  capabilityRequired: Handling
-  levelRequired: 3
   oneHarvest:
   - id: slime_gel_blue
     count: 3

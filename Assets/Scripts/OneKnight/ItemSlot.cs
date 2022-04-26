@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine.Events;
 using UnityEngine;
+using OneKnight.PropertyManagement;
 namespace OneKnight {
     [Serializable]
-    public class ItemSlot : Displayable, Spriteable {
+    public class ItemSlot : PropertyManaged, Displayable, Spriteable {
 
         //public delegate void SlotAction(InventoryItem item);
         //public event SlotAction OnAdd;
@@ -45,19 +46,23 @@ namespace OneKnight {
                 return Empty ? 0 : Item.count;
             }
         }
-        
+
         public ItemSlot() {
 
         }
 
-        public ItemSlot(InventoryItem startWith) {
+        public ItemSlot(InventoryItem startWith, PropertyManager properties) {
             item = startWith;
+            Properties = properties;
+            if(item != null)
+                item.Properties = Properties;
         }
 
         public virtual bool Swap(ItemSlot other) {
             Debug.Log("Swap initialized.");
             FireBeforeChange();
-            suppressEvents = true;
+            //suppressing events causes items to be lost when switching with volume inventories.. either implement fix or leave on
+            //suppressEvents = true;
             InventoryItem thisTemp = RemoveItem();
             InventoryItem otherTemp = other.RemoveItem();
             //if both don't work, put items back.
@@ -65,10 +70,10 @@ namespace OneKnight {
                 Debug.Log("Swap failed.");
                 ReplaceItem(thisTemp);
                 other.ReplaceItem(otherTemp);
-                suppressEvents = false;
+                //suppressEvents = false;
                 return false;
             }
-            suppressEvents = false;
+            //suppressEvents = false;
             FireChangeEvent();
             return true;
         }
@@ -77,6 +82,8 @@ namespace OneKnight {
             if(item == null) {
                 FireBeforeChange();
                 item = toAdd;
+                if(item != null)
+                    item.Properties = Properties;
                 FireChangeEvent();
                 return true;
             }
@@ -86,6 +93,8 @@ namespace OneKnight {
         public virtual InventoryItem RemoveItem() {
             FireBeforeChange();
             InventoryItem removed = item;
+            if(removed != null)
+                removed.Properties = null;
             item = null;
             FireChangeEvent();
             //OnRemove(removed);
@@ -98,6 +107,8 @@ namespace OneKnight {
             } else {
                 FireBeforeChange();
                 item = item.RemoveOne();
+                if(item != null)
+                    item.Properties = Properties;
                 FireChangeEvent();
                 return new InventoryItem(item.ID, 1);
             }
@@ -111,6 +122,8 @@ namespace OneKnight {
             else {
                 FireBeforeChange();
                 item = item.Remove(amount);
+                if(item != null)
+                    item.Properties = Properties;
                 FireChangeEvent();
                 return new InventoryItem(item.ID, amount);
             }
@@ -133,15 +146,17 @@ namespace OneKnight {
             if(item == null) {
                 if(other.count <= max && PutItem(other)) {
                     return null;
-                } else if(PutItem(new InventoryItem(other.ID, max))){
+                } else if(PutItem(new InventoryItem(other.ID, max))) {
                     return new InventoryItem(other.ID, other.count-max);
-                } else { 
+                } else {
                     return other;
                 }
             }
             int oldcount = item.count;
             FireBeforeChange();
             item = item.Stack(other, max);
+            if(item != null)
+                item.Properties = Properties;
             FireChangeEvent();
             int remaining = other.count - (item.count - oldcount);
             if(remaining == 0)
@@ -169,6 +184,8 @@ namespace OneKnight {
                 FireBeforeChange();
                 int prevcount = Count;
                 item = other.Stack(item, max);
+                if(item != null)
+                    item.Properties = Properties;
                 FireChangeEvent();
                 return prevcount - Count;
             } else {
@@ -185,6 +202,8 @@ namespace OneKnight {
             } else {
                 item = new InventoryItem(Item.ID, Item.count/2);
             }
+            if(item != null)
+                item.Properties = Properties;
             FireChangeEvent();
             return newStack;
         }
@@ -196,6 +215,8 @@ namespace OneKnight {
                 return old;
             FireBeforeChange();
             item = old;
+            if(item != null)
+                item.Properties = Properties;
             FireChangeEvent();
             return toAdd;
         }
@@ -222,6 +243,13 @@ namespace OneKnight {
                 return item.SpriteName();
             else
                 return null;
+        }
+
+        public override void SetProperties(PropertyManager properties) {
+            Properties = properties;
+            if(item != null) {
+                item.Properties = properties;
+            }
         }
     }
 }

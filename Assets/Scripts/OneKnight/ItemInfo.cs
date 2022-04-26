@@ -5,8 +5,10 @@ using OneKnight.Loading;
 
 namespace OneKnight {
     public static class ItemInfo {
-        
 
+        public static class Category {
+            public const string Consumable = "Consumable";
+        }
 
         private static Dictionary<string, InventoryItem.Data> allItems;
 

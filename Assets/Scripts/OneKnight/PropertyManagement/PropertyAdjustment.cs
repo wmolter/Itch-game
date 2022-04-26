@@ -30,8 +30,8 @@ namespace OneKnight.PropertyManagement {
         }
         public Type type { get; private set; }
         public float adjustment { get; private set; }
-        public int sourceID { get; private set; }
-        public string sourceName { get; private set; }
+        public string sourceID { get; private set; }
+        public string property { get; private set; }
 
         //the base value must satisfy this condition
         Condition basecondition;
@@ -40,16 +40,11 @@ namespace OneKnight.PropertyManagement {
         //apply the adjustment, but only up to the postcondition, or don't apply at all.
         Condition postcondition;
 
-        public PropertyAdjustment(Type type, float adjustment, int sourceID) {
+        public PropertyAdjustment(string property, Type type, float adjustment, string sourceID) {
             this.type = type;
             this.adjustment = adjustment;
             this.sourceID = sourceID;
-        }
-
-        public PropertyAdjustment(Type type, float adjustment, string sourceName) {
-            this.type = type;
-            this.adjustment = adjustment;
-            this.sourceName = sourceName;
+            this.property = property;
         }
 
         public void SetBaseCondition(float value, ConditionType type) {
@@ -201,26 +196,26 @@ namespace OneKnight.PropertyManagement {
                     result += "* " + adjustment;
                     break;
                 case Type.Min:
-                    result += "Min " + adjustment;
+                    result += Strings.Get("Min") + " " + adjustment;
                     break;
                 case Type.Max:
-                    result += "Max " + adjustment;
+                    result += Strings.Get("Max") + " " + adjustment;
                     break;
                 default:
                     result += adjustment.ToString();
                     break;
             }
-            //result += " (" + Effect.GetEffect(sourceID).Name + ")";
+            result += " (" + Strings.Get(sourceID) + ")";
             return result;
         }
 
         public static bool operator ==(PropertyAdjustment a, PropertyAdjustment b) {
-            return a.sourceID == b.sourceID && a.sourceName == b.sourceName;
+            return a.sourceID == b.sourceID && a.property == b.property;
         }
 
 
         public static bool operator !=(PropertyAdjustment a, PropertyAdjustment b) {
-            return a.sourceID != b.sourceID || a.sourceName != b.sourceName;
+            return a.sourceID != b.sourceID || a.property != b.property;
         }
 
         public override bool Equals(object obj) {
@@ -230,7 +225,7 @@ namespace OneKnight.PropertyManagement {
         }
 
         public override int GetHashCode() {
-            return sourceID + sourceName.GetHashCode();
+            return sourceID.GetHashCode();
         }
     }
 }

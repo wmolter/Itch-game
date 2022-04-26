@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using OneKnight.PropertyManagement;
+using OneKnight.InventoryManagement;
 
 namespace OneKnight {
     [System.Serializable]
-    public class Inventory {
-
+    public class Inventory : ItemContainer{
+        
         //private event ItemSlot.SlotAction OnAdd;
         //private event ItemSlot.SlotAction OnRemove;
 
@@ -43,7 +45,11 @@ namespace OneKnight {
             }
         }
 
-        protected Inventory(bool init, int capacity) {
+        protected Inventory(bool init, int capacity) : this(init, capacity, null) { 
+        }
+
+        protected Inventory(bool init, int capacity, PropertyManager properties) {
+            Properties = properties;
             this.capacity = capacity;
             items = new List<ItemSlot>();
             if(init)
@@ -70,8 +76,9 @@ namespace OneKnight {
             return new ItemSlot();
         }
 
-        protected virtual void AddSlot(ItemSlot toAdd) {
+        protected void AddSlot(ItemSlot toAdd) {
             items.Add(toAdd);
+            toAdd.Properties = Properties;
             toAdd.OnChange += OnItemChanged;
             if(Capacity < items.Count)
                 capacity = items.Count;
@@ -207,20 +214,6 @@ namespace OneKnight {
             return total;
         }
 
-        public virtual InventoryItem ItemWithFunction(string function) {
-            foreach(ItemSlot slot in items) {
-                if(!slot.Empty) {
-                    if(slot.Item.HasProperty("functions")) {
-                        List<string> funcs = new List<string>(slot.Item.GetProperty<string[]>("functions"));
-                        if(funcs.Contains(function)) {
-                            return slot.Item;
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
         public virtual InventoryItem RemoveItem(int index) {
             InventoryItem item = items[index].RemoveItem();
             return item;
@@ -329,11 +322,13 @@ namespace OneKnight {
         }
 
         protected void RemoveSlotAt(int index) {
+            //in case the slot is grabbed to use elsewhere with GetSlot
+            items[index].Properties = null;
             items.RemoveAt(index);
             capacity--;
         }
 
-        public IEnumerator<ItemSlot> GetEnumerator() {
+        public override IEnumerator<ItemSlot> GetEnumerator() {
             for(int i = 0; i < Capacity; i++) {
                 yield return GetSlot(i);
             }
@@ -347,6 +342,13 @@ namespace OneKnight {
             foreach(ItemSlot slot in this) {
                 other.GetSlot(index).PutItem(slot.Item);
                 index++;
+            }
+        }
+
+        public override void SetProperties(PropertyManager properties) {
+            Properties = properties;
+            foreach(ItemSlot slot in this) {
+                slot.SetProperties(properties);
             }
         }
     }

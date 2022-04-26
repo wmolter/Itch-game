@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using OneKnight.Loading;
+using OneKnight.PropertyManagement;
 
 namespace OneKnight {
     [Serializable]
-    public class InventoryItem : Displayable, Spriteable, IComparable<InventoryItem> {
+    public class InventoryItem : PropertyManaged, Displayable, Spriteable, IComparable<InventoryItem> {
 
         public class Data : Loading.FullDescription, ArgumentHolder {
 
@@ -18,14 +19,18 @@ namespace OneKnight {
             public float volumePer;
 
             public Dictionary<string, object> args { get; set; }
-            public object[] argValues { get; set; }
+            public string[] argOrder { get; set; }
 
             public virtual InventoryItem Create() {
                 return Create(1);
             }
 
             public virtual InventoryItem Create(int count) {
-                return new InventoryItem(id, count);
+                return Create(count, true);
+            }
+
+            public virtual InventoryItem Create(int count, bool stackSafe) {
+                return new InventoryItem(id, count, stackSafe);
             }
 
             //use args to put things in their places, if you wish
@@ -121,14 +126,25 @@ namespace OneKnight {
             }
         }
 
+        public bool Consumable {
+            get {
+                return Category == ItemInfo.Category.Consumable;
+            }
+        }
+
         public string Category {
             get {
                 return ItemInfo.GetCategory(id);
             }
         }
 
-        public T GetProperty<T>(string propertyName) {
+        public T GetBaseProperty<T>(string propertyName) {
             return ItemInfo.GetProperty<T>(id, propertyName);
+        }
+
+        public float GetFloatProperty(string propertyName) {
+            float prop = GetBaseProperty<float>(propertyName);
+            return AdjustProperty(propertyName, prop);
         }
 
         public bool HasProperty(string propertyName) {
@@ -193,15 +209,15 @@ namespace OneKnight {
             return Stack(other, other.count);
         }
 
+
         public InventoryItem Stack(InventoryItem other, int max) {
             if(other.ID != ID)
-                throw new UnityException("Tried to stack two different items: " + Name + " and " + other.Name);
-            int startOtherCount = other.count;
-            int temp = count + max;
+                throw new UnityException("Tried to stack two different items: " + id + " and " + other.id);
+            int temp = count + Mathf.Min(max, other.count);
             int newcount = Mathf.Min(StackLimit, temp);
             return new InventoryItem(ID, newcount);
         }
-        
+
 
         public virtual string DisplayString(int verbosity) {
             string result = (count > 1 ? count + " ": "") +  "<b>" + Name + "</b>";

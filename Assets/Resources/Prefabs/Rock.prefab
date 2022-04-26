@@ -142,12 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Mining
+  levelRequired: 1
   quantity: 2
   gatherSteps: 4
   stepDuration: 0.25
   gatherXP: 50
-  capabilityRequired: Mining
-  levelRequired: 1
   oneHarvest:
   - id: iron_ore
     count: 2
@@ -155,6 +156,8 @@ MonoBehaviour:
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: 21300000, guid: 4fa581fa841621145851b52536cfe43e, type: 3}
+  destroyOnDeplete: 0
+  alreadyHarvested: No resources left.
 --- !u!114 &3355949498292794041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0

@@ -6,6 +6,6 @@ namespace OneKnight.Loading {
 
 
         Dictionary<string, object> args { get; set; }
-        object[] argValues { get; set; }
+        string[] argOrder { get; set; }
     }
 }

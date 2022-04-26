@@ -144,11 +144,11 @@ namespace OneKnight.Loading {
         }
 
 
-        public static void ReadArguments(IEnumerator<TableBit> enumerator, ArgumentHolder readInto, string sourceID) {
+        public static void ReadArguments(IEnumerator<TableBit> enumerator, ArgumentHolder readInto, string source) {
             TableBit bit = enumerator.Current;
             int argCount = int.Parse(bit.value);
-            //string[] argnames = new string[argCount];
-            object[] argvalues = new object[argCount];
+            string[] argnames = new string[argCount];
+            //object[] argvalues = new object[argCount];
             readInto.args = new Dictionary<string, object>();
 
             for(int i = 0; i < argCount; i++) {
@@ -159,58 +159,62 @@ namespace OneKnight.Loading {
                     string argname = split[0];
                     enumerator.MoveNext();
                     bit = enumerator.Current;
+                    object thisArg;
+                    argnames[i] = argname;
                     if(split.Length < 2) {
                         int temp;
                         float ftemp;
                         bool btemp;
                         if(int.TryParse(bit.value, out temp)) {
-                            argvalues[i] = temp;
+                            thisArg = temp;
                         } else if(float.TryParse(bit.value, out ftemp)) {
-                            argvalues[i] = ftemp;
+                            thisArg = ftemp;
                         } else if(bool.TryParse(bit.value, out btemp)) {
-                            argvalues[i] = btemp;
+                            thisArg = btemp;
                         } else {
-                            argvalues[i] = bit.value;
+                            thisArg = bit.value;
                         }
-                        readInto.args[argname] = argvalues[i];
+                        readInto.args[argname] = thisArg;
                     } else {
                         if(split[1] == "intarray") {
-                            argvalues[i] = ReadAllInts(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = ReadAllInts(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "floatarray") {
-                            argvalues[i] = ReadAllFloats(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = ReadAllFloats(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "boolarray") {
-                            argvalues[i] = ReadAllBools(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = ReadAllBools(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "stringarray") {
-                            argvalues[i] = bit.value.Split(' ');
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = bit.value.Split(' ');
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "int") {
-                            argvalues[i] = int.Parse(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = int.Parse(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "float") {
-                            argvalues[i] = float.Parse(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = float.Parse(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "bool") {
-                            argvalues[i] = bool.Parse(bit.value);
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = bool.Parse(bit.value);
+                            readInto.args[argname] = thisArg;
                         } else if(split[1] == "adjustment") {
-                            PropertyAdjustment adjust = ReadAdjustment(bit.value, sourceID);
-                            argvalues[i] = adjust.adjustment;
+                            PropertyAdjustment adjust = ReadAdjustment(bit.value, argname, source);
+                            thisArg = adjust.adjustment;
                             readInto.args[argname] = adjust;
+                        } else if(split[1] == "adjustmentarray") {
+                            readInto.args[argname] = ReadAdjustmentArray(enumerator, source);
                         } else {
-                            argvalues[i] = bit.value;
-                            readInto.args[argname] = argvalues[i];
+                            thisArg = bit.value;
+                            readInto.args[argname] = thisArg;
                         }
                     }
                 } catch(System.Exception ex) {
-                    Debug.LogWarning("Error while reading arguments for: " + sourceID + "\n" + ex);
+                    Debug.LogWarning("Error while reading arguments for: " + source + "\n" + ex);
                 }
             }
 
-            //readInto.argNames = argnames;
-            readInto.argValues = argvalues;
+            readInto.argOrder = argnames;
+            //readInto.argValues = argvalues;
         }
 
         public static float NextFloat(IEnumerator<TableBit> enumerator) {
@@ -274,25 +278,31 @@ namespace OneKnight.Loading {
             return result;
         }
 
-        public static PropertyAdjustment ReadAdjustment(string line, string sourceID) {
+        public static PropertyAdjustment ReadAdjustment(string line, string property, string source) {
             string[] split = line.Split(' ');
             string type = split[0];
-            float value = float.Parse(split[1]);
+            int index = 2;
+            //Debug.Log("property: " + property + " line: " + line + " split length: " + split.Length);
+            if(!float.TryParse(split[1], out float value)) {
+                value = float.Parse(split[2]);
+                type = split[1];
+                property = split[0];
+                index = 3;
+            }
 
             PropertyAdjustment adjust;
             if(type == "mod")
-                adjust = new PropertyAdjustment(PropertyAdjustment.Type.Modifier, value, sourceID);
+                adjust = new PropertyAdjustment(property, PropertyAdjustment.Type.Modifier, value, source);
             else if(type == "max")
-                adjust = new PropertyAdjustment(PropertyAdjustment.Type.Max, value, sourceID);
+                adjust = new PropertyAdjustment(property, PropertyAdjustment.Type.Max, value, source);
             else if(type == "min")
-                adjust = new PropertyAdjustment(PropertyAdjustment.Type.Min, value, sourceID);
+                adjust = new PropertyAdjustment(property, PropertyAdjustment.Type.Min, value, source);
             else if(type == "bonus")
-                adjust = new PropertyAdjustment(PropertyAdjustment.Type.Bonus, value, sourceID);
+                adjust = new PropertyAdjustment(property, PropertyAdjustment.Type.Bonus, value, source);
             else {
                 Debug.LogWarning("Unknown property adjustment type: " + type);
-                adjust = new PropertyAdjustment(PropertyAdjustment.Type.Modifier, value, sourceID);
+                adjust = new PropertyAdjustment(property, PropertyAdjustment.Type.Modifier, value, source);
             }
-            int index = 2;
             while(index < split.Length) {
                 string condition = split[index];
                 type = split[index+1];
@@ -309,6 +319,17 @@ namespace OneKnight.Loading {
             }
             return adjust;
         }
+
+        public static PropertyAdjustment[] ReadAdjustmentArray(IEnumerator<TableBit> enumerator, string source) {
+            int count = int.Parse(enumerator.Current.value);
+            PropertyAdjustment[] result = new PropertyAdjustment[count];
+            for(int i = 0; i < count; i++) {
+                enumerator.MoveNext();
+                result[i] = ReadAdjustment(enumerator.Current.value, null, source);
+            }
+            return result;
+        }
+
 
     }
 

@@ -6,7 +6,7 @@ using OneKnight;
 
 namespace Itch {
     [RequireComponent(typeof(Interactable))]
-    public class Gatherable : MonoBehaviour {
+    public class Gatherable : LevelRequiredAction {
 
         public int quantity = 1;
         public int gatherSteps = 4;
@@ -19,8 +19,6 @@ namespace Itch {
             }
         }
         bool gathering = false;
-        public string capabilityRequired = "Mining";
-        public float levelRequired = 0;
         public Drop[] oneHarvest;
         public string buffName = "";
         public float buffStrength = 1;
@@ -36,10 +34,6 @@ namespace Itch {
             harvested = new List<InventoryItem>();
         }
 
-        private void OnEnable() {
-            GetComponent<Interactable>().Interaction = Gather;
-        }
-
         private void Start() {
             currentGatherSteps = gatherSteps;
         }
@@ -53,18 +47,14 @@ namespace Itch {
             harvested.Add(toAdd);
         }
 
-        public void Gather(PlayerManager player) {
+        protected override void DoAction(PlayerManager player) {
             if(harvested != null) {
                 harvested = player.GiveItems(harvested);
                 CheckDepleted();
             }
             if(!Gathered) {
                 if(!gathering) {
-                    if(player.HasCapabilityLevel(capabilityRequired, levelRequired)) {
-                        StartCoroutine(GatherStep(player));
-                    } else {
-                        Notifications.CreateError(transform.position, capabilityRequired + " " + levelRequired + " Required");
-                    }
+                    StartCoroutine(GatherStep(player));
                 }
             } else {
                 Notifications.CreateError(transform.position, alreadyHarvested);

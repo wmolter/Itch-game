@@ -297,6 +297,8 @@ MonoBehaviour:
       type: Wolf Spawner
     - weight: 1
       type: Eagle Spawner
+    - weight: 30
+      type: Boulder
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: b9f74bb2f5067cc4c8654f36d276c440, type: 2}
@@ -318,6 +320,8 @@ MonoBehaviour:
       type: Evergreen Tree
     - weight: 0.1
       type: Yeti Treasure
+    - weight: 3
+      type: Broken Evergreen
     effect: {fileID: 0}
     totalWeight: 0
   settings:

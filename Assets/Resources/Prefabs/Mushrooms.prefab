@@ -110,12 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Gathering
+  levelRequired: 7
   quantity: 5
   gatherSteps: 1
   stepDuration: 0.25
   gatherXP: 30
-  capabilityRequired: Gathering
-  levelRequired: 7
   oneHarvest:
   - id: mushroom
     count: 1
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
 --- !u!58 &8750118260019417620
 CircleCollider2D:
   m_ObjectHideFlags: 0

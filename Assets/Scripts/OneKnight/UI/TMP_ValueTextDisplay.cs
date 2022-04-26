@@ -23,6 +23,10 @@ namespace OneKnight.UI {
             values = new System.IFormattable[toDisplay.Length];
         }
 
+        public System.IFormattable GetMainValue() {
+            return toDisplay[0]();
+        }
+
         // Update is called once per frame
         void LateUpdate() {
             for(int i = 0; i < values.Length; i++) {

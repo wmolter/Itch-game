@@ -51,7 +51,7 @@ namespace Itch {
         public InventoryManagerLight inventoryManager;
 
         public bool interacting;
-        int exploreXpBuffer = 0;
+        int OneKnightXpBuffer = 0;
         public float xpInterval = 3;
 
         private void Awake() {
@@ -83,7 +83,7 @@ namespace Itch {
         void Start() {
             GetComponent<Health>().max = baseHealth;
             GetComponent<Health>().current = baseHealth;
-            StartCoroutine(ExploreXPCounter());
+            StartCoroutine(OneKnightXPCounter());
             inventoryManager.SetInventory(inventory);
             inventoryManager.AddListener(ItemClicked);
             OnLevel += MakeLevelChanges;
@@ -172,13 +172,13 @@ namespace Itch {
         }
 
         public void NewTiles(int count, int xpPerTile) {
-            exploreXpBuffer += count*xpPerTile;
+            OneKnightXpBuffer += count*xpPerTile;
         }
 
-        IEnumerator ExploreXPCounter() {
+        IEnumerator OneKnightXPCounter() {
             while(enabled) {
-                xp += exploreXpBuffer;
-                exploreXpBuffer = 0;
+                xp += OneKnightXpBuffer;
+                OneKnightXpBuffer = 0;
                 yield return new WaitForSeconds(xpInterval);
             }
         }
@@ -199,7 +199,7 @@ namespace Itch {
             public string buffName { get; private set; }
             public List<float> strengths;
             public List<float> endTimes;
-            public int sourceId;
+            public string sourceId = "buff";
 
             public bool Empty {
                 get {
@@ -251,7 +251,7 @@ namespace Itch {
             Notifications.CreatePositive(notifPos, "+" + str + " " + name + " for " + dur + " seconds");
         }
 
-        IEnumerator CancelBuff(string buffName, float strength, float duration, int sourceId) {
+        IEnumerator CancelBuff(string buffName, float strength, float duration, string sourceId) {
             yield return new WaitForSeconds(duration);
             properties.RemoveAdjustment(buffName, sourceId);
             MakeLevelChanges(buffName);
@@ -294,7 +294,11 @@ namespace Itch {
         }
 
         public bool CheckConsumeFromInventory(Drop[] items) {
-            if(CheckInventoryHas(items)) {
+            return CheckConsumeFromInventory(items, out Drop[] lacking);
+        }
+
+        public bool CheckConsumeFromInventory(Drop[] items, out Drop[] lacking) {
+            if(CheckInventoryHas(items, out lacking)) {
                 RemoveFromInventory(items);
                 return true;
             }
@@ -302,12 +306,23 @@ namespace Itch {
         }
 
         public bool CheckInventoryHas(Drop[] items) {
+            return CheckInventoryHas(items, out Drop[] lacking);
+        }
+
+        public bool CheckInventoryHas(Drop[] items, out Drop[] lacking) {
             bool has = true;
+            lacking = new Drop[items.Length];
+            int i = 0;
             foreach(Drop item in items) {
-                has = has && inventory.CountOf(item.id) >= item.count;
+                int count = inventory.CountOf(item.id);
+                has = has && count >= item.count;
+                lacking[i] = new Drop(item.id, Mathf.Max(0, item.count-count));
+                i++;
             }
             return has;
         }
+
+        
 
         public void RemoveFromInventory(Drop[] items) {
             foreach(Drop item in items) {

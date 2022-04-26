@@ -109,12 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Gathering
+  levelRequired: 1
   quantity: 1
   gatherSteps: 4
   stepDuration: 0.25
   gatherXP: 0
-  capabilityRequired: Gathering
-  levelRequired: 1
   oneHarvest:
   - id: fiber
     count: 2
@@ -122,6 +123,8 @@ MonoBehaviour:
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: 21300000, guid: 4453cce7c26edaa4896290330d479e07, type: 3}
+  destroyOnDeplete: 0
+  alreadyHarvested: No resources left.
 --- !u!114 &5182412703815347439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
 --- !u!60 &8638435780096397103
 PolygonCollider2D:
   m_ObjectHideFlags: 0

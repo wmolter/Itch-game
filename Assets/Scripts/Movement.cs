@@ -6,6 +6,7 @@ namespace Itch {
         
         public float speed = 5;
         public float acceleration = 5;
+        public float turnAcceleration = 5;
         public Vector2 motionDir;
         public Vector2 defaultRotation = Vector2.right;
         public bool rotate;
@@ -22,11 +23,24 @@ namespace Itch {
         protected virtual void FixedUpdate() {
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             Vector2 currVel = body.velocity;
+            float currSpeed = currVel.magnitude;
+            Vector2 currDir = currVel.normalized;
+            float mass = body.mass;
+            body.AddForce((motionDir-currDir)*currSpeed*turnAcceleration*mass, ForceMode2D.Force);
+
+            //use just updated velocity 
+            float signedCurrSpeed = currSpeed*Mathf.Sign(Vector2.Dot(currVel, motionDir));
+            currDir = body.velocity.normalized;
+            if(currDir == Vector2.zero)
+                currDir = motionDir;
             Vector2 desiredVel = motionDir*speed;
-            float mass = GetComponent<Rigidbody2D>().mass;
-            GetComponent<Rigidbody2D>().AddForce((desiredVel-currVel)*acceleration*mass, ForceMode2D.Force);
+
+            Vector2 inDir = Vector2.Dot(body.velocity, motionDir)*body.velocity;
+
+            body.AddForce((speed-signedCurrSpeed)*currDir*acceleration*mass, ForceMode2D.Force);
+
             if(rotate) {
-                transform.rotation = Quaternion.FromToRotation(defaultRotation, GetComponent<Rigidbody2D>().velocity);
+                transform.rotation = Quaternion.FromToRotation(defaultRotation, body.velocity);
             }
         }
     }

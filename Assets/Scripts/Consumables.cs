@@ -13,9 +13,9 @@ namespace Itch {
             PlayerManager p = PlayerManager.instance;
             p.GiveHealth(consumable.Value);
             if(consumable.HasProperty(BuffName)) {
-                string name = consumable.GetProperty<string>(BuffName);
-                float strength = consumable.GetProperty<float>(BuffStrength);
-                float duration = consumable.GetProperty<float>(BuffDuration);
+                string name = consumable.GetBaseProperty<string>(BuffName);
+                float strength = consumable.GetBaseProperty<float>(BuffStrength);
+                float duration = consumable.GetBaseProperty<float>(BuffDuration);
                 p.GiveBuff(name, strength, duration);
             }
             return consumable.RemoveOne();

@@ -4,7 +4,7 @@ using System.Collections;
 namespace Itch {
     public class SlowPlayer : MonoBehaviour {
         public float percentage = .5f;
-        public int id = 100;
+        public string id = "slow";
         // Use this for initialization
         void Start() {
 

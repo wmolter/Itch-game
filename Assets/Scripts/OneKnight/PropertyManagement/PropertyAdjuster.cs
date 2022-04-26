@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace OneKnight.PropertyManagement {
+    [System.Serializable]
     public class PropertyAdjuster {
 
         List<PropertyAdjustment>[] adjustments;
@@ -32,50 +33,52 @@ namespace OneKnight.PropertyManagement {
             }
             return result;
         }
-
-
-        public void AddModifier(float mod, int source) {
-            AddAdjustment(new PropertyAdjustment(PropertyAdjustment.Type.Modifier, mod, source));
+        
+        public void AddModifier(float mod, string source) {
+            AddAdjustment(new PropertyAdjustment(property, PropertyAdjustment.Type.Modifier, mod, source));
         }
 
-        public void AddBonus(float bonus, int source) {
-            AddAdjustment(new PropertyAdjustment(PropertyAdjustment.Type.Bonus, bonus, source));
+        public void AddBonus(float bonus, string source) {
+            AddAdjustment(new PropertyAdjustment(property, PropertyAdjustment.Type.Bonus, bonus, source));
         }
 
-        public void AddMax(float max, int source) {
-            AddAdjustment(new PropertyAdjustment(PropertyAdjustment.Type.Max, max, source));
+        public void AddMax(float max, string source) {
+            AddAdjustment(new PropertyAdjustment(property, PropertyAdjustment.Type.Max, max, source));
         }
 
-        public void AddMin(float min, int source) {
-            AddAdjustment(new PropertyAdjustment(PropertyAdjustment.Type.Min, min, source));
+        public void AddMin(float min, string source) {
+            AddAdjustment(new PropertyAdjustment(property, PropertyAdjustment.Type.Min, min, source));
         }
 
         public void AddAdjustment(PropertyAdjustment adjustment) {
+            if(adjustment.property != property)
+                throw new UnityException("Adjustment must have the same property as the adjuster.");
             if(adjustments[(int)adjustment.type] == null)
                 adjustments[(int)adjustment.type] = new List<PropertyAdjustment>();
-            if(!adjustments[(int)adjustment.type].Contains(adjustment))
-                adjustments[(int)adjustment.type].Add(adjustment);
+            if(adjustments[(int)adjustment.type].Contains(adjustment))
+                adjustments[(int)adjustment.type].Remove(adjustment);
+            adjustments[(int)adjustment.type].Add(adjustment);
         }
 
-        public void RemoveAdjustment(int sourceID) {
+        private PropertyAdjustment FindAdjustment(string source) {
+            for(int i = 0; i < adjustments.Length; i++) {
+                if(adjustments[i] == null)
+                    continue;
+                for(int j = 0; j < adjustments[i].Count; j++) {
+                    if(adjustments[i][j].sourceID == source) {
+                        return adjustments[i][j];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public void RemoveAdjustment(string sourceID) {
             for(int i = 0; i < adjustments.Length; i++) {
                 if(adjustments[i] == null)
                     continue;
                 for(int j = 0; j < adjustments[i].Count; j++) {
                     if(adjustments[i][j].sourceID == sourceID) {
-                        //must remove all adjustments from the source
-                        adjustments[i].RemoveAt(j);
-                    }
-                }
-            }
-        }
-
-        public void RemoveAdjustment(string sourceName) {
-            for(int i = 0; i < adjustments.Length; i++) {
-                if(adjustments[i] == null)
-                    continue;
-                for(int j = 0; j < adjustments[i].Count; j++) {
-                    if(adjustments[i][j].sourceName == sourceName) {
                         //must remove all adjustments from the source
                         adjustments[i].RemoveAt(j);
                     }

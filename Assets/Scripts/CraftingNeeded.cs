@@ -3,8 +3,8 @@ using System.Collections;
 using OneKnight;
 
 namespace Itch {
-    [RequireComponent(typeof(Interactable), typeof(SpriteRenderer))]
-    public class CraftingNeeded : MonoBehaviour {
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class CraftingNeeded : LevelRequiredAction {
 
         public Drop[] materialsNeeded;
         public float craftTime;
@@ -13,7 +13,6 @@ namespace Itch {
         float finishTime;
         // Use this for initialization
         void Awake() {
-            GetComponent<Interactable>().Interaction = TryCraft;
         }
 
         // Update is called once per frame
@@ -21,11 +20,12 @@ namespace Itch {
 
         }
 
-        void TryCraft(PlayerManager player) {
-            if(player.CheckInventoryHas(materialsNeeded))
+        protected override void DoAction(PlayerManager player) {
+            Drop[] lacking;
+            if(player.CheckInventoryHas(materialsNeeded, out lacking))
                 StartCoroutine(Craft(player));
             else {
-                Notifications.CreateError(transform.position, "Not enough materials");
+                Notifications.CreateError(transform.position, "Materials missing: " + Strings.ItemList(lacking));
             }
         }
 
@@ -37,10 +37,11 @@ namespace Itch {
                 yield return null;
             }
             if(player.interacting) {
-                if(player.CheckConsumeFromInventory(materialsNeeded)) {
+                Drop[] lacking;
+                if(player.CheckConsumeFromInventory(materialsNeeded, out lacking)) {
                     CraftFinished();
                 } else {
-                    Notifications.CreateError(transform.position, "Materials missing");
+                    Notifications.CreateError(transform.position, "Materials missing: " + Strings.ItemList(lacking));
                 }
             }
             hint.Dismiss();
@@ -49,8 +50,9 @@ namespace Itch {
         void CraftFinished() {
 
             unlockedComponent.enabled = true;
-            GetComponent<SpriteRenderer>().sprite = craftedSprite;
-            Destroy(this);
+            if(craftedSprite != null)
+                GetComponent<SpriteRenderer>().sprite = craftedSprite;
+            enabled = false;
         }
     }
 }
