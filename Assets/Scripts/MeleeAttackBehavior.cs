@@ -14,7 +14,7 @@ namespace Itch {
         bool attacking;
 
         public override bool Decide() {
-            return Physics2D.OverlapCircle(transform.position, range, LayerMask.GetMask(mainControl.enemyLayers)) != null;
+            return Physics2D.OverlapCircle(transform.position, range, LayerMask.GetMask(mainControl.enemyLayers.ToArray())) != null;
         }
 
         public override void DoBehavior() {
@@ -27,9 +27,9 @@ namespace Itch {
         IEnumerator Attack() {
             attacking = true;
             yield return new WaitForSeconds(attackTime);
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, LayerMask.GetMask(mainControl.enemyLayers));
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, LayerMask.GetMask(mainControl.enemyLayers.ToArray()));
             foreach(Collider2D hit in hits) {
-                hit.GetComponent<Health>().Damage(damage);
+                hit.GetComponent<Health>().Damage(damage, GetComponent<Entity>());
             }
             attacking = false;
             nextAttackTime = Time.time + cooldown;

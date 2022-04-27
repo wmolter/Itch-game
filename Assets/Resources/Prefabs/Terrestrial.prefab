@@ -252,7 +252,9 @@ MonoBehaviour:
     - weight: 2
       type: Mushrooms
     - weight: 0.3
-      type: Slime Spawner
+      type: Enemies/Slime
+    - weight: 20
+      type: Enemies/Tortoise
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 54509a7627f77904cb8faca77d377b2d, type: 2}
@@ -267,13 +269,15 @@ MonoBehaviour:
     - weight: 1.5
       type: Gold
     - weight: 1.5
-      type: Wolf Spawner
+      type: Enemies/Wolf
     - weight: 3
       type: Camel Spawner
     - weight: 0.1
       type: Obelisk
     - weight: 0.1
       type: Caravan Spawner
+    - weight: 5
+      type: Oasis
     effect: {fileID: 229973358}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: b3a852511d725de45981faa185d4554a, type: 2}
@@ -294,14 +298,14 @@ MonoBehaviour:
     - weight: 100
       type: Pebbles
     - weight: 1
-      type: Wolf Spawner
+      type: Enemies/Wolf
     - weight: 1
-      type: Eagle Spawner
+      type: Enemies/Eagle
     - weight: 30
       type: Boulder
     effect: {fileID: 0}
     totalWeight: 0
-  - tile: {fileID: 11400000, guid: b9f74bb2f5067cc4c8654f36d276c440, type: 2}
+  - tile: {fileID: 11400000, guid: 357486dc5d4bbd94da6a046a62f99ed0, type: 2}
     objectChance: 0.1
     spawns:
     - weight: 0.1
@@ -309,13 +313,13 @@ MonoBehaviour:
     - weight: 4
       type: Silver
     - weight: 1
-      type: Wolf Spawner
+      type: Enemies/Wolf
     - weight: 20
       type: Snow Mound
     - weight: 0.3
       type: Wolf Den
     - weight: 0.1
-      type: Yeti Spawner
+      type: Enemies/Yeti
     - weight: 20
       type: Evergreen Tree
     - weight: 0.1

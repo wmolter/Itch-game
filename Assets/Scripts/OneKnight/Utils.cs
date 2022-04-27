@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -85,6 +86,12 @@ namespace OneKnight {
                 result += i;
             }
             return result;
+        }
+
+        public static Vector2 Rotate(Vector2 v, float radians) {
+            float sin = Mathf.Sin(radians);
+            float cos = Mathf.Cos(radians);
+            return new Vector2(cos*v.x - sin*v.y, sin*v.x + cos*v.y);
         }
 
         public static float Distance(Ray ray, Vector3 point) {
@@ -236,6 +243,21 @@ namespace OneKnight {
                 }
             }
             return min;
+        }
+
+        public static int Closest(List<Collider2D> colliders, Vector2 pos, Predicate<Collider2D> filter) {
+            float dist = Mathf.Infinity;
+            int index = -1;
+            for(int i = 0; i < colliders.Count; i++) {
+                if(filter(colliders[i])) {
+                    float thisDist = (colliders[i].ClosestPoint(pos)-pos).sqrMagnitude;
+                    if(thisDist < dist) {
+                        dist = thisDist;
+                        index = i;
+                    }
+                }
+            }
+            return index;
         }
 
         public static Vector3 FromSpherical(Vector3 sphericalCoord) {

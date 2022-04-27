@@ -42,7 +42,7 @@ namespace Itch {
             }
         }
         public float interactRadius;
-        List<Interactable> interactingWith;
+        List<Collider2D> interactingWith;
 
         public TMP_ValueTextDisplay xpReadout;
         public Dictionary<string, int> abilities;
@@ -75,7 +75,8 @@ namespace Itch {
             abilities["Fortitude"] = 0;*/
         }
 
-        public Vector3Int CurrentTile { get {
+        public Vector3Int CurrentTile {
+            get {
                 return new Vector3Int((int)(transform.position.x), (int)(transform.position.y), (int)transform.position.z);
             }
         }
@@ -88,7 +89,7 @@ namespace Itch {
             inventoryManager.AddListener(ItemClicked);
             OnLevel += MakeLevelChanges;
 
-            interactingWith = new List<Interactable>();
+            interactingWith = new List<Collider2D>();
         }
 
         // Update is called once per frame
@@ -96,7 +97,7 @@ namespace Itch {
             SqrSightRange = LOS*LOS;
             if(interactingWith.Count > 0) {
                 for(int i = 0; i < interactingWith.Count; i++) {
-                    if((interactingWith[i].transform.position - transform.position).magnitude > interactRadius)
+                    if((interactingWith[i].ClosestPoint(transform.position)-(Vector2)transform.position).sqrMagnitude > interactRadius*interactRadius)
                         StopInteracting();
                 }
             }
@@ -120,7 +121,7 @@ namespace Itch {
                 float change = newMax - GetComponent<Health>().max;
                 GetComponent<Health>().max = newMax;
                 GetComponent<Health>().current = Mathf.Min(newMax, (change < 0 ? 0 : change) + GetComponent<Health>().current);
-            } else if (ability == "Fortitude") {
+            } else if(ability == "Fortitude") {
                 List<InventoryItem> leftover = inventory.SetCapacity((int)(baseInvCapacity + properties.AdjustProperty(ability, abilities[ability])));
                 DropItems(leftover);
             }
@@ -153,20 +154,24 @@ namespace Itch {
         public void StopInteracting() {
             interactingWith.Clear();
             interacting = false;
+            Debug.Log("Stop Interact Called");
         }
 
         public void OnInteract(InputValue value) {
             interactingWith.Clear();
             interacting = value.isPressed;
             if(interacting) {
-                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRadius);
-                foreach(Collider2D hit in hits) {
-                    Interactable actable = hit.GetComponent<Interactable>();
-                    if(actable != null) {
-                        interactingWith.Add(actable);
-                        actable.Interact(this);
+                List<Collider2D> hits = new List<Collider2D>(Physics2D.OverlapCircleAll(transform.position, interactRadius));
+                int index;
+                Interactable actable = null;
+                do {
+                    index = Utils.Closest(hits, transform.position, delegate (Collider2D c) { return c.GetComponent<Interactable>() != null; });
+                    if(index >= 0) {
+                        actable = hits[index].GetComponent<Interactable>();
+                        interactingWith.Add(hits[index]);
+                        hits.RemoveAt(index);
                     }
-                }
+                } while(index >= 0 && !actable.Interact(this));
             }
             Debug.Log("Interact called");
         }
@@ -192,8 +197,13 @@ namespace Itch {
         }
 
         public void GiveHealth(float healing) {
-            GetComponent<Health>().Heal(healing);
+            GetComponent<Health>().Heal(healing, GetComponent<Entity>());
         }
+
+        public void Damage(float amount) {
+            GetComponent<Health>().Damage(amount, GetComponent<Entity>());
+        }
+
 
         class Buff {
             public string buffName { get; private set; }
@@ -260,7 +270,7 @@ namespace Itch {
         IEnumerator CheckBuffs(float timeFromNow) {
             yield return new WaitForSeconds(timeFromNow);
             int index = 0;
-            while(index < allBuffs.Count) { 
+            while(index < allBuffs.Count) {
                 allBuffs[index].UpdateBuffs(properties, Time.time);
                 MakeLevelChanges(allBuffs[index].buffName);
                 if(allBuffs[index].Empty)
@@ -274,7 +284,7 @@ namespace Itch {
             InventoryItem remaining = inventory.AddStackItem(item);
             if(remaining == null)
                 Notifications.CreateNotification(transform.position, "+" + item.ToString());
-            else if (remaining != item) {
+            else if(remaining != item) {
                 Notifications.CreateNotification(transform.position, "+" + new InventoryItem(item.ID, item.count-remaining.count).ToString());
             } else {
                 Notifications.CreateNotification(transform.position, "Inventory Full");
@@ -322,7 +332,7 @@ namespace Itch {
             return has;
         }
 
-        
+
 
         public void RemoveFromInventory(Drop[] items) {
             foreach(Drop item in items) {

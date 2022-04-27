@@ -23,13 +23,13 @@ namespace Itch {
 
         }
 
-        public void Enter(PlayerManager player) {
+        public bool Enter(PlayerManager player) {
             Planes.Activate(destination);
             if(exitPrefab != null) {
                 Enterable newObj = Instantiate<Enterable>(exitPrefab, Planes.CurrentPlane.map.transform);
                 newObj.transform.position = transform.position;
             }
-            Debug.Log("entered.");
+            return true;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Itch {
 
 
         public override int GetTargetLayerMask() {
-            return LayerMask.GetMask(mainControl.enemyLayers);
+            return LayerMask.GetMask(mainControl.enemyLayers.ToArray());
         }
 
         public override Vector2 MoveDirection(Transform relation) {

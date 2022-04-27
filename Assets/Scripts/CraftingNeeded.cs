@@ -20,12 +20,14 @@ namespace Itch {
 
         }
 
-        protected override void DoAction(PlayerManager player) {
+        protected override bool DoAction(PlayerManager player) {
             Drop[] lacking;
-            if(player.CheckInventoryHas(materialsNeeded, out lacking))
+            if(player.CheckInventoryHas(materialsNeeded, out lacking)) {
                 StartCoroutine(Craft(player));
-            else {
+                return true;
+            } else {
                 Notifications.CreateError(transform.position, "Materials missing: " + Strings.ItemList(lacking));
+                return false;
             }
         }
 

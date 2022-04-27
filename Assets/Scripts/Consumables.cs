@@ -11,7 +11,11 @@ namespace Itch {
         
         public static InventoryItem Use(InventoryItem consumable) {
             PlayerManager p = PlayerManager.instance;
-            p.GiveHealth(consumable.Value);
+            if(consumable.Value >= 0)
+                p.GiveHealth(consumable.Value);
+            else 
+                p.Damage(-consumable.Value);
+            
             if(consumable.HasProperty(BuffName)) {
                 string name = consumable.GetBaseProperty<string>(BuffName);
                 float strength = consumable.GetBaseProperty<float>(BuffStrength);

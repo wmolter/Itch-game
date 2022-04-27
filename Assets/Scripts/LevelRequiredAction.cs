@@ -13,16 +13,15 @@ namespace Itch {
             GetComponent<Interactable>().Interaction = CheckDo;
         }
 
-        public void CheckDo(PlayerManager player) {
+        public bool CheckDo(PlayerManager player) {
             if(!checkLevel || player.HasCapabilityLevel(capabilityRequired, levelRequired)) {
-                DoAction(player);
+                return DoAction(player);
             } else {
                 Notifications.CreateError(transform.position, capabilityRequired + " " + levelRequired + " Required");
+                return false;
             }
         }
 
-        protected virtual void DoAction(PlayerManager player) {
-
-        }
+        protected abstract bool DoAction(PlayerManager player);
     }
 }

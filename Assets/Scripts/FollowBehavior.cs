@@ -25,7 +25,7 @@ namespace Itch {
         }
 
         public override bool CheckEnd() {
-            return base.CheckEnd() || !toChase.GetComponent<TribeMember>().leader;
+            return base.CheckEnd() || !mainControl.behaviorTarget.GetComponent<TribeMember>().leader;
         }
     }
 }

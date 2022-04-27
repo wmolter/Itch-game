@@ -131,13 +131,14 @@ namespace Itch {
             }*/
         }
 
-        GameObject SpawnObject(Spawn objData, Vector3 position) {
+        Entity SpawnObject(Spawn objData, Vector3 position) {
             return SpawnObject(objData.type, position);
         }
 
-        GameObject SpawnObject(string type, Vector3 position) {
-            GameObject newObj = Instantiate(Resources.Load<GameObject>("Prefabs/" + type), map.transform);
+        Entity SpawnObject(string type, Vector3 position) {
+            Entity newObj = Instantiate(Resources.Load<Entity>("Prefabs/" + type), map.transform);
             newObj.transform.position = position + (Vector3)(Vector2.one*.5f);
+            newObj.home = newObj.transform.position;
             return newObj;
         }
 

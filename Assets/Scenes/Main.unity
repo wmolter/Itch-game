@@ -2090,6 +2090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!58 &1940523035
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -5,12 +5,15 @@ namespace Itch {
     [RequireComponent(typeof(Collider2D))]
     public class Interactable : MonoBehaviour {
 
-        public delegate void InteractionAction(PlayerManager player);
+        public delegate bool InteractionAction(PlayerManager player);
 
         public InteractionAction Interaction;
 
-        public void Interact(PlayerManager player) {
-            Interaction?.Invoke(player);
+        public bool Interact(PlayerManager player) {
+            bool? ans = Interaction?.Invoke(player);
+            if(!ans.HasValue)
+                return false;
+            return ans.Value;
         }
     }
 }

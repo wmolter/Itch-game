@@ -47,7 +47,7 @@ namespace Itch {
             harvested.Add(toAdd);
         }
 
-        protected override void DoAction(PlayerManager player) {
+        protected override bool DoAction(PlayerManager player) {
             if(harvested != null) {
                 harvested = player.GiveItems(harvested);
                 CheckDepleted();
@@ -56,8 +56,10 @@ namespace Itch {
                 if(!gathering) {
                     StartCoroutine(GatherStep(player));
                 }
+                return true;
             } else {
                 Notifications.CreateError(transform.position, alreadyHarvested);
+                return false;
             }
         }
 

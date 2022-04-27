@@ -38,7 +38,7 @@ namespace Itch {
         }
 
         public bool EnemiesInRange() {
-            return Physics2D.OverlapCircle(transform.position, fireRange, LayerMask.GetMask(mainControl.enemyLayers)) != null;
+            return Physics2D.OverlapCircle(transform.position, fireRange, LayerMask.GetMask(mainControl.enemyLayers.ToArray())) != null;
         }
 
         public bool CanAttack() {
@@ -55,7 +55,7 @@ namespace Itch {
         IEnumerator Attack() {
             attacking = true;
             yield return new WaitForSeconds(attackTime);
-            Collider2D hit = Physics2D.OverlapCircle(transform.position, fireRange, LayerMask.GetMask(mainControl.enemyLayers));
+            Collider2D hit = Physics2D.OverlapCircle(transform.position, fireRange, LayerMask.GetMask(mainControl.enemyLayers.ToArray()));
 
             if(hit == null)
                 yield break;
@@ -122,7 +122,7 @@ namespace Itch {
                             origin = transform.position;
                             break;
                     }
-                    p.OnSpawn(dir, origin, gameObject);
+                    p.OnSpawn(dir, origin, GetComponent<Entity>());
                 }
             }
 

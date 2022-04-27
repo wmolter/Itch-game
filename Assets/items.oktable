@@ -84,11 +84,27 @@ Consumable
 Testing/antimony
 5
 0
-20
+5
 properties
 3
 buffName string
 Sight
+buffStrength float
+5
+buffDuration float
+60
+
+desert_flowers
+1010
+Consumable
+Testing/antimony
+-10
+0
+5
+properties
+3
+buffName string
+Sorcery
 buffStrength float
 5
 buffDuration float

@@ -5,30 +5,30 @@ namespace Itch {
     public abstract class RelationalMovementBehavior : BehaviorTreeNode {
         public float aggroRange;
         public float endAggroRange;
-        protected Transform toChase, candidate;
+        protected Transform candidate;
 
         public override bool Decide() {
-            if(toChase != null)
+            if(mainControl.behaviorTarget != null)
                 return true;
             candidate = FindTarget();
             return candidate != null;
         }
 
         private void OnEnable() {
-            toChase = candidate;
+            mainControl.behaviorTarget = candidate.GetComponent<Entity>();
         }
 
         public override void DoBehavior() {
-            moveControl.motionDir = (MoveDirection(toChase.transform)).normalized;
+            moveControl.motionDir = (MoveDirection(mainControl.behaviorTarget.transform)).normalized;
 
         }
 
         public override bool CheckEnd() {
-            return Vector2.SqrMagnitude(toChase.transform.position - transform.position) > endAggroRange*endAggroRange;
+            return Vector2.SqrMagnitude(mainControl.behaviorTarget.transform.position - transform.position) > endAggroRange*endAggroRange;
         }
 
         public override void OnFinish() {
-            toChase = null;
+            mainControl.behaviorTarget = null;
             candidate = null;
             moveControl.motionDir = Vector2.zero;
         }

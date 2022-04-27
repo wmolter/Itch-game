@@ -15,13 +15,13 @@ namespace Itch {
         public float speedFactor = 1;
         Vector2 origin;
         Vector2 direction;
-        GameObject source;
+        Entity source;
         // Use this for initialization
         void Start() {
             gameObject.layer = collidesWithObjects ? 10 : 11;
         }
 
-        public void OnSpawn(Vector2 direction, Vector2 origin, GameObject source) {
+        public void OnSpawn(Vector2 direction, Vector2 origin, Entity source) {
             this.origin = origin;
             this.direction = direction;
             transform.position = origin;
@@ -44,12 +44,12 @@ namespace Itch {
         }
 
         private void OnTriggerEnter2D(Collider2D collider) {
-            if((tribeDamage || collider.gameObject.layer != source.layer) && (selfDamage || collider.gameObject != source)) {
+            if((tribeDamage || collider.gameObject.layer != source.gameObject.layer) && (selfDamage || collider.gameObject != source)) {
                 Health toDamage = collider.GetComponent<Health>();
                 if(toDamage == null && collidesWithObjects)
                     Destroy(gameObject);
                 else {
-                    toDamage.Damage(damage);
+                    toDamage.Damage(damage, source);
                     if(consumeOnDamage) {
                         Destroy(gameObject);
                     }
