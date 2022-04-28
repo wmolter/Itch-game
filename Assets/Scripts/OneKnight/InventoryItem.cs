@@ -53,6 +53,7 @@ namespace OneKnight {
 
         }
 
+        [SerializeField]
         private string id;
         public string ID {
             get {
@@ -100,7 +101,15 @@ namespace OneKnight {
                 return StackLimit > 1;
             }
         }
-        public readonly int count;
+
+
+        [SerializeField]
+        private int Count;
+
+        public int count {
+            get { return Count; }
+            private set { Count = value; }
+        }
 
         public float Volume {
             get {
@@ -161,7 +170,7 @@ namespace OneKnight {
             //for serialization
         }
 
-        public InventoryItem(Drop drop) : this(drop.id, drop.count) {
+        public InventoryItem(InventoryItem drop) : this(drop.id, drop.count) {
 
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OneKnight {
+namespace OneKnight.Generation {
     public delegate float NoiseMethod(Vector3 point, float frequency);
     public delegate Vector4 FullNoiseMethod(Vector3 point, float frequency);
     public delegate float TileNoiseMethod(Vector3 point, int frequency, IntVector3 period, Vector3 offset);

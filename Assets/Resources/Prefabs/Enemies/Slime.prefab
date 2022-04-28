@@ -88,13 +88,21 @@ MonoBehaviour:
   checkLevel: 1
   capabilityRequired: Handling
   levelRequired: 3
+  gatherXP: 300
   quantity: 1
   gatherSteps: 5
   stepDuration: 1
-  gatherXP: 0
   oneHarvest:
   - id: slime_gel_blue
-    count: 3
+    Count: 0
+  oneHarvestDrop:
+    ids:
+    - slime_gel_blue
+    quantities:
+    - {x: 1, y: 3}
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10

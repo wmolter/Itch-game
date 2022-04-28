@@ -14,6 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
+      propertyPath: oneHarvestDrop.ids.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: oneHarvestDrop.quantities.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
       propertyPath: gatherSteps
       value: 5
       objectReference: {fileID: 0}

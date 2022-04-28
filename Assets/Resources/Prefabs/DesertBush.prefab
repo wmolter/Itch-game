@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
+  m_SpriteSortPoint: 0
 --- !u!114 &-1216661562382452349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,13 +112,21 @@ MonoBehaviour:
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 10
+  gatherXP: 200
   quantity: 1
   gatherSteps: 5
   stepDuration: 0.25
-  gatherXP: 200
   oneHarvest:
   - id: desert_flowers
-    count: 1
+    Count: 0
+  oneHarvestDrop:
+    ids:
+    - desert_flowers
+    quantities:
+    - {x: 1, y: 1}
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10

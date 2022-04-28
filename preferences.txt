@@ -1,0 +1,4 @@
+GatherXPNotifs False
+language english
+myarray Singlearray 5.5 7.3 -2E+17
+MapXPNotifs False

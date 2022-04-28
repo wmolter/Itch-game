@@ -145,13 +145,19 @@ MonoBehaviour:
   checkLevel: 1
   capabilityRequired: Mining
   levelRequired: 1
+  gatherXP: 50
   quantity: 2
   gatherSteps: 4
   stepDuration: 0.25
-  gatherXP: 50
-  oneHarvest:
-  - id: iron_ore
-    count: 2
+  oneHarvest: []
+  oneHarvestDrop:
+    ids:
+    - iron_ore
+    quantities:
+    - {x: 1, y: 3}
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
@@ -171,3 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOffset: 0
+  home: {x: 0, y: 0}

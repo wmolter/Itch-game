@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: quantity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
@@ -41,6 +41,16 @@ PrefabInstance:
         type: 3}
       propertyPath: oneHarvest.Array.data[0].count
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: oneHarvestDrop.ids.Array.data[0]
+      value: red_ore
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214207404702860687, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: oneHarvestDrop.quantities.Array.data[0].y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5832561064050931353, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}

@@ -20,7 +20,7 @@ namespace Itch {
         public event UnityAction<string> OnLevel;
 
         public int xp;
-        public int totalxp;
+        public int usedxp;
         public float LOSLevelFactor = .2f;
         public float baseLOS = 5;
         public float LOS {
@@ -51,12 +51,14 @@ namespace Itch {
         public InventoryManagerLight inventoryManager;
 
         public bool interacting;
-        int OneKnightXpBuffer = 0;
+        int ExploreXPBuffer = 0;
         public float xpInterval = 3;
 
         private void Awake() {
             instance = this;
+            SavingUtils.LoadGameData();
             SavingUtils.NewGame("Test");
+
             inventory = new Inventory(baseInvCapacity);
             abilities = new Dictionary<string, int>();
             xpReadout.SetToDisplay(delegate () { return xp; });
@@ -84,7 +86,7 @@ namespace Itch {
         void Start() {
             GetComponent<Health>().max = baseHealth;
             GetComponent<Health>().current = baseHealth;
-            StartCoroutine(OneKnightXPCounter());
+            StartCoroutine(ExploreXPCounter());
             inventoryManager.SetInventory(inventory);
             inventoryManager.AddListener(ItemClicked);
             OnLevel += MakeLevelChanges;
@@ -131,7 +133,7 @@ namespace Itch {
             int xpamount = XpToLevel(ability, abilities[ability]);
             xp -= xpamount;
             abilities[ability]++;
-            totalxp += xpamount;
+            usedxp += xpamount;
             OnLevel?.Invoke(ability);
         }
 
@@ -177,13 +179,13 @@ namespace Itch {
         }
 
         public void NewTiles(int count, int xpPerTile) {
-            OneKnightXpBuffer += count*xpPerTile;
+            ExploreXPBuffer += count*xpPerTile;
         }
 
-        IEnumerator OneKnightXPCounter() {
+        IEnumerator ExploreXPCounter() {
             while(enabled) {
-                xp += OneKnightXpBuffer;
-                OneKnightXpBuffer = 0;
+                GiveXP(ExploreXPBuffer, Preferences.GetToggle("MapXPNotifs"));
+                ExploreXPBuffer = 0;
                 yield return new WaitForSeconds(xpInterval);
             }
         }
@@ -194,6 +196,20 @@ namespace Itch {
 
         public bool HasCapabilityLevel(string ability, float level) {
             return HasCapability(ability) && properties.AdjustProperty(ability, abilities[ability]) >= level;
+        }
+
+        public void GiveXP(int amount) {
+            GiveXP(amount, Preferences.GetToggle("GatherXPNotifs"));
+        }
+
+        public void GiveXP(int amount, bool notif) {
+            GiveXP(amount, notif, transform.position);
+        }
+
+        public void GiveXP(int amount, bool notif, Vector2 fromWhere) {
+            xp += amount;
+            if(notif)
+                Notifications.CreateNotification(fromWhere, "+" + amount + " <b>XP</b>");
         }
 
         public void GiveHealth(float healing) {
@@ -303,11 +319,11 @@ namespace Itch {
             return remaining;
         }
 
-        public bool CheckConsumeFromInventory(Drop[] items) {
-            return CheckConsumeFromInventory(items, out Drop[] lacking);
+        public bool CheckConsumeFromInventory(InventoryItem[] items) {
+            return CheckConsumeFromInventory(items, out InventoryItem[] lacking);
         }
 
-        public bool CheckConsumeFromInventory(Drop[] items, out Drop[] lacking) {
+        public bool CheckConsumeFromInventory(InventoryItem[] items, out InventoryItem[] lacking) {
             if(CheckInventoryHas(items, out lacking)) {
                 RemoveFromInventory(items);
                 return true;
@@ -315,18 +331,18 @@ namespace Itch {
             return false;
         }
 
-        public bool CheckInventoryHas(Drop[] items) {
-            return CheckInventoryHas(items, out Drop[] lacking);
+        public bool CheckInventoryHas(InventoryItem[] items) {
+            return CheckInventoryHas(items, out InventoryItem[] lacking);
         }
 
-        public bool CheckInventoryHas(Drop[] items, out Drop[] lacking) {
+        public bool CheckInventoryHas(InventoryItem[] items, out InventoryItem[] lacking) {
             bool has = true;
-            lacking = new Drop[items.Length];
+            lacking = new InventoryItem[items.Length];
             int i = 0;
-            foreach(Drop item in items) {
-                int count = inventory.CountOf(item.id);
+            foreach(InventoryItem item in items) {
+                int count = inventory.CountOf(item.ID);
                 has = has && count >= item.count;
-                lacking[i] = new Drop(item.id, Mathf.Max(0, item.count-count));
+                lacking[i] = new InventoryItem(item.ID, Mathf.Max(0, item.count-count));
                 i++;
             }
             return has;
@@ -334,9 +350,9 @@ namespace Itch {
 
 
 
-        public void RemoveFromInventory(Drop[] items) {
-            foreach(Drop item in items) {
-                if(!inventory.RemoveAmount(item.id, item.count)) {
+        public void RemoveFromInventory(InventoryItem[] items) {
+            foreach(InventoryItem item in items) {
+                if(!inventory.RemoveAmount(item.ID, item.count)) {
                     throw new UnityException("Tried to remove items that were not in the inventory: " + item);
                 }
                 Notifications.CreateNotification(transform.position, "-" + item.ToString());

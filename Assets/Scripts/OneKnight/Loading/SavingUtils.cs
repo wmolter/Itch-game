@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using OneKnight.PropertyManagement;
 
 namespace OneKnight.Loading {
-    public class SavingUtils : MonoBehaviour{
+    public static class SavingUtils {
 
         //random strings for obfuscation
 
@@ -18,6 +19,8 @@ namespace OneKnight.Loading {
         private static long planetDataOffset;
         private static string currFile;
         
+        public static readonly List<string> SupportedParses = new List<string>(new string[] { "int", "int32", "single", "float", "bool", "boolean", "string", "intarray", "int32array", "floatarray", "singlearray", "booleanarray", "boolarray", "stringarray", "adjustment", "adjustmentarray" });
+
 
 
         public static string[] SaveFiles(){
@@ -54,19 +57,21 @@ namespace OneKnight.Loading {
             //format.Serialize(tempStream, Effect.GetSaveInfo());
         }
 
+
         public static void NewGame(string name) {
             Debug.Log("New Game");
             saveName = name;
-            LoadGameData();
         }
 
-        private static void LoadGameData() {
+        public static void LoadGameData() {
+            Preferences.Load();
+            Sprites.Load();
+            StringResources.Load();
             ItemInfo.LoadData();
         }
 
         //for overall savefile loading
         public static void Load(string name) {
-            LoadGameData();
             string filepath = Application.dataPath + "/saves/" + name + saveExtension;
             if(File.Exists(filepath)) {
                 currFile = filepath;
@@ -152,69 +157,158 @@ namespace OneKnight.Loading {
             readInto.args = new Dictionary<string, object>();
 
             for(int i = 0; i < argCount; i++) {
-                try {
-                    enumerator.MoveNext();
-                    bit = enumerator.Current;
-                    string[] split = bit.value.Split(' ');
-                    string argname = split[0];
-                    enumerator.MoveNext();
-                    bit = enumerator.Current;
-                    object thisArg;
-                    argnames[i] = argname;
-                    if(split.Length < 2) {
-                        int temp;
-                        float ftemp;
-                        bool btemp;
-                        if(int.TryParse(bit.value, out temp)) {
-                            thisArg = temp;
-                        } else if(float.TryParse(bit.value, out ftemp)) {
-                            thisArg = ftemp;
-                        } else if(bool.TryParse(bit.value, out btemp)) {
-                            thisArg = btemp;
-                        } else {
-                            thisArg = bit.value;
-                        }
-                        readInto.args[argname] = thisArg;
-                    } else {
-                        if(split[1] == "intarray") {
-                            thisArg = ReadAllInts(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "floatarray") {
-                            thisArg = ReadAllFloats(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "boolarray") {
-                            thisArg = ReadAllBools(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "stringarray") {
-                            thisArg = bit.value.Split(' ');
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "int") {
-                            thisArg = int.Parse(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "float") {
-                            thisArg = float.Parse(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "bool") {
-                            thisArg = bool.Parse(bit.value);
-                            readInto.args[argname] = thisArg;
-                        } else if(split[1] == "adjustment") {
-                            PropertyAdjustment adjust = ReadAdjustment(bit.value, argname, source);
-                            thisArg = adjust.adjustment;
-                            readInto.args[argname] = adjust;
-                        } else if(split[1] == "adjustmentarray") {
-                            readInto.args[argname] = ReadAdjustmentArray(enumerator, source);
-                        } else {
-                            thisArg = bit.value;
-                            readInto.args[argname] = thisArg;
-                        }
-                    }
-                } catch(System.Exception ex) {
-                    Debug.LogWarning("Error while reading arguments for: " + source + "\n" + ex);
-                }
+                enumerator.MoveNext();
+                argnames[i] = ReadDictEntry(enumerator, readInto.args, source);
+                    
             }
 
             readInto.argOrder = argnames;
             //readInto.argValues = argvalues;
+        }
+
+        public static object ReadValue(string text) {
+            return ReadValue(text, null);
+        }
+
+        public static object ReadValue(string text, string type) {
+
+            if(type == null) {
+                int temp;
+                float ftemp;
+                bool btemp;
+                if(int.TryParse(text, out temp)) {
+                    return temp;
+                } else if(float.TryParse(text, out ftemp)) {
+                    return ftemp;
+                } else if(bool.TryParse(text, out btemp)) {
+                    return btemp;
+                } else {
+                    return text;
+                }
+            } else {
+                switch(type.ToLower()) {
+                    
+                    case "intarray":
+                    case "int32array":
+                        return ReadAllInts(text);
+                    case "singlearray":
+                    case "floatarray":
+                        return ReadAllFloats(text);
+                    case "booleanarray":
+                    case "boolarray":
+                        return ReadAllBools(text);
+                    case "stringarray":
+                        return text.Split(' ');
+                    case "int":
+                    case "int32":
+                        return int.Parse(text);
+                    case "single":
+                    case "float":
+                        return float.Parse(text);
+                    case "boolean":
+                    case "bool":
+                        return bool.Parse(text);
+                    default:
+                        return text;
+                }
+            
+            }
+        }
+
+        public static string ReadDictEntryOneLine(IEnumerator<TableBit> enumerator, Dictionary<string, object> readInto) {
+            string argname = null;
+            try {
+                TableBit bit = enumerator.Current;
+                string[] split = bit.value.Split(new char[] { ' ' }, 3, System.StringSplitOptions.RemoveEmptyEntries);
+                argname = split[0];
+                if(split.Length < 3) {
+                    readInto[argname] = ReadValue(split[1]);
+                } else {
+                    string type = split[1];
+                    readInto[argname] = ReadValue(split[2], split[1]);
+                }
+            } catch (System.IO.IOException ex) {
+                Debug.Log("Problem reading into dictionary: " + ex.StackTrace);
+            }
+            return argname;
+        }
+        //returns entry key
+        public static string ReadDictEntry(IEnumerator<TableBit> enumerator, Dictionary<string, object> readInto, string source) {
+            string argname = null;
+            try {
+                TableBit bit = enumerator.Current;
+                string[] split = bit.value.Split(' ');
+                argname = split[0];
+                enumerator.MoveNext();
+                bit = enumerator.Current;
+                if(split.Length > 1) {
+                    if(split[1] == "adjustment") {
+                        PropertyAdjustment adjust = ReadAdjustment(bit.value, argname, source);
+                        readInto[argname] = adjust;
+                    } else if(split[1] == "adjustmentarray") {
+                        readInto[argname] = ReadAdjustmentArray(enumerator, source);
+                    } else {
+                        readInto[argname] = ReadValue(bit.value, split[1]);
+                    }
+                } else {
+                    readInto[argname] = ReadValue(bit.value, null);
+                }
+            } catch(System.Exception ex) {
+                Debug.LogWarning("Error while reading arguments for: " + source + "\n" + ex);
+            }
+            return argname;
+        }
+
+        private static bool OneLineEntry(string text) {
+            string[] split = text.Split(new char[] { ' ' }, 3, System.StringSplitOptions.RemoveEmptyEntries);
+            if(split.Length == 2) {
+                return !SupportedParses.Contains(split[1].ToLower());
+            }
+            return true;
+        }
+
+        public static void ReadDict(IEnumerator<TableBit> enumerator, Dictionary<string, object> readInto) {
+            enumerator.MoveNext();
+            do {
+                if(OneLineEntry(enumerator.Current.value))
+                    ReadDictEntryOneLine(enumerator, readInto);
+                else
+                    ReadDictEntry(enumerator, readInto, "none");
+            }
+            while(enumerator.MoveNext());
+        }
+
+        public static void WriteDictEntries(string filename, Dictionary<string, object> dict, IEnumerable<string> keys) {
+            if(keys == null)
+                keys = dict.Keys;
+            Debug.Log("Calling to write: " + filename);
+            //want to do this asynchronously
+            File.WriteAllLines(filename, AllDictEntries(dict, keys));
+            //File.
+        }
+
+        public static IEnumerable<string> AllDictEntries(Dictionary<string, object> dict, IEnumerable<string> keys) {
+            foreach(string key in keys) {
+                yield return OneDictEntry(key, dict[key]);
+            }
+        }
+
+        public static string OneDictEntry(string key, object o) {
+            string result = key + " ";
+
+            if(o.GetType().IsArray) {
+                Debug.Log("Array noticed: " + key);
+                Array a = (Array)o;
+                object val = a.GetValue(0);
+                result += val.GetType().Name + "array";
+                for(int i = 0; i < a.GetLength(0); i++) {
+                    result += " " + a.GetValue(i);
+                }
+            } else {
+                Debug.Log("Key: " + key + " object: " + o);
+                result += o;
+            }
+            return result;
         }
 
         public static float NextFloat(IEnumerator<TableBit> enumerator) {

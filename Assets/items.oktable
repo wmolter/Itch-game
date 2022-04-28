@@ -62,6 +62,22 @@ Testing/wheat
 0
 10
 
+meat
+41
+Material
+Testing/wheat
+0
+0
+10
+
+wolf_pelt
+42
+Material
+Testing/wheat
+0
+0
+10
+
 yeti_gem
 50
 Material
@@ -109,3 +125,32 @@ buffStrength float
 5
 buffDuration float
 60
+
+camel_milk
+1011
+Consumable
+Testing/antimony
+40
+0
+5
+properties
+4
+buffName string
+movement
+buffStrength float
+0.5
+buffDuration float
+90
+buffType string
+debuff
+
+eagle_egg
+1020
+Consumable
+Testing/antimony
+0
+0
+1
+properties 1
+summonPrefab string
+Enemies/Eaglet

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace OneKnight {
+namespace OneKnight.Generation {
     [System.Serializable]
     public struct NoiseLayer {
         public float weight;

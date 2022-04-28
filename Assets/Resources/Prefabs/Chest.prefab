@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
   materialsNeeded:
   - id: iron_ore
     count: 5
@@ -160,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!114 &5853999523821472571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,12 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Sorcery
+  levelRequired: 1
   quantity: 1
   gatherSteps: 1
   stepDuration: 2
   gatherXP: 1000
-  capabilityRequired: Gathering
-  levelRequired: 0
   oneHarvest: []
   buffName: 
   buffStrength: 1

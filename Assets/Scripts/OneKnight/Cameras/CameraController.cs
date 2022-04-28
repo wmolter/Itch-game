@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using OneKnight.Cameras;
 
-namespace OneKnight {
+namespace OneKnight.Cameras {
     public class CameraController : MonoBehaviour {
 
         [System.Serializable]

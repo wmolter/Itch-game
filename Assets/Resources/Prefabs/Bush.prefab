@@ -113,13 +113,21 @@ MonoBehaviour:
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 3
-  quantity: 5
-  gatherSteps: 1
+  gatherXP: 60
+  quantity: 1
+  gatherSteps: 5
   stepDuration: 0.25
-  gatherXP: 12
   oneHarvest:
-  - id: berry
-    count: 1
+  - id: 
+    Count: 0
+  oneHarvestDrop:
+    ids:
+    - berry
+    quantities:
+    - {x: 1, y: 5}
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
@@ -140,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!60 &8638435780096397103
 PolygonCollider2D:
   m_ObjectHideFlags: 0

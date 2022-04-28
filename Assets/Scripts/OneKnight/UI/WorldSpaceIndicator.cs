@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using OneKnight.Cameras;
 
 namespace OneKnight.UI {
     [ExecuteInEditMode]

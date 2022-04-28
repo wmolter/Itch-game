@@ -121,8 +121,8 @@ namespace OneKnight {
             return allItems[id].Create();
         }
 
-        public static InventoryItem Create(Drop drop) {
-            return Create(drop.id, drop.count);
+        public static InventoryItem Create(InventoryItem drop) {
+            return Create(drop.ID, drop.count);
         }
 
         public static int SortingID(string id) {

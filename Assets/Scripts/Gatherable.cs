@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using OneKnight;
+using OneKnight.Generation;
 
 namespace Itch {
     [RequireComponent(typeof(Interactable))]
@@ -12,14 +13,18 @@ namespace Itch {
         public int gatherSteps = 4;
         int currentGatherSteps = 0;
         public float stepDuration = .25f;
-        public int gatherXP = 0;
         public bool Gathered {
             get {
                 return quantity == 0;
             }
         }
         bool gathering = false;
-        public Drop[] oneHarvest;
+        //guaranteed
+        public Drop oneHarvestDrop;
+        //chances
+        public DropTable oneHarvestTable;
+        [Range(1, 5)]
+        public int rolls = 1;
         public string buffName = "";
         public float buffStrength = 1;
         public float buffDuration = 10;
@@ -81,12 +86,20 @@ namespace Itch {
             hint.Dismiss();
             gathering = false;
             currentGatherSteps = gatherSteps;
-            player.xp += gatherXP;
+            player.GiveXP(gatherXP);
             quantity -= 1;
-            if(oneHarvest.Length > 0) {
-                foreach(Drop drop in oneHarvest) {
-                    harvested.Add(new InventoryItem(drop));
+            if(oneHarvestDrop.Weight != 0) {
+                foreach(InventoryItem drop in oneHarvestDrop.Generate()) {
+                    harvested.Add(drop);
                 }
+            }
+            if(oneHarvestTable != null) {
+                foreach(InventoryItem drop in oneHarvestTable.Generate(rolls)) {
+                    if(drop != null)
+                        harvested.Add(drop);
+                }
+            }
+            if(harvested.Count > 0) { 
                 harvested = player.GiveItems(harvested);
                 foreach(InventoryItem item in harvested) {
                     Notifications.CreateNotification(transform.position, item.ToString() + " Remaining");

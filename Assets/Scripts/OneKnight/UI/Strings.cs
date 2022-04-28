@@ -325,13 +325,13 @@ namespace OneKnight {
         }
 
 
-        public static string ItemList(System.Collections.Generic.IEnumerable<Drop> items) {
+        public static string ItemList(System.Collections.Generic.IEnumerable<InventoryItem> items) {
             return ItemList(items, "\n");
         }
 
-        public static string ItemList(System.Collections.Generic.IEnumerable<Drop> items, string delimiter) {
+        public static string ItemList(System.Collections.Generic.IEnumerable<InventoryItem> items, string delimiter) {
             string result = "";
-            foreach(Drop item in items) {
+            foreach(InventoryItem item in items) {
                 result += item + delimiter;
             }
             return result;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using OneKnight.Generation;
 using OneKnight;
 
 namespace Itch {
@@ -79,8 +80,9 @@ namespace Itch {
         }
 
         [System.Serializable]
-        public struct Spawn {
+        public struct Spawn : Weighted{
             public float weight;
+            public float Weight { get { return weight; } }
             public string type;
         }
 

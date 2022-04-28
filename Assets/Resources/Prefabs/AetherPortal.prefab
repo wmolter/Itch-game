@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!95 &4859946348303902166
 Animator:
   serializedVersion: 3
@@ -174,13 +176,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0
   materialsNeeded:
   - id: gold_ore
-    count: 10
+    Count: 10
   - id: yeti_crystal
-    count: 1
+    Count: 1
   craftTime: 5
-  unlockedComponent: {fileID: 0}
+  unlockedComponent: {fileID: 4960088720009556239}
   craftedSprite: {fileID: 0}
 --- !u!114 &4960088720009556239
 MonoBehaviour:

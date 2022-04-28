@@ -113,13 +113,21 @@ MonoBehaviour:
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 7
-  quantity: 5
-  gatherSteps: 1
-  stepDuration: 0.25
   gatherXP: 30
+  quantity: 3
+  gatherSteps: 4
+  stepDuration: 0.25
   oneHarvest:
   - id: mushroom
-    count: 1
+    Count: 0
+  oneHarvestDrop:
+    ids:
+    - mushroom
+    quantities:
+    - {x: 1, y: 2}
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
@@ -140,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!58 &8750118260019417620
 CircleCollider2D:
   m_ObjectHideFlags: 0

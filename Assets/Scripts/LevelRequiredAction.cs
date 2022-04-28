@@ -7,6 +7,7 @@ namespace Itch {
         public bool checkLevel;
         public string capabilityRequired = "Mining";
         public float levelRequired = 0;
+        public int gatherXP = 0;
 
 
         private void OnEnable() {
