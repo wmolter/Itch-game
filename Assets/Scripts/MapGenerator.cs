@@ -145,26 +145,24 @@ namespace Itch {
         }
 
         public void PlaceItem(InventoryItem item, Vector3 position, float searchRadius) {
-            Gatherable onGround = FindSpawnBackpack(position, searchRadius);
-            onGround.AddHarvestedResource(item);
+            Pickup onGround = FindSpawnBackpack(position, searchRadius);
+            onGround.AddItem(item);
         }
 
         public void PlaceItems(List<InventoryItem> items, Vector3 position, float searchRadius) {
-            Gatherable onGround = FindSpawnBackpack(position, searchRadius);
-            foreach(InventoryItem item in items) {
-                onGround.AddHarvestedResource(item);
-            }
+            Pickup onGround = FindSpawnBackpack(position, searchRadius);
+            onGround.AddItems(items);
         }
 
-        private Gatherable FindSpawnBackpack(Vector3 position, float searchRadius) {//search default layer
+        private Pickup FindSpawnBackpack(Vector3 position, float searchRadius) {//search default layer
             Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(position, searchRadius, 1);
-            Gatherable onGround = null;
+            Pickup onGround = null;
             for(int i = 0; i < nearbyObjects.Length; i++) {
                 if(nearbyObjects[i].tag == "drops")
-                    onGround = nearbyObjects[i].GetComponent<Gatherable>();
+                    onGround = nearbyObjects[i].GetComponent<Pickup>();
             }
             if(onGround == null)
-                onGround = SpawnObject("Backpack", position).GetComponent<Gatherable>();
+                onGround = SpawnObject("Backpack", position).GetComponent<Pickup>();
             return onGround;
         }
     }

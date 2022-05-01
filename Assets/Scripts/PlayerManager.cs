@@ -308,7 +308,7 @@ namespace Itch {
             return remaining;
         }
 
-        public List<InventoryItem> GiveItems(ICollection<InventoryItem> items) {
+        public List<InventoryItem> GiveItems(IEnumerable<InventoryItem> items) {
             List<InventoryItem> remaining = new List<InventoryItem>();
             foreach(InventoryItem item in items) {
                 InventoryItem temp = GiveItem(item);

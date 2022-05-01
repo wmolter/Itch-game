@@ -11,7 +11,7 @@ namespace OneKnight {
         //private event ItemSlot.SlotAction OnRemove;
 
         public event InventoryEvent OnChange;
-        public delegate void InventoryEvent(Inventory i, ItemSlot slot);
+        public delegate void InventoryEvent(Inventory i, ItemSlot.EventInfo info);
         List<ItemSlot> items;
         private int selected;
         public int SelectedIndex {
@@ -44,6 +44,8 @@ namespace OneKnight {
                     throw new UnityException("Inventory capacity cannot be negative: " + value);
             }
         }
+
+        public override int Count { get; protected set; }
 
         protected Inventory(bool init, int capacity) : this(init, capacity, null) { 
         }
@@ -84,7 +86,11 @@ namespace OneKnight {
                 capacity = items.Count;
         }
 
-        protected virtual void OnItemChanged(ItemSlot changed) {
+        protected virtual void OnItemChanged(ItemSlot.EventInfo changed) {
+            if(changed.before == null && changed.after != null)
+                Count += 1;
+            if(changed.before != null && changed.after == null)
+                Count -= 1;
             OnChange(this, changed);
         }
 
@@ -147,13 +153,28 @@ namespace OneKnight {
             return false;
         }
 
-        public virtual List<InventoryItem> AddAll(ICollection<InventoryItem> items) {
+        public virtual List<InventoryItem> AddAll(IEnumerable<InventoryItem> items) {
             List<InventoryItem> result = new List<InventoryItem>();
             foreach(InventoryItem item in items) {
                 if(!AddItem(item))
                     result.Add(item);
             }
             return result;
+        }
+
+        public virtual void TransferStack(ItemSlot from) {
+            while(!from.Empty) {
+                ItemSlot to = FindSlotFor(from.Item.ID);
+                if(to == null)
+                    break;
+                from.StackOnto(to);
+            }
+        }
+
+        public virtual void TransferStackAll(IEnumerable<ItemSlot> slots) {
+            foreach(ItemSlot slot in slots) {
+                TransferStack(slot);
+            }
         }
 
         public virtual InventoryItem AddStackItem(InventoryItem item) {
@@ -168,7 +189,7 @@ namespace OneKnight {
             return item;
         }
 
-        public virtual List<InventoryItem> AddStackAll(ICollection<InventoryItem> items) {
+        public virtual List<InventoryItem> AddStackAll(IEnumerable<InventoryItem> items) {
             List<InventoryItem> result = new List<InventoryItem>();
             foreach(InventoryItem item in items) {
                 InventoryItem temp = AddStackItem(item);
@@ -202,6 +223,14 @@ namespace OneKnight {
                     return GetSlot(i);
             }
             return null;
+        }
+
+        protected virtual ItemSlot FindSlotFor(string itemId) {
+            ItemSlot result = FindSlotWith(itemId, false);
+            if(result == null)
+                return FindEmpty();
+            else
+                return result;
         }
 
         public int CountOf(string itemId) {

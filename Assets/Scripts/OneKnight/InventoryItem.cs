@@ -7,7 +7,26 @@ using OneKnight.PropertyManagement;
 namespace OneKnight {
     [Serializable]
     public class InventoryItem : PropertyManaged, Displayable, Spriteable, IComparable<InventoryItem> {
-
+        public static void CompressList(List<InventoryItem> items, bool stackSafe) {
+            int index = items.Count - 1;
+            while(index > 1) {
+                InventoryItem current = items[index];
+                for(int i = 0; i < index; i++) {
+                    if(current.ID == items[i].ID) {
+                        current = items[i].Stack(current, stackSafe);
+                        int change = current.count - items[i].count;
+                        items[i] = current;
+                        current = new InventoryItem(current.ID, items[index].count - change, stackSafe);
+                        items[index] = current;
+                        if(items[index].Count == 0)
+                            break;
+                    }
+                }
+                if(items[index].Count == 0)
+                    items.RemoveAt(index);
+                index--;
+            }
+        }
         public class Data : Loading.FullDescription, ArgumentHolder {
 
             public int sortingID;
@@ -218,13 +237,22 @@ namespace OneKnight {
             return Stack(other, other.count);
         }
 
+        public InventoryItem Stack(InventoryItem other, bool stackSafe) {
+            return Stack(other, other.count, stackSafe);
+        }
 
         public InventoryItem Stack(InventoryItem other, int max) {
+            return Stack(other, max, true);
+        }
+
+
+        public InventoryItem Stack(InventoryItem other, int max, bool stackSafe) {
             if(other.ID != ID)
                 throw new UnityException("Tried to stack two different items: " + id + " and " + other.id);
-            int temp = count + Mathf.Min(max, other.count);
-            int newcount = Mathf.Min(StackLimit, temp);
-            return new InventoryItem(ID, newcount);
+            int newcount = count + Mathf.Min(max, other.count);
+            if(stackSafe)
+                newcount = Mathf.Min(StackLimit, newcount);
+            return new InventoryItem(ID, newcount, stackSafe);
         }
 
 

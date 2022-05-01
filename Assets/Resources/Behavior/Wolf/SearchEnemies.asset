@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f11549c5fad5b641a1faf68f9bd6e0f, type: 3}
+  m_Name: SearchEnemies
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 766f2a15a72500a45b2ec354a741d544, type: 2}
+  - {fileID: 11400000, guid: 5af055914c7ef4d41acdf5cb59ada515, type: 2}
+  Interruptible: 1
+  range: 4
+  searchLayers: []

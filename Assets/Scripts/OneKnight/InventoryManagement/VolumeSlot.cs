@@ -7,9 +7,7 @@ namespace OneKnight.InventoryManagement {
 
         [System.NonSerialized]
         private VolumeInventory parent;
-
-        [System.NonSerialized]
-        float prevVolume;
+        
 
         public VolumeSlot(string[] categories, VolumeInventory parent) : base(categories) {
             this.parent = parent;
@@ -50,13 +48,12 @@ namespace OneKnight.InventoryManagement {
             }
         }
 
-        private void DoBeforeChange(ItemSlot slot) {
-            prevVolume = Volume;
+        private void DoBeforeChange(EventInfo info) {
             parent.NeedsVolumeUpdate = true;
         }
 
-        private void DoOnChange(ItemSlot slot) {
-            parent.ChangeVolume(Volume - prevVolume);
+        private void DoOnChange(EventInfo info) {
+            parent.ChangeVolume(Volume - info.before.Volume);
             parent.TrimExpand();
         }
 

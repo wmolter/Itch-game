@@ -1,154 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4367992963339774098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568843197767082423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96acaa4681aea0408bda9708f73a298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leader: 0
---- !u!114 &8926501255620438968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568843197767082423}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7c578b22c4a774db5a44c0529f943f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainControl: {fileID: 3568843197767082417}
-  children: []
-  interruptible: 0
-  parentRedecidesOnExit: 0
-  aggroRange: 30
-  endAggroRange: 40
-  leaderRequired: 1
---- !u!1001 &8395217504123052395
+--- !u!1001 &563893775562215993
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4973907126764994776, guid: b3cccab77b3fba9458cea4a671828f4a,
-        type: 3}
-      propertyPath: children.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994776, guid: b3cccab77b3fba9458cea4a671828f4a,
-        type: 3}
-      propertyPath: children.Array.data[2]
-      value: 
-      objectReference: {fileID: 3568843197767082418}
-    - target: {fileID: 4973907126764994776, guid: b3cccab77b3fba9458cea4a671828f4a,
-        type: 3}
-      propertyPath: children.Array.data[0]
-      value: 
-      objectReference: {fileID: 8926501255620438968}
-    - target: {fileID: 4973907126764994780, guid: b3cccab77b3fba9458cea4a671828f4a,
-        type: 3}
-      propertyPath: m_Name
-      value: Caravan Camel
-      objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994780, guid: b3cccab77b3fba9458cea4a671828f4a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973907126764994788, guid: b3cccab77b3fba9458cea4a671828f4a,
+    - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7605684073581855728, guid: b3cccab77b3fba9458cea4a671828f4a, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b3cccab77b3fba9458cea4a671828f4a, type: 3}
---- !u!1 &3568843197767082423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4973907126764994780, guid: b3cccab77b3fba9458cea4a671828f4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8395217504123052395}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3568843197767082417 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4973907126764994778, guid: b3cccab77b3fba9458cea4a671828f4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8395217504123052395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568843197767082423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7627038097ef9a4d8579db4d519f44c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3568843197767082418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4973907126764994777, guid: b3cccab77b3fba9458cea4a671828f4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8395217504123052395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568843197767082423}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448f91315d2eeec45ac2509eadab51e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    - target: {fileID: 2109186441907008750, guid: aec399aab8808e542b3adca9b075ff42,
+        type: 3}
+      propertyPath: m_Name
+      value: Caravan Camel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109186441907008750, guid: aec399aab8808e542b3adca9b075ff42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aec399aab8808e542b3adca9b075ff42, type: 3}

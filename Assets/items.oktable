@@ -151,6 +151,7 @@ Testing/antimony
 0
 0
 1
-properties 1
+properties
+1
 summonPrefab string
 Enemies/Eaglet

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3214207404702860687}
   - component: {fileID: 5182412703815347439}
   - component: {fileID: 8638435780096397103}
+  - component: {fileID: -7834161648331520972}
   m_Layer: 0
   m_Name: DesertBush
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPrio: 0
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 10
@@ -116,22 +118,10 @@ MonoBehaviour:
   quantity: 1
   gatherSteps: 5
   stepDuration: 0.25
-  oneHarvest:
-  - id: desert_flowers
-    Count: 0
-  oneHarvestDrop:
-    ids:
-    - desert_flowers
-    quantities:
-    - {x: 1, y: 1}
-    weight: 1
-  oneHarvestTable: {fileID: 0}
-  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: 21300000, guid: 779166474389cc44d93ffdce9e640d13, type: 3}
-  destroyOnDeplete: 0
   alreadyHarvested: No resources left.
 --- !u!114 &5182412703815347439
 MonoBehaviour:
@@ -179,3 +169,18 @@ PolygonCollider2D:
       - {x: -0.1289978, y: -0.17781162}
       - {x: 0.1967926, y: -0.17781162}
       - {x: 0.36009216, y: 0.0034122467}
+--- !u!114 &-7834161648331520972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 1
+  generator: {fileID: 11400000, guid: 5bf6e7d15a64d9d4dbe20ee5e4c3493e, type: 2}
+  DestroyOnDeplete: 0

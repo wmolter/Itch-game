@@ -19,24 +19,16 @@ namespace Itch {
             }
         }
         bool gathering = false;
-        //guaranteed
-        public Drop oneHarvestDrop;
-        //chances
-        public DropTable oneHarvestTable;
-        [Range(1, 5)]
-        public int rolls = 1;
+
         public string buffName = "";
         public float buffStrength = 1;
         public float buffDuration = 10;
         public Sprite depletedSprite;
-        public bool destroyOnDeplete;
-        List<InventoryItem> harvested;
 
         [Header("strings")]
         public string alreadyHarvested = "No resources left.";
         // Use this for initialization
         void Awake() {
-            harvested = new List<InventoryItem>();
         }
 
         private void Start() {
@@ -47,16 +39,7 @@ namespace Itch {
         void Update() {
 
         }
-
-        public void AddHarvestedResource(InventoryItem toAdd) {
-            harvested.Add(toAdd);
-        }
-
         protected override bool DoAction(PlayerManager player) {
-            if(harvested != null) {
-                harvested = player.GiveItems(harvested);
-                CheckDepleted();
-            }
             if(!Gathered) {
                 if(!gathering) {
                     StartCoroutine(GatherStep(player));
@@ -88,23 +71,14 @@ namespace Itch {
             currentGatherSteps = gatherSteps;
             player.GiveXP(gatherXP);
             quantity -= 1;
-            if(oneHarvestDrop.Weight != 0) {
-                foreach(InventoryItem drop in oneHarvestDrop.Generate()) {
-                    harvested.Add(drop);
-                }
-            }
+
+            Pickup oneHarvestTable = GetComponent<Pickup>();
             if(oneHarvestTable != null) {
-                foreach(InventoryItem drop in oneHarvestTable.Generate(rolls)) {
-                    if(drop != null)
-                        harvested.Add(drop);
-                }
+                oneHarvestTable.ResetRoll();
+                oneHarvestTable.enabled = true;
+                oneHarvestTable.Interact(player);
             }
-            if(harvested.Count > 0) { 
-                harvested = player.GiveItems(harvested);
-                foreach(InventoryItem item in harvested) {
-                    Notifications.CreateNotification(transform.position, item.ToString() + " Remaining");
-                }
-            }
+
             if(buffName != "") {
                 player.GiveBuff(buffName, buffStrength, buffDuration, transform.position);
             }
@@ -112,11 +86,8 @@ namespace Itch {
         }
 
         public void CheckDepleted() {
-            if(harvested.Count == 0 && quantity == 0) {
+            if(quantity == 0) {
                 GetComponent<SpriteRenderer>().sprite = depletedSprite;
-                if(destroyOnDeplete) {
-                    Destroy(gameObject);
-                }
             }
         }
     }

@@ -105,6 +105,39 @@ namespace OneKnight {
             return Vector3.SqrMagnitude(point - projectedPoint);
         }
 
+
+        public static Vector2 PredictAim(Vector2 enemyPos, Vector2 enemyVelocity, Vector2 origin, float projectileSpeed) {
+            float x0 = enemyPos.x;
+            float y0 = enemyPos.y;
+            float x1 = origin.x;
+            float y1 = origin.y;
+            float vx0 = enemyVelocity.x;
+            float vy0 = enemyVelocity.y;
+            float v = projectileSpeed;
+
+            float ax = vx0*vx0;
+            float ay = vy0*vy0;
+            float bx = 2*(x0-x1)*vx0;
+            float by = 2*(y0-y1)*vy0;
+            float cx = (x0-x1)*(x0-x1);
+            float cy = (y0-y1)*(y0-y1);
+
+            float a = (-v*v + ax + ay);
+            float b = bx + by;
+            float c = cx + cy;
+
+            float t = (-b + Mathf.Sqrt(b*b - 4*a*c))/(2*a);
+            if(t < 0)
+                t = (-b - Mathf.Sqrt(b*b - 4*a*c))/(2*a);
+
+            float vx1 = vx0 + (x0-x1)/t;
+            float vy1 = vy0 + (y0-y1)/t;
+            //Debug.Log("Predicted dir: " + vx1 + ", " + vy1 + " with t: " + t + " for " + enemyPos + " going " + enemyVelocity + " from " + origin + " with speed: " + projectileSpeed);
+            //if you input NaNs to this, it will become 0s
+            return new Vector2(vx1, vy1).normalized;
+
+        }
+
         public static Vector3 Project(Vector3 vector, Vector3 onto) {
             return Vector3.Dot(vector, onto) * onto / onto.sqrMagnitude;
         }

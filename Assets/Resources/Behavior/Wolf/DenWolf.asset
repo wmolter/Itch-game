@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81a0b002db4aa84d9688654a0f9184f, type: 3}
+  m_Name: DenWolf
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 195fa178f97f63a4f948b80559d728dd, type: 2}
+  - {fileID: 11400000, guid: 766f2a15a72500a45b2ec354a741d544, type: 2}
+  - {fileID: 11400000, guid: fefedd0ef4d8b7b4495630b2f1a23e56, type: 2}
+  - {fileID: 11400000, guid: 939bfcff6b426ef49b3e2d55fc1e5d27, type: 2}
+  Interruptible: 0
+  standstillChance: 0.5
+  durationRange: {x: 2, y: 5}
+  angleChangeRange: 90

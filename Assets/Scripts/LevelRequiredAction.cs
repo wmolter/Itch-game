@@ -3,7 +3,9 @@ using System.Collections;
 
 namespace Itch {
     [RequireComponent(typeof(Interactable))]
-    public abstract class LevelRequiredAction : MonoBehaviour {
+    public abstract class LevelRequiredAction : MonoBehaviour, Interaction {
+        public int interactionPrio;
+        public int Priority { get { return interactionPrio; } }
         public bool checkLevel;
         public string capabilityRequired = "Mining";
         public float levelRequired = 0;
@@ -11,10 +13,14 @@ namespace Itch {
 
 
         private void OnEnable() {
-            GetComponent<Interactable>().Interaction = CheckDo;
+            GetComponent<Interactable>().AddInteraction(this);
         }
 
-        public bool CheckDo(PlayerManager player) {
+        private void OnDisable() {
+            GetComponent<Interactable>().RemoveInteraction(this);
+        }
+
+        public bool Interact(PlayerManager player) {
             if(!checkLevel || player.HasCapabilityLevel(capabilityRequired, levelRequired)) {
                 return DoAction(player);
             } else {

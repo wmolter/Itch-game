@@ -109,13 +109,14 @@ namespace OneKnight.InventoryManagement {
         }
 
 
-        protected override void OnItemChanged(ItemSlot changed) {
-            if(changed == largest && changed.Volume < largestVolume) {
+        protected override void OnItemChanged(ItemSlot.EventInfo changed) {
+            base.OnItemChanged(changed);
+            if(changed.slot == largest && changed.slot.Volume < largestVolume) {
                 CalculateVolume();
             } else {
-                if(changed.Volume > largest.Volume) {
-                    largest = (VolumeSlot)changed;
-                    largestVolume = changed.Volume;
+                if(changed.slot.Volume > largest.Volume) {
+                    largest = (VolumeSlot)changed.slot;
+                    largestVolume = changed.slot.Volume;
 
                 }
             }

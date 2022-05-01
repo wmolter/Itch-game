@@ -73,7 +73,7 @@ namespace OneKnight.UI {
             disp.gameObject.SetActive(true);
         }
 
-        private void OnInventoryChanged(Inventory i, ItemSlot slot) {
+        private void OnInventoryChanged(Inventory i, ItemSlot.EventInfo info) {
             Validate();
         }
         

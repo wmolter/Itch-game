@@ -89,6 +89,15 @@ namespace Itch {
             activeChild = children.Count;
         }
 
+        public void StopAllRecursive() {
+            for(int i = 0; i < children.Count; i++) {
+                children[i].enabled = false;
+                children[i].StopAllRecursive();
+            }
+            activeChild = children.Count;
+            enabled = false;
+        }
+
         public abstract bool Decide();
 
         public abstract void DoBehavior();

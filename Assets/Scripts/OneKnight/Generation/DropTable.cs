@@ -36,7 +36,10 @@ namespace OneKnight.Generation {
             if(drops == null)
                 Init();
             ItemEmitter chosen = (ItemEmitter)UniformGeneration.RandomWeighted(drops, totalWeight);
-            return chosen.Generate();
+            if(chosen == null)
+                yield break;
+            foreach(InventoryItem i in chosen.Generate())
+                yield return i;
         }
 
         public IEnumerable<InventoryItem> Generate(int times) {

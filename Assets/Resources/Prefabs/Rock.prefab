@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1216661562382452349}
   - component: {fileID: 3214207404702860687}
   - component: {fileID: 3355949498292794041}
+  - component: {fileID: 7109477696501393807}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPrio: 0
   checkLevel: 1
   capabilityRequired: Mining
   levelRequired: 1
@@ -149,7 +151,6 @@ MonoBehaviour:
   quantity: 2
   gatherSteps: 4
   stepDuration: 0.25
-  oneHarvest: []
   oneHarvestDrop:
     ids:
     - iron_ore
@@ -162,7 +163,6 @@ MonoBehaviour:
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: 21300000, guid: 4fa581fa841621145851b52536cfe43e, type: 3}
-  destroyOnDeplete: 0
   alreadyHarvested: No resources left.
 --- !u!114 &3355949498292794041
 MonoBehaviour:
@@ -178,3 +178,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+--- !u!114 &7109477696501393807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 1
+  generator: {fileID: 0}
+  DestroyOnDeplete: 0

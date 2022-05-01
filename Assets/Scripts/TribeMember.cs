@@ -5,6 +5,7 @@ namespace Itch {
     public class TribeMember : MonoBehaviour {
 
         public bool leader;
+        public bool teamActivity;
         // Use this for initialization
         void Start() {
 

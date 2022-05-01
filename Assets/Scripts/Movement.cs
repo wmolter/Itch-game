@@ -10,14 +10,25 @@ namespace Itch {
         public Vector2 motionDir;
         public Vector2 defaultRotation = Vector2.right;
         public bool rotate;
+
+        public float StuckDuration { get { return Time.time - hitStartTime; } }
         // Use this for initialization
         void Start() {
 
         }
 
+        bool prevHit = false;
         // Update is called once per frame
         void Update() {
-
+            //i could check whether this is the same as before, but really what's the point
+            if(collidingWith != null && !prevHit) {
+                hitStartTime = Time.time;
+            }
+            if(collidingWith == null) {
+                hitStartTime = Mathf.Infinity;
+            }
+            prevHit = collidingWith == null;
+            collidingWith = null;
         }
 
         protected virtual void FixedUpdate() {
@@ -31,7 +42,9 @@ namespace Itch {
                 perp = -perp;
             float mag = (currDir-motionDir).sqrMagnitude*4;
             float mass = body.mass;
-            body.AddForce(perp*currSpeed*Mathf.Min(turnAcceleration, turnAcceleration*mag)*mass, ForceMode2D.Force);
+            //don't turn if you're supposed to be stopping
+            if(motionDir != Vector2.zero)
+                body.AddForce(perp*currSpeed*Mathf.Min(turnAcceleration, turnAcceleration*mag)*mass, ForceMode2D.Force);
 
             //use just updated velocity 
             float signedCurrSpeed = currSpeed*Mathf.Sign(Vector2.Dot(currVel, motionDir));
@@ -45,6 +58,13 @@ namespace Itch {
             if(rotate) {
                 transform.rotation = Quaternion.FromToRotation(defaultRotation, body.velocity);
             }
+        }
+
+        private float hitStartTime;
+        private Collider2D collidingWith;
+        
+        private void OnCollisionEnter2D(Collision2D collision) {
+            collidingWith = collision.collider;
         }
     }
 }

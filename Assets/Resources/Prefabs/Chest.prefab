@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 142520476717710633}
   - component: {fileID: 4647843289276925346}
   - component: {fileID: 5853999523821472571}
+  - component: {fileID: 65318528225350132}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -141,12 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPrio: 0
   checkLevel: 0
   capabilityRequired: Mining
   levelRequired: 0
+  gatherXP: 0
   materialsNeeded:
   - id: iron_ore
-    count: 5
+    Count: 5
   craftTime: 2
   unlockedComponent: {fileID: 5853999523821472571}
   craftedSprite: {fileID: 5045073161074915229, guid: 29de39b178f415342bda005f9f0b96c4,
@@ -177,18 +180,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPrio: 0
   checkLevel: 1
   capabilityRequired: Sorcery
   levelRequired: 1
+  gatherXP: 1000
   quantity: 1
   gatherSteps: 1
   stepDuration: 2
-  gatherXP: 1000
-  oneHarvest: []
+  oneHarvestDrop:
+    ids: []
+    quantities: []
+    weight: 1
+  oneHarvestTable: {fileID: 0}
+  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: -1089752354001653685, guid: 29de39b178f415342bda005f9f0b96c4,
     type: 3}
-  destroyOnDeplete: 0
   alreadyHarvested: No resources left.
+--- !u!114 &65318528225350132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539106948121091978}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 1
+  generator: {fileID: 0}
+  DestroyOnDeplete: 0

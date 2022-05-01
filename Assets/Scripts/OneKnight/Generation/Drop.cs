@@ -14,7 +14,18 @@ namespace OneKnight.Generation {
 
 
         public Drop() {
+            weight = 0;
+            ids = new string[0];
+            quantities = new Vector2Int[0];
+        }
 
+        public Drop(List<InventoryItem> items) {
+            ids = new string[items.Count];
+            quantities = new Vector2Int[items.Count];
+            for(int i = 0; i < items.Count; i++) {
+                ids[i] = items[i].ID;
+                quantities[i] = new Vector2Int(items[i].count, items[i].count);
+            }
         }
 
         public Drop(string[] id, Vector2Int[] quantities, float weight){
@@ -29,7 +40,8 @@ namespace OneKnight.Generation {
         public IEnumerable<InventoryItem> Generate() {
             for(int i = 0; i < ids.Length; i++) {
                 int count = Random.Range(quantities[i].x, quantities[i].y+1);
-                yield return new InventoryItem(ids[i], count);
+                if(count > 0)
+                    yield return new InventoryItem(ids[i], count);
             }
         }
 

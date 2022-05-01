@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5445674227732353428}
   - component: {fileID: 8370505701146838642}
   - component: {fileID: 4647843289276925346}
-  - component: {fileID: 5853999523821472571}
+  - component: {fileID: -6446182041935748100}
   m_Layer: 0
   m_Name: Backpack
   m_TagString: Drops
@@ -140,7 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5853999523821472571
+  sortingOffset: 0
+  home: {x: 0, y: 0}
+--- !u!114 &-6446182041935748100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,20 +151,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7539106948121091978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quantity: 0
-  gatherSteps: 0
-  stepDuration: 0
-  gatherXP: 0
-  capabilityRequired: Gathering
-  levelRequired: 0
-  oneHarvest: []
-  buffName: 
-  buffStrength: 0
-  buffDuration: 0
-  depletedSprite: {fileID: -1089752354001653685, guid: 29de39b178f415342bda005f9f0b96c4,
-    type: 3}
-  destroyOnDeplete: 1
-  alreadyHarvested: No resources left.
+  interactionPrio: 0
+  generator:
+    guaranteed:
+      ids: []
+      quantities: []
+      weight: 0
+    rollFrom: []
+  DestroyOnDeplete: 0

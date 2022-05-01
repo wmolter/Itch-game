@@ -5,10 +5,22 @@ using OneKnight.PropertyManagement;
 
 namespace OneKnight.InventoryManagement {
     [System.Serializable]
-    public abstract class ItemContainer : PropertyManaged, IEnumerable<ItemSlot> {
+    public abstract class ItemContainer : PropertyManaged, IEnumerable<ItemSlot>, IEnumerable<InventoryItem> {
+        public abstract int Count { get; protected set; }
+
+        //whether the slots have any *items*, not whether there are no slots
+        public bool Empty { get { return Count == 0; } }
+
         public abstract IEnumerator<ItemSlot> GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
+        }
+
+        IEnumerator<InventoryItem> IEnumerable<InventoryItem>.GetEnumerator() {
+            foreach(ItemSlot slot in this) {
+                if(!slot.Empty)
+                    yield return slot.Item;
+            }
         }
 
         public bool FunctionAvailable(string function) {

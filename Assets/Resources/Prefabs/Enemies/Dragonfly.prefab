@@ -19,25 +19,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2970872163159159969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637928581048745806}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a7ba7c8a743e1c4cab716d299eba654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainControl: {fileID: 0}
-  moveControl: {fileID: 0}
-  children: []
-  interruptible: 1
-  parentRedecidesOnExit: 0
-  allowedRange: 2
-  returnCompleteRange: 0.5
 --- !u!1001 &3240764061954752402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,12 +65,12 @@ PrefabInstance:
         type: 3}
       propertyPath: children.Array.data[1]
       value: 
-      objectReference: {fileID: 7637928581048745803}
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: children.Array.data[0]
       value: 
-      objectReference: {fileID: 2970872163159159969}
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994777, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: angleChangeRange
@@ -209,15 +190,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3240764061954752402}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7637928581048745803 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4973907126764994777, guid: ceb2c8b2abcb1af46945974dcacac3ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 3240764061954752402}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637928581048745806}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448f91315d2eeec45ac2509eadab51e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

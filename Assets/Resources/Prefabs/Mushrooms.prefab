@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3214207404702860687}
   - component: {fileID: 5182412703815347439}
   - component: {fileID: 8750118260019417620}
+  - component: {fileID: 53167918075370103}
   m_Layer: 0
   m_Name: Mushrooms
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPrio: 0
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 7
@@ -117,23 +119,11 @@ MonoBehaviour:
   quantity: 3
   gatherSteps: 4
   stepDuration: 0.25
-  oneHarvest:
-  - id: mushroom
-    Count: 0
-  oneHarvestDrop:
-    ids:
-    - mushroom
-    quantities:
-    - {x: 1, y: 2}
-    weight: 1
-  oneHarvestTable: {fileID: 0}
-  rolls: 1
   buffName: 
   buffStrength: 1
   buffDuration: 10
   depletedSprite: {fileID: -8835274597533513770, guid: 0ad896b8f27fb3549b26bfa81f0b516a,
     type: 3}
-  destroyOnDeplete: 0
   alreadyHarvested: No resources left.
 --- !u!114 &5182412703815347439
 MonoBehaviour:
@@ -165,3 +155,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &53167918075370103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 1
+  generator: {fileID: 11400000, guid: 59f49e166fb59814b98f31f78cd44036, type: 2}
+  DestroyOnDeplete: 0

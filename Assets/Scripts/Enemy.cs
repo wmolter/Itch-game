@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Itch.Behavior;
 
 namespace Itch {
-    [RequireComponent(typeof(NonPlayerEntity))]
+    [RequireComponent(typeof(NonPlayerEntity), typeof(BehaviorTree))]
     public class Enemy : MonoBehaviour {
-
-        public BehaviorTree behavior;
+        
         public List<string> enemyLayers;
 
         public Entity behaviorTarget;
