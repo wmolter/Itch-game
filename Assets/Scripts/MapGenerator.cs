@@ -24,7 +24,6 @@ namespace Itch {
         // Start is called before the first frame update
         void Start() {
             foreach(TerrainData data in allTerrainData) {
-
                 float totalWeight = 0;
                 foreach(Spawn possible in data.spawns) {
                     totalWeight += possible.weight;
@@ -53,7 +52,7 @@ namespace Itch {
 
         void UpdateTiles() {
             Vector3 playerPos = player.transform.position;
-            Vector3Int playerTile = player.CurrentTile;
+            Vector3Int playerTile = player.GetComponent<Entity>().CurrentTile;
             int chunkSize = Mathf.CeilToInt(2*player.LOS)+1;
             int count = 0;
             for(int i = -1; i < chunkSize; i++) {
@@ -72,7 +71,7 @@ namespace Itch {
         }
 
         void UpdateEffect() {
-            int currIndex = TileIndex(player.CurrentTile);
+            int currIndex = player.GetComponent<Entity>().CurrentTileType;
             for(int i = 0; i < allTerrainData.Length; i++) {
                 if(allTerrainData[i].effect != null)
                     allTerrainData[i].effect.enabled = i==currIndex;

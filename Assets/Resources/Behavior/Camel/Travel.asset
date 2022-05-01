@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07588962769dd4d409c80929c535bdb1, type: 3}
+  m_Name: Travel
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 0147affca9b367c4b9aee1739d8a1d1a, type: 2}
+  Interruptible: 1
+  restChance: 0.5
+  travelDurationRange: {x: 20, y: 30}
+  restDurationRange: {x: 20, y: 30}
+  minAngle: -180
+  maxAngle: 180
+  angleDeviation: 30

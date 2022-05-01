@@ -113,10 +113,6 @@ namespace Itch.Behavior {
         }
 
         public RangedAttackData[] attacks;
-        public float attackTime;
-        public float cooldown;
-        public float fireRange = 5;
-        public bool returnOnCooldown = true;
 
         
     }

@@ -16,9 +16,7 @@ namespace Itch.Behavior {
 
 
             public override bool Decide(BehaviorInfo info) {
-                Debug.Log("Called decide");
                 candidate = FindTarget(info);
-                Debug.Log("Candidate is : " + candidate);
                 if(candidate != null) {
                     return TestDecide(info, candidate.GetComponent<Entity>());
                 }
@@ -43,7 +41,7 @@ namespace Itch.Behavior {
                 candidate = null;
             }
 
-            public int GetTargetLayerMask(BehaviorInfo info) {
+            public virtual int GetTargetLayerMask(BehaviorInfo info) {
                 if(Data.searchLayers.Count == 0) {
                     return LayerMask.GetMask(info.main.enemyLayers.ToArray());
                 }
@@ -54,8 +52,12 @@ namespace Itch.Behavior {
                 Collider2D[] hit = Physics2D.OverlapCircleAll(info.main.transform.position, Data.range, GetTargetLayerMask(info));
                 if(hit == null || hit.Length == 0)
                     return null;
-                int index = Utils.Closest(new List<Collider2D>(hit), info.main.transform.position, delegate (Collider2D col) { return true; });
-                return hit[index].transform;
+                int index = Utils.Closest(new List<Collider2D>(hit), info.main.transform.position, Filter);
+                return index < 0? null: hit[index].transform;
+            }
+
+            public virtual bool Filter(Collider2D hit) {
+                return hit.gameObject != info.main.gameObject;
             }
 
         }

@@ -76,12 +76,6 @@ namespace Itch {
             abilities["Sorcery"] = 0;
             abilities["Fortitude"] = 0;*/
         }
-
-        public Vector3Int CurrentTile {
-            get {
-                return new Vector3Int((int)(transform.position.x), (int)(transform.position.y), (int)transform.position.z);
-            }
-        }
         // Use this for initialization
         void Start() {
             GetComponent<Health>().max = baseHealth;
@@ -361,11 +355,11 @@ namespace Itch {
 
         public void DropItems(List<InventoryItem> items) {
             if(items.Count > 0)
-                Planes.CurrentPlane.PlaceItems(items, CurrentTile, interactRadius);
+                Planes.CurrentPlane.PlaceItems(items, GetComponent<Entity>().CurrentTile, interactRadius);
         }
 
         public void DropItem(InventoryItem item) {
-            Planes.CurrentPlane.PlaceItem(item, CurrentTile, interactRadius);
+            Planes.CurrentPlane.PlaceItem(item, GetComponent<Entity>().CurrentTile, interactRadius);
         }
 
         public void TryUseItem(ItemSlot slot) {

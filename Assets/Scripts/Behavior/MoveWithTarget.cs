@@ -11,7 +11,7 @@ namespace Itch.Behavior {
 
             }
             public override bool Decide(BehaviorInfo info) {
-                return info.main.behaviorTarget != null;
+                return info.main.behaviorTarget != null && !CheckEnd(info);
             }
 
             public override void DoBehavior(BehaviorInfo info) {
@@ -19,7 +19,8 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position) > Data.endRange*Data.endRange;
+                float sqr = Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position);
+                return sqr > Data.maxRange*Data.maxRange || sqr < Data.minRange*Data.minRange;
             }
 
             public override void OnSuspend(BehaviorInfo info) {
@@ -31,9 +32,9 @@ namespace Itch.Behavior {
             }
         }
 
-        [Range(0, 180)]
+        [Range(-180, 180)]
         public float moveAngle = 0;
-        public float endRange;
+        public float minRange, maxRange;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

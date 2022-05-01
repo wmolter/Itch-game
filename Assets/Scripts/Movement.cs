@@ -42,18 +42,21 @@ namespace Itch {
                 perp = -perp;
             float mag = (currDir-motionDir).sqrMagnitude*4;
             float mass = body.mass;
+            float targetSpeed = speed;
             //don't turn if you're supposed to be stopping
+            float sign = Mathf.Sign(Vector2.Dot(currVel, motionDir));
             if(motionDir != Vector2.zero)
                 body.AddForce(perp*currSpeed*Mathf.Min(turnAcceleration, turnAcceleration*mag)*mass, ForceMode2D.Force);
+            else {
+                targetSpeed = 0;
+                sign = 1;
+            }
 
-            //use just updated velocity 
-            float signedCurrSpeed = currSpeed*Mathf.Sign(Vector2.Dot(currVel, motionDir));
             currDir = body.velocity.normalized;
             if(currDir == Vector2.zero)
                 currDir = motionDir;
-            Vector2 desiredVel = motionDir*speed;
 
-            body.AddForce(Mathf.Min(acceleration,acceleration*(speed-signedCurrSpeed))*currDir*mass, ForceMode2D.Force);
+            body.AddForce(Mathf.Min(acceleration,acceleration*(targetSpeed-currSpeed))*sign*currDir*mass, ForceMode2D.Force);
 
             if(rotate) {
                 transform.rotation = Quaternion.FromToRotation(defaultRotation, body.velocity);

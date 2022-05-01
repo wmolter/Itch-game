@@ -14,16 +14,25 @@ namespace Itch.Behavior {
             float fireTime;
             protected bool preparing;
 
+            public override void OnInit(BehaviorInfo info) {
+                base.OnInit(info);
+                nextAttackTime = Time.time;
+            }
+
             public override bool Decide(BehaviorInfo info) {
+                /*bool can = CanAttack();
+                bool inRange = EnemyInRange();
+                Debug.Log("Attack decide called. CanAttack: " + can + " inRange: " + inRange);
+                return can && inRange;*/
                 return CanAttack() && EnemyInRange();
             }
 
             public bool EnemyInRange() {
-                Debug.Log("Enemy in Range called: " + info.main.behaviorTarget + " and our collider: " + info.main.GetComponent<Collider2D>());
-                if(info.main.behaviorTarget != null)
+                if(info.main.behaviorTarget == null)
                     return false;
                 ColliderDistance2D dist = info.main.GetComponent<Collider2D>().Distance(info.main.behaviorTarget.GetComponent<Collider2D>());
-                return dist.distance < Data.range*Data.range;//Physics2D.OverlapCircle(info.move.transform.position, Data.fireRange, LayerMask.GetMask(info.main.enemyLayers.ToArray())) != null;
+                //Debug.Log("Enemy in Range called: " + info.main.behaviorTarget + " and distance: " + dist.distance);
+                return dist.distance < Data.range;//Physics2D.OverlapCircle(info.move.transform.position, Data.fireRange, LayerMask.GetMask(info.main.enemyLayers.ToArray())) != null;
             }
 
             public bool CanAttack() {

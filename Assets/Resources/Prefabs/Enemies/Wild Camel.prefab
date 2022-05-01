@@ -7,10 +7,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: acceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a24d1a6c07ba9149ba78da5f47e5354,
+        type: 2}
+    - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: enemyLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: enemyLayers.Array.data[2]
+      value: Tribe3
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: m_Name
       value: Wild Camel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994788, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}

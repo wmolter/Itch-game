@@ -26,7 +26,7 @@ namespace Itch.Behavior {
             }
 
             public override bool Decide(BehaviorInfo info) {
-                Debug.Log("Avoid collision decide called: " + info.move.StuckDuration);
+                //Debug.Log("Avoid collision decide called: " + info.move.StuckDuration);
                 return info.move.StuckDuration >= Data.activateStuckDuration;
             }
 

@@ -49,6 +49,7 @@ namespace OneKnight {
             while(index < start.children.Count) {
                 start = start.children[index];
                 start.OnStart(Info);
+                index = start.FirstWillingChild(Info);
             }
             return start;
         }

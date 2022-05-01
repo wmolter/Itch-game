@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3615558256037228735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915735744352052951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96acaa4681aea0408bda9708f73a298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leader: 0
+  teamActivity: 0
 --- !u!1001 &563893775562215993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +21,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2035508580821843899, guid: aec399aab8808e542b3adca9b075ff42,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 878eaafc4b48d0a4b9722b03bb98dcc6,
+        type: 2}
     - target: {fileID: 2109186441907008726, guid: aec399aab8808e542b3adca9b075ff42,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,10 +87,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caravan Camel
       objectReference: {fileID: 0}
-    - target: {fileID: 2109186441907008750, guid: aec399aab8808e542b3adca9b075ff42,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aec399aab8808e542b3adca9b075ff42, type: 3}
+--- !u!1 &1915735744352052951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2109186441907008750, guid: aec399aab8808e542b3adca9b075ff42,
+    type: 3}
+  m_PrefabInstance: {fileID: 563893775562215993}
+  m_PrefabAsset: {fileID: 0}
