@@ -16,10 +16,8 @@ namespace Itch.Behavior {
             private float startTime;
 
             public override bool Decide(BehaviorInfo info) {
-                if(info.main.behaviorTarget == null)
-                    return false;
-                if(prevTarget == info.main.behaviorTarget) {
-                    return Time.time >= startTime + Data.triggerDuration && base.Decide(info);
+                if(info.main.behaviorTarget != null & prevTarget == info.main.behaviorTarget) {
+                    return Time.time >= (startTime + Data.triggerDuration) && base.Decide(info);
                 } else {
                     prevTarget = info.main.behaviorTarget;
                     startTime = Time.time;

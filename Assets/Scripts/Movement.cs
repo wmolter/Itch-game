@@ -5,8 +5,11 @@ namespace Itch {
     public class Movement : MonoBehaviour {
         
         public float speed = 5;
+        [Range(0, 1)]
+        public float speedFactor = 1;
         public float acceleration = 5;
         public float turnAcceleration = 5;
+        public bool flyMode;
         public Vector2 motionDir;
         public Vector2 defaultRotation = Vector2.right;
         public bool rotate;
@@ -16,22 +19,29 @@ namespace Itch {
         void Start() {
 
         }
-
-        bool prevHit = false;
         // Update is called once per frame
         void Update() {
-            //i could check whether this is the same as before, but really what's the point
+        }
+
+        /*
+        bool prevHit = false;
+        protected void HandleStuck() {
+            if(gameObject.tag == "Debug") {
+                Debug.Log("Handling stuck.");
+            }
             if(collidingWith != null && !prevHit) {
                 hitStartTime = Time.time;
             }
             if(collidingWith == null) {
                 hitStartTime = Mathf.Infinity;
             }
-            prevHit = collidingWith == null;
+            prevHit = collidingWith != null;
             collidingWith = null;
-        }
+
+        }*/
 
         protected virtual void FixedUpdate() {
+            //HandleStuck();
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             Vector2 currVel = body.velocity;
             float currSpeed = currVel.magnitude;
@@ -42,9 +52,12 @@ namespace Itch {
                 perp = -perp;
             float mag = (currDir-motionDir).sqrMagnitude*4;
             float mass = body.mass;
-            float targetSpeed = speed;
-            //don't turn if you're supposed to be stopping
+            float targetSpeed = speed*speedFactor;
             float sign = Mathf.Sign(Vector2.Dot(currVel, motionDir));
+            if(flyMode) {
+                sign = 1;
+            }
+            //don't turn if you're supposed to be stopping
             if(motionDir != Vector2.zero)
                 body.AddForce(perp*currSpeed*Mathf.Min(turnAcceleration, turnAcceleration*mag)*mass, ForceMode2D.Force);
             else {
@@ -57,17 +70,31 @@ namespace Itch {
                 currDir = motionDir;
 
             body.AddForce(Mathf.Min(acceleration,acceleration*(targetSpeed-currSpeed))*sign*currDir*mass, ForceMode2D.Force);
+            UpdateRotation();
+        }
 
+        public virtual void UpdateRotation() {
             if(rotate) {
-                transform.rotation = Quaternion.FromToRotation(defaultRotation, body.velocity);
+                transform.rotation = Quaternion.FromToRotation(defaultRotation, GetComponent<Rigidbody>().velocity);
             }
         }
 
+        [SerializeField]
         private float hitStartTime;
         private Collider2D collidingWith;
         
         private void OnCollisionEnter2D(Collision2D collision) {
-            collidingWith = collision.collider;
+            if(collidingWith == null) {
+                collidingWith = collision.collider;
+                hitStartTime = Time.time;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision) {
+            if(collidingWith == collision.collider) {
+                collidingWith = null;
+                hitStartTime = float.PositiveInfinity;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Itch.Behavior {
 
 
             public override bool Decide(BehaviorInfo info) {
-                candidate = FindTarget(info);
+                candidate = Data.aoe.FindTarget(info);
                 if(candidate != null) {
                     return TestDecide(info, candidate.GetComponent<Entity>());
                 }
@@ -40,33 +40,13 @@ namespace Itch.Behavior {
                 info.main.behaviorTarget = null;
                 candidate = null;
             }
-
-            public virtual int GetTargetLayerMask(BehaviorInfo info) {
-                if(Data.searchLayers.Count == 0) {
-                    return LayerMask.GetMask(info.main.enemyLayers.ToArray());
-                }
-                return LayerMask.GetMask(Data.searchLayers.ToArray());
-            }
-
-            public virtual Transform FindTarget(BehaviorInfo info) {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(info.main.transform.position, Data.range, GetTargetLayerMask(info));
-                if(hit == null || hit.Length == 0)
-                    return null;
-                int index = Utils.Closest(new List<Collider2D>(hit), info.main.transform.position, Filter);
-                return index < 0? null: hit[index].transform;
-            }
-
-            public virtual bool Filter(Collider2D hit) {
-                return hit.gameObject != info.main.gameObject;
-            }
-
         }
+
+        public AOEHandler aoe;
+
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);
         }
-
-        public float range;
-        public List<string> searchLayers;
     }
 }

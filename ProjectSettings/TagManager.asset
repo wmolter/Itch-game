@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Drops
+  - Harmless
+  - Predator
+  - Debug
   layers:
   - Default
   - TransparentFX

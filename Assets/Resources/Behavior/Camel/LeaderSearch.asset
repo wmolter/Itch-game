@@ -15,5 +15,8 @@ MonoBehaviour:
   children:
   - {fileID: 11400000, guid: a07063e3babd6fc40b818a23d3f03533, type: 2}
   Interruptible: 1
-  range: 8
-  searchLayers: []
+  aoe:
+    range: 10
+    searchLayers: []
+    filterOut: 1
+    filterTags: []

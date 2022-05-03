@@ -24,7 +24,8 @@ namespace Itch.Behavior {
             }
 
             public override void OnSuspend(BehaviorInfo info) {
-                info.move.motionDir = Vector2.zero;
+                if(Data.resetSpeedOnExit)
+                    info.move.motionDir = Vector2.zero;
             }
 
             public Vector2 MoveDirection(BehaviorInfo info, Transform relation) {
@@ -35,6 +36,7 @@ namespace Itch.Behavior {
         [Range(-180, 180)]
         public float moveAngle = 0;
         public float minRange, maxRange;
+        public bool resetSpeedOnExit;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

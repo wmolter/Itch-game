@@ -45,7 +45,7 @@ namespace Itch {
 
         private void OnTriggerEnter2D(Collider2D collider) {
             if((tribeDamage || collider.gameObject.layer != source.gameObject.layer) && (selfDamage || collider.gameObject != source)) {
-                Health toDamage = collider.GetComponent<Health>();
+                Health toDamage = collider.GetComponentInParent<Health>();
                 if(toDamage == null && collidesWithObjects)
                     Destroy(gameObject);
                 else {

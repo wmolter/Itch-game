@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdb00de4d7610942a2879a01bf66c59, type: 3}
+  m_Name: SelfDefense
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: d77b69b9da02d6e488dd3629ff81715a, type: 2}
+  Interruptible: 1
+  noticeRange: 10
+  percentageThreshold: 1

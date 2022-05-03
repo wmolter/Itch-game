@@ -30,13 +30,24 @@ PrefabInstance:
     - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: turnAcceleration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: acceleration
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: flyMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d1c11bc1b21b0c4ba250f5733618556,
+        type: 2}
     - target: {fileID: 4973907126764994777, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: angleChangeRange
@@ -56,6 +67,11 @@ PrefabInstance:
         type: 3}
       propertyPath: durationRange.y
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: enemyLayers.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994778, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
@@ -87,10 +103,20 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994779, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: m_Name
       value: Eagle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Predator
       objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994788, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f3a220f4c8fad46bbeb47ec43ea039, type: 3}
   m_Name: MoveAround
   m_EditorClassIdentifier: 
-  children: []
+  children:
+  - {fileID: 11400000, guid: 0147affca9b367c4b9aee1739d8a1d1a, type: 2}
   Interruptible: 0
   moveAngle: 100
   minRange: 0
   maxRange: 0
+  resetSpeedOnExit: 0

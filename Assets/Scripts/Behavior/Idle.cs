@@ -16,8 +16,18 @@ namespace Itch.Behavior {
             public override bool Decide(BehaviorInfo info) {
                 return true;
             }
+
+            public override void OnStart(BehaviorInfo info) {
+                base.OnStart(info);
+                ChangeDir(info.move);
+            }
             public override void OnResume(BehaviorInfo info) {
-                nextChangeTime = Time.time;
+                info.move.speedFactor = Data.speedFactor;
+                if(Data.continueInDir) {
+                    UpdateChangeTime();
+                } else {
+                    nextChangeTime = Time.time;
+                }
             }
 
             void ChangeDir(Movement m) {
@@ -40,8 +50,12 @@ namespace Itch.Behavior {
             public override void DoBehavior(BehaviorInfo info) {
                 if(Time.time >= nextChangeTime) {
                     ChangeDir(info.move);
-                    nextChangeTime = Time.time + Random.Range(Data.durationRange.x, Data.durationRange.y);
+                    UpdateChangeTime();
                 }
+            }
+
+            protected void UpdateChangeTime() {
+                nextChangeTime = Time.time + Random.Range(Data.durationRange.x, Data.durationRange.y);
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
@@ -49,7 +63,9 @@ namespace Itch.Behavior {
             }
 
             public override void OnSuspend(BehaviorInfo info) {
-                info.move.motionDir = Vector2.zero;
+                if(Data.resetMotionOnExit)
+                    info.move.motionDir = Vector2.zero;
+                info.move.speedFactor = 1;
             }
 
             public override void OnFinish(BehaviorInfo info) {
@@ -59,7 +75,11 @@ namespace Itch.Behavior {
 
         public float standstillChance = .5f;
         public Vector2 durationRange = new Vector2(2, 5);
+        [Range(0.01f, 1)]
+        public float speedFactor = 1;
         public float angleChangeRange = 90;
+        public bool continueInDir = true;
+        public bool resetMotionOnExit = false;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

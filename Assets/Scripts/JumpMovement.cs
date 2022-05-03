@@ -3,13 +3,18 @@ using System.Collections;
 
 namespace Itch {
     public class JumpMovement : Movement {
-        public Vector2 range;
+        [Range(0, 1)]
+        public float rangeVariation;
         [Range(1, 89)]
         public float launchAngle;
         [Range(0, 5)]
         public float windupTime = 0.5f;
         public float maxJumpError = 1;
         public Collider2D collision;
+
+        //right now, used as a consumable flag reset every time it lands
+        [HideInInspector]
+        public bool landedFlag;
 
         bool windingUp;
         bool inAir;
@@ -37,12 +42,13 @@ namespace Itch {
             windingUp = true;
             if(windupTime  > 0)
                 yield return new WaitForSeconds(windupTime);
+            landedFlag = false; //maybe should be before the wait, but i'm worried about fixed update vs. regular update situation
             StartJump();
             windingUp = false;
         }
 
         void StartJump() {
-            float dist = Random.Range(range.x, range.y);
+            float dist = (1 - (rangeVariation*Random.value))*speed*speedFactor;
             float theta = launchAngle*Mathf.PI/180;
             jumpDir = motionDir;
             g = Planes.CurrentPlane.gravity;
@@ -71,6 +77,7 @@ namespace Itch {
             Vector2 desiredVel = Vector2.zero;
             if(inAir && tSoFar >= t) {
                 inAir = false;
+                landedFlag = true;
                 float error = (target - (Vector2)transform.position).magnitude;
                 Debug.Log("Landed at " + transform.position + " with target: " + target + " distance error " + error);
                 if(error > maxJumpError)
@@ -87,9 +94,7 @@ namespace Itch {
                 desiredVel = new Vector2(vx, vy);
             }
             body.velocity = desiredVel;
-            if(rotate) {
-                transform.rotation = Quaternion.FromToRotation(defaultRotation, GetComponent<Rigidbody2D>().velocity);
-            }
+            UpdateRotation();
         }
     }
 }

@@ -10,9 +10,14 @@ namespace OneKnight {
 
         public abstract T Info { get; }
         // Use this for initialization
+        protected virtual void Awake() {
+            current = activeRoot = Root.CreateActive(null, 0);
+        }
+
         protected virtual void Start() {
             
-            current = activeRoot = Root.CreateActive(null, 0);
+            current.OnStart(Info);
+            current.OnResume(Info);
         }
 
         // Update is called once per frame

@@ -278,6 +278,15 @@ namespace OneKnight {
             return min;
         }
 
+        //Modifies the input collection!
+        public static ICollection<T> FilterAdd<T>(ICollection<T> addTo, IEnumerable<T> addFrom, Predicate<T> filter) {
+            foreach(T t in addFrom) {
+                if(filter(t))
+                    addTo.Add(t);
+            }
+            return addTo;
+        }
+
         public static int Closest(List<Collider2D> colliders, Vector2 pos, Predicate<Collider2D> filter) {
             float dist = Mathf.Infinity;
             int index = -1;

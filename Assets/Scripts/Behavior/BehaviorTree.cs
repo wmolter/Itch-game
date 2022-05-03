@@ -15,8 +15,8 @@ namespace Itch.Behavior {
         public BehaviorInfo info;
         public override BehaviorInfo Info { get { return info; } }
 
-        protected override void Start() {
-            base.Start();
+        protected override void Awake() {
+            base.Awake();
             activeRoot.Init(info);
         }
     }

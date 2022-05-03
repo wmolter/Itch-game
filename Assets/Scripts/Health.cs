@@ -20,6 +20,7 @@ namespace Itch {
         public event HealthEvent OnDamaged;
         public event HealthEvent OnHealed;
 
+        public bool Alive { get { return current > 0; } }
         public float CurrentPercentage { get { return current/max; } }
         // Use this for initialization
         void Start() {

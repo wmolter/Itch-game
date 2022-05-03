@@ -27,8 +27,11 @@ namespace Itch.Behavior {
                 return CanAttack() && EnemyInRange();
             }
 
-            public bool EnemyInRange() {
+            public virtual bool EnemyInRange() {
                 if(info.main.behaviorTarget == null)
+                    return false;
+                Health hp = info.main.behaviorTarget.GetComponent<Health>();
+                if(hp == null || !hp.enabled || !hp.Alive)
                     return false;
                 ColliderDistance2D dist = info.main.GetComponent<Collider2D>().Distance(info.main.behaviorTarget.GetComponent<Collider2D>());
                 //Debug.Log("Enemy in Range called: " + info.main.behaviorTarget + " and distance: " + dist.distance);
@@ -40,8 +43,8 @@ namespace Itch.Behavior {
             }
 
             public override void DoBehavior(BehaviorInfo info) {
-                info.move.motionDir = Vector2.zero;
                 if(!preparing && CanAttack()) {
+                    info.move.speedFactor = Data.speedDuringAttack;
                     preparing = true;
                     fireTime = Time.time + Data.attackTime;
                 }
@@ -49,20 +52,24 @@ namespace Itch.Behavior {
                     Attack();
                     preparing = false;
                     nextAttackTime = Time.time + Data.cooldown;
+                    info.move.speedFactor = 1;
                 }
             }
 
             protected abstract void Attack();
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return !preparing && (Data.returnOnCooldown || !EnemyInRange());
+                return (!Data.lockDuringCooldown || CanAttack()) && !preparing && (Data.returnOnCooldown || !EnemyInRange());
             }
         }
 
         public float attackTime;
         public float cooldown;
         public float range = 5;
+        [Range(0, 1)]
+        public float speedDuringAttack;
         public bool returnOnCooldown = true;
+        public bool lockDuringCooldown = false;
 
         
     }

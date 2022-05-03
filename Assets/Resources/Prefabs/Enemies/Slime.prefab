@@ -32,12 +32,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  speedFactor: 1
   acceleration: 5
   turnAcceleration: 5
+  flyMode: 0
   motionDir: {x: 0, y: 0}
   defaultRotation: {x: 1, y: 0}
   rotate: 0
-  range: {x: 1, y: 3}
+  rangeVariation: 0.42
   launchAngle: 75.3
   windupTime: 0.5
   maxJumpError: 1
@@ -79,6 +81,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fc663e89f86ccc45af4f56a671e7f71,
+        type: 2}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: info.move
+      value: 
+      objectReference: {fileID: -7821201006771750990}
     - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: children.Array.size
@@ -113,6 +126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Harmless
       objectReference: {fileID: 0}
     - target: {fileID: 4973907126764994788, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}

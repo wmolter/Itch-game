@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  speedFactor: 1
   acceleration: 5
   turnAcceleration: 5
   motionDir: {x: 0, y: 0}
