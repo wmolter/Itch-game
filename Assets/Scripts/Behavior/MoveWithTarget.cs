@@ -19,7 +19,18 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                float sqr = Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position);
+                Debug.Log("info: " + info + " info.main: " + info.main + " behaviorTarget: " + info.main.behaviorTarget + " Data: " + Data);
+                if(info.main.behaviorTarget == null)
+                    return true;
+                float sqr;
+                if(Data.colliderMode) {
+                    Collider2D thisCol = info.main.GetComponent<Collider2D>();
+                    Collider2D targetCol = info.main.behaviorTarget.GetComponent<Collider2D>();
+                    float dist = thisCol.Distance(targetCol).distance;
+                    sqr =  dist*dist;
+                } else {
+                    sqr = Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position);
+                }
                 return sqr > Data.maxRange*Data.maxRange || sqr < Data.minRange*Data.minRange;
             }
 
@@ -37,6 +48,7 @@ namespace Itch.Behavior {
         public float moveAngle = 0;
         public float minRange, maxRange;
         public bool resetSpeedOnExit;
+        public bool colliderMode;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

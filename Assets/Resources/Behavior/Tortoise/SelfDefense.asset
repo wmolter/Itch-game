@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdb00de4d7610942a2879a01bf66c59, type: 3}
   m_Name: SelfDefense
   m_EditorClassIdentifier: 
-  children: []
-  Interruptible: 0
+  children:
+  - {fileID: 11400000, guid: ece68f4631f7267468d1d99412dafe13, type: 2}
+  Interruptible: 1
   noticeRange: 10
   percentageThreshold: 1

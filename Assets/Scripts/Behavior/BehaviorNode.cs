@@ -24,7 +24,7 @@ namespace Itch.Behavior {
 
         public List<BehaviorNode> children;
         public override int ChildCount { get { return children.Count; } }
-        public bool Interruptible;
+        public bool Interruptible = true;
         public override bool interruptible { get { return Interruptible; } }
 
         public override BehaviorTree<BehaviorInfo>.Node GetChild(int index) {

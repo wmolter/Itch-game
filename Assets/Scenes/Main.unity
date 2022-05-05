@@ -1239,7 +1239,7 @@ PrefabInstance:
     - target: {fileID: 5067589323426671869, guid: 727aae44afeb2784da8fc1f97713b9db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 727aae44afeb2784da8fc1f97713b9db, type: 3}
@@ -1313,6 +1313,8 @@ MonoBehaviour:
   worldCanvas: {fileID: 1272091394}
   hintPrefab: {fileID: -2908270912861097672, guid: 8db9f96c3d762344b87bf64018f93fd5,
     type: 3}
+  littleHintOffset: {x: -0.3, y: 0.3}
+  littleHintScale: {x: 0.75, y: 0.75}
   textPrefab: {fileID: 8328806947217929859, guid: 42e453e55383c174cb2a6005e1d75d51,
     type: 3}
   stackSpacing: {x: 0, y: 0.2}
@@ -2057,6 +2059,9 @@ MonoBehaviour:
   - Handling
   - Mining
   - Sorcery
+  startingItems:
+  - id: meat
+    Count: 10
   inventoryManager: {fileID: 1237000433}
   interacting: 0
   xpInterval: 3
@@ -2105,6 +2110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 100
   current: 100
+  baseArmor: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -2477,6 +2483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Terrestrial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714199258889404838, guid: 9fd1ce7653163d74cb954fcbe8f6e014,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1714199258889404889, guid: 9fd1ce7653163d74cb954fcbe8f6e014,
         type: 3}

@@ -144,6 +144,18 @@ buffDuration float
 buffType string
 debuff
 
+tortoise_egg
+1012
+Consumable
+Testing/antimony
+0
+0
+1
+properties
+1
+summonPrefab string
+Enemies/BabyTortoise
+
 eagle_egg
 1020
 Consumable
@@ -155,3 +167,11 @@ properties
 1
 summonPrefab string
 Enemies/Eaglet
+
+cooked_meat
+1100
+Consumable
+Testing/wheat
+45
+0
+10

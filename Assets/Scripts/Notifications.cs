@@ -31,12 +31,18 @@ namespace Itch {
             return CreateHint(position, 0);
         }
 
+        public static ProgressHint CreateHelperHint(Vector2 position) {
+            return instance._ConvertToHelper(CreateHint(position));
+        }
+
         public static ProgressHint CreateHint(Vector2 position, float progress) {
             return instance._CreateHint(position, progress);
         }
 
         public Canvas worldCanvas;
         public ProgressHint hintPrefab;
+        public Vector2 littleHintOffset;
+        public Vector2 littleHintScale;
         public Text textPrefab;
         public Vector2 stackSpacing;
         public Color errorColor;
@@ -91,6 +97,12 @@ namespace Itch {
             hint.under.sprite = sprite;
             hint.main.sprite = sprite;
             hint.cornerText.text = text;
+            return hint;
+        }
+
+        private ProgressHint _ConvertToHelper(ProgressHint hint) {
+            hint.transform.position = (Vector2)hint.transform.position + littleHintOffset;
+            hint.transform.localScale = littleHintScale;
             return hint;
         }
 

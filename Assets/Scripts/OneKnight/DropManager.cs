@@ -28,8 +28,6 @@ namespace OneKnight {
         private Drop guaranteed;
         [SerializeField]
         private List<Info> rollFrom;
-
-        public bool Rolled { get; private set; }
         //these methods erase the random amounts in the original drop
         /*
         public void AddGuaranteedItem(InventoryItem i) {
@@ -45,13 +43,9 @@ namespace OneKnight {
             guaranteed = new Drop(items);
         } */
 
-
-       public void Reset() {
-            Rolled = false;
-        }
+            
 
         public IEnumerable<InventoryItem> RollDrops() {
-            Rolled = true;
             if(guaranteed != null && guaranteed.Weight > 0) {
                 foreach(InventoryItem i in guaranteed.Generate()) {
                     yield return i;

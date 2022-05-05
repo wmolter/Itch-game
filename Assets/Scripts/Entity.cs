@@ -24,6 +24,7 @@ namespace Itch {
                 for(i = Planes.CurrentPlane.allTerrainData.Length-1; i >= 0 && Planes.CurrentPlane.allTerrainData[i].tile != tile; i--) {
 
                 }
+                //Debug.Log(gameObject.name + " current tile type: " + i);
                 return i;
             }
         }

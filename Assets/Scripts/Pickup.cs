@@ -9,14 +9,29 @@ namespace Itch {
         public int interactionPrio;
         public int Priority { get { return interactionPrio; } }
         public DropManager generator;
-        public bool Generated { get { return generator.Rolled; } }
+        public bool Generated { get; private set; }
         public bool DestroyOnDeplete = false;
+        public bool useLocks = true;
+        private List<object> locks;
+        private List<object> Locks { get {
+                if(locks == null)
+                    locks = new List<object>();
+                return locks;
+            } }
+
+        [Header("strings")]
+        public string noLootError = "No loot this time.";
 
         private List<InventoryItem> remaining;
         // Use this for initialization
 
+        private void Awake() {
+            remaining = new List<InventoryItem>();
+        }
+
         private void OnEnable() {
             GetComponent<Interactable>().AddInteraction(this);
+            TryRoll();
         }
 
         private void OnDisable() {
@@ -28,9 +43,28 @@ namespace Itch {
             }
         }
 
+        public void AddLock(object o) {
+            if(!Locks.Contains(o))
+                Locks.Add(o);
+        }
+
+        public void RemoveLock(object o) {
+            Locks.Remove(o);
+        }
+
+        private void TryRoll() {
+            if(generator != null && !Generated)
+                AddItems(Roll());
+            CheckDisableDestroy();
+        }
+
+        private IEnumerable<InventoryItem> Roll() {
+            Generated = true;
+            return generator.RollDrops();
+        }
+
         public void ResetRoll() {
-            if(generator!=null)
-                generator.Reset();
+            Generated = false;
         }
 
         public void AddItems(IEnumerable<InventoryItem> newItems) {
@@ -56,8 +90,11 @@ namespace Itch {
         public bool Interact(PlayerManager player) {
             bool result = false;
             if(generator != null && !Generated) {
-                remaining = player.GiveItems(generator.RollDrops());
-                result = true;
+                AddItems(player.GiveItems(Roll(), out int count));
+                //if no items were dropped, act like this ~never happened~
+                result = count > 0;
+                if(count == 0)
+                    Notifications.CreateError(transform.position, noLootError);
             } else {
                 int startCount = remaining.Count;
                 remaining = player.GiveItems(remaining);
@@ -69,13 +106,18 @@ namespace Itch {
             foreach(InventoryItem item in remaining) {
                 Notifications.CreateNotification(transform.position, item.ToString() + " Remaining");
             }
+            CheckDisableDestroy();
+            return result;
+        }
+
+        private void CheckDisableDestroy() {
             if(remaining.Count == 0) {
-                if(DestroyOnDeplete)
+                if(DestroyOnDeplete && !(useLocks && Locks.Count > 0))
                     Destroy(gameObject);
                 else
                     enabled = false;
             }
-            return result;
+
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return false;
+                return Data.useParent && parent.CheckEnd(info);
             }
 
             public override void OnSuspend(BehaviorInfo info) {
@@ -80,6 +80,7 @@ namespace Itch.Behavior {
         public float angleChangeRange = 90;
         public bool continueInDir = true;
         public bool resetMotionOnExit = false;
+        public bool useParent;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

@@ -47,6 +47,7 @@ namespace Itch {
         public TMP_ValueTextDisplay xpReadout;
         public Dictionary<string, int> abilities;
         public string[] skills;
+        public List<InventoryItem> startingItems;
         Inventory inventory;
         public InventoryManagerLight inventoryManager;
 
@@ -59,7 +60,9 @@ namespace Itch {
             SavingUtils.LoadGameData();
             SavingUtils.NewGame("Test");
 
+            baseInvCapacity = baseInvCapacity + startingItems.Count;
             inventory = new Inventory(baseInvCapacity);
+            inventory.AddStackAll(startingItems);
             abilities = new Dictionary<string, int>();
             xpReadout.SetToDisplay(delegate () { return xp; });
             foreach(string skill in skills) {
@@ -211,7 +214,11 @@ namespace Itch {
         }
 
         public void Damage(float amount) {
-            GetComponent<Health>().Damage(amount, GetComponent<Entity>());
+            Damage(amount, false);
+        }
+
+        public void Damage(float amount, bool ignoreArmor) {
+            GetComponent<Health>().Damage(amount, GetComponent<Entity>(), ignoreArmor);
         }
 
 
@@ -303,9 +310,15 @@ namespace Itch {
         }
 
         public List<InventoryItem> GiveItems(IEnumerable<InventoryItem> items) {
+            return GiveItems(items, out int count);
+        }
+
+        public List<InventoryItem> GiveItems(IEnumerable<InventoryItem> items, out int count) {
             List<InventoryItem> remaining = new List<InventoryItem>();
+            count = 0;
             foreach(InventoryItem item in items) {
                 InventoryItem temp = GiveItem(item);
+                count++;
                 if(temp != null) {
                     remaining.Add(temp);
                 }

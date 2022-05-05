@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475cceb831eff61408f870af20d4f431, type: 3}
   m_Name: OnSand
   m_EditorClassIdentifier: 
-  children: []
-  Interruptible: 0
+  children:
+  - {fileID: 11400000, guid: 6d6241569f2f3e84b95a66f012bb1dbf, type: 2}
+  Interruptible: 1
   tile: 1

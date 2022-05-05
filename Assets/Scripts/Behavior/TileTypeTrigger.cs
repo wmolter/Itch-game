@@ -13,7 +13,8 @@ namespace Itch.Behavior {
             }
 
             public override bool Decide(BehaviorInfo info) {
-                return Data.tile == info.main.GetComponent<Entity>().CurrentTileType;
+                Debug.Log("Tile trigger decide called.");
+                return (Data.tile == info.main.GetComponent<Entity>().CurrentTileType) && base.Decide(info);
             }
 
         }

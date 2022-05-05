@@ -2,8 +2,13 @@
 using System.Collections;
 
 namespace Itch {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Movement : MonoBehaviour {
         
+        [System.Serializable]
+        public enum SpriteMode {
+            None, Flip, Rotate
+        }
         public float speed = 5;
         [Range(0, 1)]
         public float speedFactor = 1;
@@ -12,7 +17,7 @@ namespace Itch {
         public bool flyMode;
         public Vector2 motionDir;
         public Vector2 defaultRotation = Vector2.right;
-        public bool rotate;
+        public SpriteMode spriteMode;
 
         public float StuckDuration { get { return Time.time - hitStartTime; } }
         // Use this for initialization
@@ -74,8 +79,16 @@ namespace Itch {
         }
 
         public virtual void UpdateRotation() {
-            if(rotate) {
-                transform.rotation = Quaternion.FromToRotation(defaultRotation, GetComponent<Rigidbody>().velocity);
+            Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+            switch(spriteMode) {
+                case SpriteMode.Rotate:
+                    transform.rotation = Quaternion.FromToRotation(defaultRotation, velocity);
+                    break;
+                case SpriteMode.Flip:
+                    GetComponent<SpriteRenderer>().flipX = Vector2.Dot(velocity, defaultRotation) < 0;
+                    break;
+                case SpriteMode.None:
+                    break;
             }
         }
 

@@ -19,7 +19,8 @@ namespace Itch {
 
         void CheckChangeVisibility() {
             float sqrPlayerDist = Vector2.SqrMagnitude(transform.position - PlayerManager.instance.transform.position);
-            GetComponent<Renderer>().enabled = PlayerManager.instance.SqrSightRange >= sqrPlayerDist;
+            foreach(Renderer r in GetComponentsInChildren<Renderer>())
+                r.enabled = PlayerManager.instance.SqrSightRange >= sqrPlayerDist;
         }
     }
 }

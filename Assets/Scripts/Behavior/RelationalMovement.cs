@@ -22,7 +22,15 @@ namespace Itch.Behavior {
 
             public override bool CheckEnd(BehaviorInfo info) {
                 Debug.Log("info: " + info + " info.main: " + info.main + " behaviorTarget: " + info.main.behaviorTarget + " Data: " + Data);
-                return info.main.behaviorTarget == null || Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position) > Data.endAggroRange*Data.endAggroRange;
+                if(info.main.behaviorTarget == null)
+                    return true;
+                if(Data.colliderMode) {
+                    Collider2D thisCol = info.main.GetComponent<Collider2D>();
+                    Collider2D targetCol = info.main.behaviorTarget.GetComponent<Collider2D>();
+                    return thisCol.Distance(targetCol).distance > Data.endAggroRange;
+                }
+
+                return Vector2.SqrMagnitude(info.main.transform.position-info.main.behaviorTarget.transform.position) > Data.endAggroRange*Data.endAggroRange;
             }
 
             public override void OnSuspend(BehaviorInfo info) {
@@ -33,6 +41,7 @@ namespace Itch.Behavior {
             
         }
         public float endAggroRange;
+        public bool colliderMode;
         
     }
     

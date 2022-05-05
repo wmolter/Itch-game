@@ -57,3 +57,33 @@ slime_gel_blue
 Blue Gel
 Sticky, gooey, and blue, you cleaned this up after a slime.
 .
+
+meat
+Raw Meat
+Animal meat you carved from a carcass.  Some animals might like it.
+.
+
+cooked_meat
+Cooked Meat
+Appetizingly roasted on a fire.
+.
+
+camel_milk
+Camel Milk
+The excretions of a camel udder.  Can you drink it?
+<i>Don't ask where you're storing it.</i>
+
+wolf_pelt
+Wolf Pelt
+Fur and skin taken from a wolf carcass.
+.
+
+eagle_egg
+Eagle Egg
+An egg stolen from a nest.  Use to spawn what's inside!
+.
+
+tortoise_egg
+Tortoise Egg
+A somewhat soft and delicate egg.  Use to spawn what's inside!
+.

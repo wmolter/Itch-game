@@ -22,13 +22,19 @@ namespace Itch {
 
         public float adjustmentRadius;
         public string prefix = "Enemies/";
+        public bool useParent = false;
         List<Entity> spawned;
         // Use this for initialization
         private void Awake() {
             spawned = new List<Entity>();
         }
 
-        void Start() {
+        protected virtual void Start() {
+            Spawn();
+        }
+
+        protected void Spawn() {
+
             switch(mode) {
                 case Mode.Random:
                     foreach(EntitySpawn spawn in spawns) {
@@ -60,13 +66,16 @@ namespace Itch {
                         }
                     }
                     break;
-                
+
             }
         }
 
         void InitEntity(EntitySpawn spawn, Vector2 position) {
-            Entity newEntity = Instantiate(Resources.Load<Entity>("Prefabs/" + prefix + spawn.prefabName), transform);
+            Transform toParent = useParent ? transform.parent: transform;
+            Entity newEntity = Instantiate(Resources.Load<Entity>("Prefabs/" + prefix + spawn.prefabName), toParent);
             newEntity.transform.localPosition = position;
+            if(useParent)
+                newEntity.transform.localPosition += transform.localPosition;
             spawned.Add(newEntity);
             newEntity.home = transform.position;
         }

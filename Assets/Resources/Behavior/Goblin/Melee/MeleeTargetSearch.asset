@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f11549c5fad5b641a1faf68f9bd6e0f, type: 3}
+  m_Name: MeleeTargetSearch
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 62212f054a894c041a5f3526a4fb270a, type: 2}
+  - {fileID: 11400000, guid: 278e7f2008f0d5b499f0b9d9dbefcd44, type: 2}
+  - {fileID: 11400000, guid: d33911f92c78162429f24d0801e277de, type: 2}
+  Interruptible: 1
+  aoe:
+    range: 5
+    searchLayers: []
+    filterOut: 1
+    filterTags:
+    - Harmless

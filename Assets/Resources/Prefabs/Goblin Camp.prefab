@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 6562730127063350435}
   - component: {fileID: -8179644027674591671}
   - component: {fileID: -8900134461900097406}
+  - component: {fileID: -5734095610237618621}
+  - component: {fileID: -8022387348462064085}
+  - component: {fileID: -1424974283607274208}
+  - component: {fileID: 331569533701166248}
   m_Layer: 0
   m_Name: Goblin Camp
   m_TagString: Untagged
@@ -119,7 +123,12 @@ MonoBehaviour:
   spawns:
   - quantity: 3
     prefabName: Goblin
+  mode: 0
   spawnRadius: 3
+  exclusionRadius: 0
+  adjustmentRadius: 0
+  prefix: Enemies/
+  useParent: 0
 --- !u!114 &-8900134461900097406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,3 +141,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
+--- !u!60 &-5734095610237618621
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562730127063350460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.13881823, y: -0.037802666}
+      - {x: -0.4337033, y: -0.19699158}
+      - {x: -0.42955977, y: -0.36032417}
+      - {x: 0.030720234, y: -0.4875694}
+      - {x: 0.445787, y: -0.3881244}
+      - {x: 0.46270812, y: -0.22842464}
+      - {x: 0.13087803, y: -0.02882187}
+--- !u!114 &-8022387348462064085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562730127063350460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1424974283607274208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562730127063350460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 154c40e0ad878124db4e5adc0db44c35, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 200
+--- !u!114 &331569533701166248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562730127063350460}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 1
+  generator: {fileID: 0}
+  DestroyOnDeplete: 0

@@ -91,7 +91,7 @@ namespace OneKnight {
                 Count += 1;
             if(changed.before != null && changed.after == null)
                 Count -= 1;
-            OnChange(this, changed);
+            OnChange?.Invoke(this, changed);
         }
 
         public List<InventoryItem> SetCapacity(int capacity) {

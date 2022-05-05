@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1515168453401609151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223328550813640055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84ec3d15fe1e9845acb3fa4ae55457f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4953535154207156307}
+        m_MethodName: set_armorBonus
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 20
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDisable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4953535154207156307}
+        m_MethodName: set_armorBonus
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7096523889622343219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223328550813640055}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20807009cf5cea746915af51cf34ad02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawns:
+  - quantity: 3
+    prefabName: TortoiseEgg
+  mode: 1
+  spawnRadius: 0
+  exclusionRadius: 0
+  adjustmentRadius: 0.3
+  prefix: 
+  useParent: 1
+  waitTime: 5
+  multiple: 0
+  destroyObject: 0
 --- !u!1001 &7619331979452065195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,6 +96,12 @@ PrefabInstance:
       propertyPath: turnAcceleration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f5418a81b66db54aae020cbac90b2e4,
+        type: 2}
     - target: {fileID: 4973907126764994777, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: durationRange.x
@@ -135,3 +205,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb2c8b2abcb1af46945974dcacac3ba, type: 3}
+--- !u!1 &3223328550813640055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4973907126764994780, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 7619331979452065195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4953535154207156307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5979878797184414216, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 7619331979452065195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223328550813640055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

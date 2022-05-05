@@ -149,8 +149,8 @@ MonoBehaviour:
   selfDamage: 0
   tribeDamage: 0
   collidesWithObjects: 1
-  range: 5
-  damage: 10
+  range: 8
+  damage: 55
   mode: 1
   speedFactor: 4
 --- !u!114 &2745977033210455590
@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!114 &8011939694888502972
 MonoBehaviour:
   m_ObjectHideFlags: 0
