@@ -3,8 +3,8 @@ using System.Collections;
 using OneKnight;
 
 namespace Itch.Behavior {
-    public abstract class Attack : BehaviorNode {
-        protected new abstract class Act : ActiveNode {
+    public abstract class Attack : Moving {
+        protected new abstract class Act : Moving.Act {
             private Attack Data { get { return (Attack)data; } }
             public Act(Attack data, ActiveNode parent, int index) : base(data, parent, index) {
 
@@ -28,14 +28,7 @@ namespace Itch.Behavior {
             }
 
             public virtual bool EnemyInRange() {
-                if(info.main.behaviorTarget == null)
-                    return false;
-                Health hp = info.main.behaviorTarget.GetComponent<Health>();
-                if(hp == null || !hp.enabled || !hp.Alive)
-                    return false;
-                ColliderDistance2D dist = info.main.GetComponent<Collider2D>().Distance(info.main.behaviorTarget.GetComponent<Collider2D>());
-                //Debug.Log("Enemy in Range called: " + info.main.behaviorTarget + " and distance: " + dist.distance);
-                return dist.distance < Data.range;//Physics2D.OverlapCircle(info.move.transform.position, Data.fireRange, LayerMask.GetMask(info.main.enemyLayers.ToArray())) != null;
+                return Data.targetInfo.ValidTarget(info);
             }
 
             public bool CanAttack() {
@@ -52,7 +45,7 @@ namespace Itch.Behavior {
                     Attack();
                     preparing = false;
                     nextAttackTime = Time.time + Data.cooldown;
-                    info.move.speedFactor = 1;
+                    info.move.speedFactor = Data.speedFactor;
                 }
             }
 
@@ -65,7 +58,7 @@ namespace Itch.Behavior {
 
         public float attackTime;
         public float cooldown;
-        public float range = 5;
+        public TargetedHandler targetInfo;
         [Range(0, 1)]
         public float speedDuringAttack;
         public bool returnOnCooldown = true;

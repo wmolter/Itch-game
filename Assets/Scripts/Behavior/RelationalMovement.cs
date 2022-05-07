@@ -2,8 +2,8 @@
 using System.Collections;
 
 namespace Itch.Behavior {
-    public abstract class RelationalMovement : BehaviorNode {
-        protected new abstract class Act : ActiveNode {
+    public abstract class RelationalMovement : Moving {
+        protected new abstract class Act : Moving.Act {
             private RelationalMovement Data { get { return (RelationalMovement)data; } }
             public Act(RelationalMovement data, ActiveNode parent, int index) : base(data, parent, index) {
 
@@ -31,10 +31,6 @@ namespace Itch.Behavior {
                 }
 
                 return Vector2.SqrMagnitude(info.main.transform.position-info.main.behaviorTarget.transform.position) > Data.endAggroRange*Data.endAggroRange;
-            }
-
-            public override void OnSuspend(BehaviorInfo info) {
-                info.move.motionDir = Vector2.zero;
             }
 
             public abstract Vector2 MoveDirection(BehaviorInfo info, Transform relation);

@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Heal Self")]
-    public class HealSelf : BehaviorNode {
-        protected new class Act : ActiveNode {
+    public class HealSelf : Moving {
+        protected new class Act : Moving.Act {
             private HealSelf Data { get { return (HealSelf)data; } }
             private Health health { get { return info.main.GetComponent<Health>(); } }
             public Act(HealSelf data, ActiveNode parent, int index) : base(data, parent, index) {

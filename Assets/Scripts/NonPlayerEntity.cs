@@ -6,15 +6,16 @@ namespace Itch {
     public class NonPlayerEntity : MonoBehaviour {
 
         private void Awake() {
+            GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         }
         // Use this for initialization
         void Start() {
-            CheckChangeVisibility();
+            //CheckChangeVisibility();
         }
 
         // Update is called once per frame
         void Update() {
-            CheckChangeVisibility();
+            //CheckChangeVisibility();
         }
 
         void CheckChangeVisibility() {

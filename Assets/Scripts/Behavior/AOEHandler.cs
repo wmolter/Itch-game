@@ -7,17 +7,21 @@ namespace Itch.Behavior {
     public class AOEHandler {
         public float range;
         public List<string> searchLayers;
+        public bool requireLiving = true;
         public bool filterOut = true;
         public List<string> filterTags;
+        public List<string> filterSorting;
 
         public AOEHandler() {
 
         }
 
         public AOEHandler(AOEHandler data) {
+            requireLiving = data.requireLiving;
             searchLayers = data.searchLayers;
             filterOut = data.filterOut;
             filterTags = data.filterTags;
+            filterSorting = data.filterSorting;
             range = data.range;
         }
 
@@ -50,6 +54,8 @@ namespace Itch.Behavior {
 
         public virtual bool Filter(Collider2D hit, BehaviorInfo info) {
             bool result = filterTags.Contains(hit.gameObject.tag) ^ filterOut;
+            result &= filterSorting.Contains(hit.GetComponent<SpriteRenderer>().sortingLayerName) ^ filterOut;
+            result &= !requireLiving || Health.Living(hit);
             return result && hit.gameObject != info.main.gameObject;
         }
     }

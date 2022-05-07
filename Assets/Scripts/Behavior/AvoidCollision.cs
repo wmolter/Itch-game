@@ -3,9 +3,9 @@ using System.Collections;
 using OneKnight;
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Avoid Collision")]
-    public class AvoidCollision : BehaviorNode {
+    public class AvoidCollision : Moving {
 
-        protected new class Act : ActiveNode {
+        protected new class Act : Moving.Act {
             private AvoidCollision Data { get { return (AvoidCollision)data; } }
             public Act(AvoidCollision data, ActiveNode parent, int index) : base(data, parent, index) {
 
@@ -22,6 +22,7 @@ namespace Itch.Behavior {
             }
 
             public override void OnResume(BehaviorInfo info) {
+                base.OnResume(info);
                 info.move.motionDir = motionDir;
             }
 
@@ -36,10 +37,7 @@ namespace Itch.Behavior {
             public override bool CheckEnd(BehaviorInfo info) {
                 return Time.time > startTime + Data.evadeDuration;
             }
-
-            public override void OnSuspend(BehaviorInfo info) {
-                info.move.motionDir = Vector2.zero;
-            }
+            
         }
 
 

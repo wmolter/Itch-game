@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: -8179644027674591671, guid: 69301cd1387dc7b4ba4446d98b1932f6,
         type: 3}
       propertyPath: spawns.Array.data[1].prefabName
-      value: Ranged Goblin
+      value: Goblin Crossbower
       objectReference: {fileID: 0}
     - target: {fileID: -8179644027674591671, guid: 69301cd1387dc7b4ba4446d98b1932f6,
         type: 3}
@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: -8179644027674591671, guid: 69301cd1387dc7b4ba4446d98b1932f6,
         type: 3}
       propertyPath: spawns.Array.data[2].prefabName
-      value: Mage Goblin
+      value: Goblin Mage
       objectReference: {fileID: 0}
     - target: {fileID: -8179644027674591671, guid: 69301cd1387dc7b4ba4446d98b1932f6,
         type: 3}

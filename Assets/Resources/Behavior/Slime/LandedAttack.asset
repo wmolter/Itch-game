@@ -32,3 +32,5 @@ MonoBehaviour:
     - Tribe3
     filterOut: 1
     filterTags: []
+    filterSorting:
+    - Above

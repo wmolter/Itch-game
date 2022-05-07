@@ -25,5 +25,6 @@ namespace Itch {
 
         [Header("strings")]
         public string alreadyHarvested = "No resources left.";
+        public string noDrop = "Harvesting failed.";
     }
 }

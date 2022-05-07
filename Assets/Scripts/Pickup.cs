@@ -68,9 +68,15 @@ namespace Itch {
         }
 
         public void AddItems(IEnumerable<InventoryItem> newItems) {
+            AddItems(newItems, out int count);
+        }
+
+        public void AddItems(IEnumerable<InventoryItem> newItems, out int count) {
             if(remaining == null)
                 remaining = new List<InventoryItem>();
+            count = remaining.Count;
             remaining.AddRange(newItems);
+            count = remaining.Count - count;
             InventoryItem.CompressList(remaining, false);
         }
 

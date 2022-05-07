@@ -15,6 +15,7 @@ MonoBehaviour:
   children:
   - {fileID: 11400000, guid: 3f2168b7d14e6684d8bf2b0815050194, type: 2}
   Interruptible: 1
+  checkChildrenForEnd: 0
   packRange: 8
   numberNeeded: 3
   leaderActivityIndex: -1

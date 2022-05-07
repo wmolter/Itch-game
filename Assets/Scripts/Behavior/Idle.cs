@@ -3,15 +3,16 @@ using System.Collections;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Idle")]
-    public class Idle : BehaviorNode {
+    public class Idle : Moving {
 
-        protected new class Act : ActiveNode {
+        protected new class Act : Moving.Act {
             private Idle Data { get { return (Idle)data; } }
             public Act(Idle data, ActiveNode parent, int index) : base(data, parent, index) {
 
             }
 
             float nextChangeTime = 0;
+            Vector2 chosenDir;
 
             public override bool Decide(BehaviorInfo info) {
                 return true;
@@ -22,8 +23,9 @@ namespace Itch.Behavior {
                 ChangeDir(info.move);
             }
             public override void OnResume(BehaviorInfo info) {
-                info.move.speedFactor = Data.speedFactor;
+                base.OnResume(info);
                 if(Data.continueInDir) {
+                    info.move.motionDir = chosenDir;
                     UpdateChangeTime();
                 } else {
                     nextChangeTime = Time.time;
@@ -45,6 +47,7 @@ namespace Itch.Behavior {
 
                     m.motionDir = newDir;
                 }
+                chosenDir = m.motionDir;
             }
 
             public override void DoBehavior(BehaviorInfo info) {
@@ -62,24 +65,16 @@ namespace Itch.Behavior {
                 return Data.useParent && parent.CheckEnd(info);
             }
 
-            public override void OnSuspend(BehaviorInfo info) {
-                if(Data.resetMotionOnExit)
-                    info.move.motionDir = Vector2.zero;
-                info.move.speedFactor = 1;
-            }
-
             public override void OnFinish(BehaviorInfo info) {
                 nextChangeTime = Time.time;
             }
         }
 
+        [Range(0, 1)]
         public float standstillChance = .5f;
         public Vector2 durationRange = new Vector2(2, 5);
-        [Range(0.01f, 1)]
-        public float speedFactor = 1;
         public float angleChangeRange = 90;
         public bool continueInDir = true;
-        public bool resetMotionOnExit = false;
         public bool useParent;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {

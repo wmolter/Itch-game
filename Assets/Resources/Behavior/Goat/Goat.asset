@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81a0b002db4aa84d9688654a0f9184f, type: 3}
+  m_Name: Goat
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 8ee3081004c55e94b92e851e9b6bc0b5, type: 2}
+  - {fileID: 11400000, guid: 5e16f7673ab81c04d95a33002e0d6083, type: 2}
+  - {fileID: 11400000, guid: 9cf76dd0c502e4241834a4f7d581941c, type: 2}
+  Interruptible: 0
+  speedFactor: 0.502
+  resetMotionOnExit: 0
+  standstillChance: 0.5
+  durationRange: {x: 2, y: 5}
+  angleChangeRange: 90
+  continueInDir: 1
+  useParent: 0

@@ -4,7 +4,7 @@ using OneKnight;
 
 namespace Itch.Behavior {
     [System.Serializable]
-    public struct BehaviorInfo {
+    public class BehaviorInfo {
         public Enemy main;
         public Movement move;
     }
@@ -18,6 +18,22 @@ namespace Itch.Behavior {
         protected override void Awake() {
             base.Awake();
             activeRoot.Init(info);
+        }
+
+        public void ValidateInfo() {
+            Movement[] moves = GetComponents<Movement>();
+            int i = 0;
+            while(i < moves.Length-1 && moves[i].enabled == false) {
+                i++;
+                info.move = moves[i];
+            }
+            //i don't know why there would be more than one of these, but hey, i added another movement, so who knows....
+            Enemy[] es = GetComponents<Enemy>();
+            i = 0;
+            while(i < es.Length-1 && es[i].enabled == false) {
+                i++;
+                info.main = es[i];
+            }
         }
     }
 }

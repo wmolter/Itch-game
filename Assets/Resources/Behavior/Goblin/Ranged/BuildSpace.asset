@@ -16,6 +16,6 @@ MonoBehaviour:
   Interruptible: 1
   moveAngle: 180
   minRange: 0
-  maxRange: 5
+  maxRange: 3
   resetSpeedOnExit: 0
   colliderMode: 0

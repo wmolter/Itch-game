@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Return Home")]
-    public class ReturnHome : BehaviorNode {
-        protected new class Act : ActiveNode {
+    public class ReturnHome : Moving {
+        protected new class Act : Moving.Act {
             private ReturnHome Data { get { return (ReturnHome)data; } }
             public Act(ReturnHome data, ActiveNode parent, int index) : base(data, parent, index) {
 

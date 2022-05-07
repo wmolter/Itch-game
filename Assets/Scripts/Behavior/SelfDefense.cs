@@ -3,15 +3,15 @@ using System.Collections;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Self Defense")]
-    public class SelfDefense: BehaviorNode {
-        protected new class Act : ActiveNode {
+    public class SelfDefense: Selector {
+        protected new class Act : Selector.Act {
             private SelfDefense Data { get { return (SelfDefense)data; } }
             public Act(SelfDefense data, ActiveNode parent, int index) : base(data, parent, index) {
 
             }
             Entity angryAt;
             public override bool Decide(BehaviorInfo info) {
-                return angryAt != null;
+                return angryAt != null && base.Decide(info);
             }
 
             public override void OnInit(BehaviorInfo info) {
@@ -23,17 +23,13 @@ namespace Itch.Behavior {
                 info.main.enemyLayers.Add(LayerMask.LayerToName(angryAt.gameObject.layer));
             }
 
-            public override void DoBehavior(BehaviorInfo info) {
-
-            }
-
-            public override bool CheckEnd(BehaviorInfo info) {
-                return true;
-            }
-
             public override void OnFinish(BehaviorInfo info) {
                 info.main.enemyLayers.Remove(LayerMask.LayerToName(angryAt.gameObject.layer));
                 angryAt = null;
+            }
+
+            public override bool CheckEnd(BehaviorInfo info) {
+                return base.CheckEnd(info) || info.main.TargetDeadOrGone() || info.main.GetComponent<Health>().CurrentPercentage >= Data.endPercentage;
             }
 
             private void NoticeAttack(Health.EventData data) {
@@ -53,7 +49,9 @@ namespace Itch.Behavior {
         //at 1, any damage will trigger this
         [Range(0, 1)]
         public float percentageThreshold = 1;
-        
+
+        [Range(0, 1.01f)]
+        public float endPercentage = 1;
 
     }
 }

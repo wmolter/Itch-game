@@ -258,7 +258,7 @@ MonoBehaviour:
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 54509a7627f77904cb8faca77d377b2d, type: 2}
-    objectChance: 0.01
+    objectChance: 0.02
     spawns:
     - weight: 1
       type: Redore
@@ -274,10 +274,12 @@ MonoBehaviour:
       type: Camel Spawner
     - weight: 0.1
       type: Obelisk
-    - weight: 3
+    - weight: 0.5
       type: Caravan Spawner
-    - weight: 5
+    - weight: 0.5
       type: Oasis
+    - weight: 40
+      type: Brush
     effect: {fileID: 229973358}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: b3a852511d725de45981faa185d4554a, type: 2}
@@ -303,6 +305,8 @@ MonoBehaviour:
       type: Enemies/Eagle
     - weight: 30
       type: Boulder
+    - weight: 0.2
+      type: Nest
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 357486dc5d4bbd94da6a046a62f99ed0, type: 2}
@@ -362,3 +366,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percentage: 0.75
   id: 100
+  property: Movement

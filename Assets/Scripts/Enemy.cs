@@ -15,6 +15,16 @@ namespace Itch {
                 return GetComponent<Entity>().home;
             }
         }
+
+        public bool TargetGone() {
+            return behaviorTarget == null || !behaviorTarget.gameObject.activeSelf;
+        }
+
+        public bool TargetDeadOrGone() {
+            if(TargetGone())
+                return true;
+            return !Health.Living(behaviorTarget);
+        }
         // Use this for initialization
         void Start() {
 

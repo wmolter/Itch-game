@@ -4,7 +4,12 @@ using UnityEngine.Events;
 
 namespace Itch {
     public class Health : MonoBehaviour {
-
+        public static bool Living(Component part) {
+            Health targetHealth = part.GetComponent<Health>();
+            if(targetHealth == null || targetHealth.enabled == false)
+                return false;
+            return targetHealth.Alive;
+        }
         public struct EventData {
             public float current;
             public float percentage;

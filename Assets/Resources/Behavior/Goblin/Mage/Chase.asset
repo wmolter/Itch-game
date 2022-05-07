@@ -15,7 +15,7 @@ MonoBehaviour:
   children: []
   Interruptible: 1
   moveAngle: 0
-  minRange: 4
+  minRange: 5
   maxRange: 8
   resetSpeedOnExit: 0
   colliderMode: 1

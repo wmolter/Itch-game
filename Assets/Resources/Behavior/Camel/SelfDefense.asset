@@ -15,5 +15,7 @@ MonoBehaviour:
   children:
   - {fileID: 11400000, guid: 1bebc7918bc406e4882c610db42b9330, type: 2}
   Interruptible: 1
+  checkChildrenForEnd: 1
   noticeRange: 5
   percentageThreshold: 1
+  endPercentage: 1

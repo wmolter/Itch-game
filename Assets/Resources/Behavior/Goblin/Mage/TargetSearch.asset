@@ -18,9 +18,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10e9e0dddd0e71a4a8c2a1be3bfe7be1, type: 2}
   - {fileID: 11400000, guid: e9f9a1d8c95f1b546b4619b459d0ad30, type: 2}
   Interruptible: 1
+  checkChildrenForEnd: 1
   aoe:
     range: 5
     searchLayers: []
     filterOut: 1
     filterTags:
     - Harmless
+    filterSorting: []

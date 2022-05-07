@@ -32,10 +32,6 @@ namespace Itch.Behavior {
 
             }
 
-            public override bool CheckEnd(BehaviorInfo info) {
-                return true;
-            }
-
             public override void OnFinish(BehaviorInfo info) {
                 info.main.behaviorTarget = null;
                 candidate = null;

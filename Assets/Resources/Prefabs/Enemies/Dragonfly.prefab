@@ -61,6 +61,22 @@ PrefabInstance:
       propertyPath: spriteMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: defaultRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: defaultRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: e74e1d87a2ba3924096eabe331104220,
+        type: 2}
     - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: children.Array.size

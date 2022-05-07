@@ -4,8 +4,8 @@ using OneKnight;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Move with Target")]
-    public class MoveWithTarget : BehaviorNode {
-        protected new class Act : ActiveNode {
+    public class MoveWithTarget : Moving {
+        protected new class Act : Moving.Act {
             private MoveWithTarget Data { get { return (MoveWithTarget)data; } }
             public Act(MoveWithTarget data, ActiveNode parent, int index) : base(data, parent, index) {
 
@@ -19,36 +19,18 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                Debug.Log("info: " + info + " info.main: " + info.main + " behaviorTarget: " + info.main.behaviorTarget + " Data: " + Data);
-                if(info.main.behaviorTarget == null)
-                    return true;
-                float sqr;
-                if(Data.colliderMode) {
-                    Collider2D thisCol = info.main.GetComponent<Collider2D>();
-                    Collider2D targetCol = info.main.behaviorTarget.GetComponent<Collider2D>();
-                    float dist = thisCol.Distance(targetCol).distance;
-                    sqr =  dist*dist;
-                } else {
-                    sqr = Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position);
-                }
-                return sqr > Data.maxRange*Data.maxRange || sqr < Data.minRange*Data.minRange;
-            }
-
-            public override void OnSuspend(BehaviorInfo info) {
-                if(Data.resetSpeedOnExit)
-                    info.move.motionDir = Vector2.zero;
+                return Data.targetInfo.ValidTarget(info);
             }
 
             public Vector2 MoveDirection(BehaviorInfo info, Transform relation) {
                 return Utils.Rotate(relation.position - info.main.transform.position, Data.moveAngle*Mathf.PI/180).normalized;
             }
         }
+        
 
+        public TargetedHandler targetInfo;
         [Range(-180, 180)]
         public float moveAngle = 0;
-        public float minRange, maxRange;
-        public bool resetSpeedOnExit;
-        public bool colliderMode;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

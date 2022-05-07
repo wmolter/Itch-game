@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdb00de4d7610942a2879a01bf66c59, type: 3}
+  m_Name: CriticalDefense
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 4f8cd1244ade0044a8ef8c5ef273eda3, type: 2}
+  - {fileID: 11400000, guid: 39b24c9bb6ee5d743b1dc2a8bdef6ee1, type: 2}
+  - {fileID: 11400000, guid: d33911f92c78162429f24d0801e277de, type: 2}
+  Interruptible: 1
+  checkChildrenForEnd: 1
+  noticeRange: 10
+  percentageThreshold: 0.5
+  endPercentage: 0.803

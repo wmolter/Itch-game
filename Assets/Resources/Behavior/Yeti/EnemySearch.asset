@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   children:
   - {fileID: 11400000, guid: 94b93a3fb9dcbda40996713e2bc9d0bd, type: 2}
-  Interruptible: 0
+  Interruptible: 1
+  checkChildrenForEnd: 1
   aoe:
     range: 6
     searchLayers: []
+    requireLiving: 1
     filterOut: 1
     filterTags:
     - Harmless
+    filterSorting: []

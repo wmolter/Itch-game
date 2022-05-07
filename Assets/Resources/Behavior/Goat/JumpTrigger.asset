@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bed8d2af9877843b4c8c426cccd645, type: 3}
+  m_Name: JumpTrigger
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 8a5d43f017c75d8458de9adeb94e24cb, type: 2}
+  Interruptible: 1
+  checkChildrenForEnd: 0
+  checkInterval: 1
+  chance: 0.207
+  checkFirstTime: 1

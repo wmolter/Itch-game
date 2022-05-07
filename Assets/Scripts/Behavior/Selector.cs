@@ -32,13 +32,15 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return true;
+                return !Data.checkChildrenForEnd || !HasWillingChild(info);
             }
 
             public override void OnFinish(BehaviorInfo info) {
 
             }
         }
+
+        public bool checkChildrenForEnd;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

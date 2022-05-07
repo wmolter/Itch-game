@@ -122,7 +122,7 @@ namespace Itch {
 
         void CraftFinished(PlayerManager player) {
 
-            player.GiveXP(gatherXP);
+            player.GiveXP(d.gatherXP);
             remainingQuantity -= 1;
             if(Gathered) {
                 if(unlockedComponent != null)
@@ -137,8 +137,12 @@ namespace Itch {
                 GetComponent<Pickup>().RemoveLock(this);
             }
             if(oneHarvestTable != null) {
-                GetComponent<Pickup>().AddItems(oneHarvestTable.RollDrops());
+                GetComponent<Pickup>().AddItems(oneHarvestTable.RollDrops(), out int count);
+                if(count == 0) {
+                    Notifications.CreateError(transform.position, d.noDrop);
+                }
                 GetComponent<Pickup>().enabled = true;
+                //still call if count is zero so it destroys if it's supposed to
                 GetComponent<Pickup>().Interact(player);
             }
 
