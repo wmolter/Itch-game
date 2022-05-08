@@ -41,7 +41,7 @@ namespace Itch.Behavior {
             } else {
                 sqr = Vector2.SqrMagnitude(info.main.behaviorTarget.transform.position - info.main.transform.position);
             }
-            return sqr <= maxRange*maxRange || sqr >= minRange*minRange;
+            return sqr <= maxRange*maxRange && sqr >= minRange*minRange;
         }
     }
 }

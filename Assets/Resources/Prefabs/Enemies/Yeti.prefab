@@ -27,6 +27,12 @@ PrefabInstance:
       propertyPath: acceleration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4934853978372852617, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 11400000, guid: 0caab1d6a0a88604db43b96a56561628,
+        type: 2}
     - target: {fileID: 4973907126764994776, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: children.Array.size

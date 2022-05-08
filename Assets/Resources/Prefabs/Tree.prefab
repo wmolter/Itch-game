@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7541194427098026508}
   - component: {fileID: -4154305162895740436}
   - component: {fileID: -3919944587143709071}
+  - component: {fileID: 8865275802260705907}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Sturdy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!60 &-3919944587143709071
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -129,3 +132,32 @@ PolygonCollider2D:
       - {x: 0.59375, y: -0.39999998}
       - {x: 0.65625, y: -0.30624998}
       - {x: 0.6875, y: -0.14999998}
+--- !u!114 &8865275802260705907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 200
+  current: 200
+  baseArmor: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3963167477931200616}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

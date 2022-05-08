@@ -8,6 +8,7 @@ TagManager:
   - Harmless
   - Predator
   - Debug
+  - Sturdy
   layers:
   - Default
   - TransparentFX

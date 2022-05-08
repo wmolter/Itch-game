@@ -26,7 +26,7 @@ namespace Itch.Behavior {
                     nextCheckTime = Time.time + Data.checkInterval - ((Time.time - nextCheckTime) % Data.checkInterval);
                 bool result = Random.value < Data.chance && base.Decide(info);
                 decision = result;
-                Debug.Log("Random trigger decide called, result: " + result + " next check time: " + nextCheckTime + " Time: " + Time.time);
+                //Debug.Log("Random trigger decide called, result: " + result + " next check time: " + nextCheckTime + " Time: " + Time.time);
                 return result;
             }
 

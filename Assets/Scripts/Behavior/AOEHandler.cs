@@ -56,6 +56,7 @@ namespace Itch.Behavior {
             bool result = filterTags.Contains(hit.gameObject.tag) ^ filterOut;
             result &= filterSorting.Contains(hit.GetComponent<SpriteRenderer>().sortingLayerName) ^ filterOut;
             result &= !requireLiving || Health.Living(hit);
+            Debug.Log("Filtering aoe target: " + hit.gameObject.name + " with result: " + result + " for object " + info.main.gameObject.name);
             return result && hit.gameObject != info.main.gameObject;
         }
     }

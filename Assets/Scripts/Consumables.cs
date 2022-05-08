@@ -8,6 +8,7 @@ namespace Itch {
         public const string BuffName = "buffName";
         public const string BuffStrength = "buffStrength";
         public const string BuffDuration = "buffDuration";
+        public const string SummonPrefab = "summonPrefab";
         
         public static InventoryItem Use(InventoryItem consumable) {
             PlayerManager p = PlayerManager.instance;
@@ -21,6 +22,9 @@ namespace Itch {
                 float strength = consumable.GetBaseProperty<float>(BuffStrength);
                 float duration = consumable.GetBaseProperty<float>(BuffDuration);
                 p.GiveBuff(name, strength, duration);
+            }
+            if(consumable.HasProperty(SummonPrefab)) {
+                Planes.CurrentPlane.SpawnObject(consumable.GetBaseProperty<string>(SummonPrefab), p.transform.position);
             }
             return consumable.RemoveOne();
         }

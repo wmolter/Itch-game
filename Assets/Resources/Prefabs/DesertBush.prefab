@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5182412703815347439}
   - component: {fileID: 8638435780096397103}
   - component: {fileID: -7834161648331520972}
+  - component: {fileID: -3289526111043037570}
   m_Layer: 0
   m_Name: DesertBush
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 0
+  data: {fileID: 0}
   checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 10
@@ -184,3 +186,34 @@ MonoBehaviour:
   interactionPrio: 1
   generator: {fileID: 11400000, guid: 5bf6e7d15a64d9d4dbe20ee5e4c3493e, type: 2}
   DestroyOnDeplete: 0
+  useLocks: 1
+  noLootError: No loot this time.
+--- !u!114 &-3289526111043037570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 100
+  current: 100
+  baseArmor: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8329345405712130171}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

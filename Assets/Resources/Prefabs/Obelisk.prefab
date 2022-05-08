@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7541194427098026508}
   - component: {fileID: -4154305162895740436}
   - component: {fileID: -3919944587143709071}
+  - component: {fileID: -7164714013607367399}
+  - component: {fileID: -2020286582743039856}
   m_Layer: 0
   m_Name: Obelisk
   m_TagString: Untagged
@@ -95,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!60 &-3919944587143709071
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -124,3 +128,33 @@ PolygonCollider2D:
       - {x: -0.3788051, y: -0.22500086}
       - {x: 0.10244441, y: -0.43779254}
       - {x: 0.3792292, y: -0.11739862}
+--- !u!114 &-7164714013607367399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2020286582743039856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 1554f519e1413ae40bd43bc3cfa3f631, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0

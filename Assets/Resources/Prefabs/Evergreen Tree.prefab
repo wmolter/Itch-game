@@ -112,6 +112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evergreen Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 3963167477931200616, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sturdy
+      objectReference: {fileID: 0}
     - target: {fileID: 6027587668902137584, guid: c43c091c6eb19a442ab2608740aae4bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,5 +178,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dd5630c9581b4b64bbfe76ef53536e0a,
         type: 3}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 818947148521491063}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Sprite, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1126007046005174892, guid: 6cd31e7dd74d6ff48a6cb4f509cf574c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c43c091c6eb19a442ab2608740aae4bf, type: 3}
+--- !u!212 &818947148521491063 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7541194427098026508, guid: c43c091c6eb19a442ab2608740aae4bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7204290970918328443}
+  m_PrefabAsset: {fileID: 0}

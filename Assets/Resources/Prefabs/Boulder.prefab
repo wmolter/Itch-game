@@ -12,9 +12,13 @@ GameObject:
   - component: {fileID: 7541194427098026508}
   - component: {fileID: -4154305162895740436}
   - component: {fileID: -3919944587143709071}
+  - component: {fileID: -8620059988387511922}
+  - component: {fileID: 2336513603423074414}
+  - component: {fileID: -937888130602118176}
+  - component: {fileID: -11096855824766919}
   m_Layer: 0
   m_Name: Boulder
-  m_TagString: Untagged
+  m_TagString: Sturdy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOffset: 0
+  home: {x: 0, y: 0}
 --- !u!60 &-3919944587143709071
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -129,3 +134,77 @@ PolygonCollider2D:
       - {x: -0.78184193, y: -1.3075476}
       - {x: 0.59375, y: -1.3673564}
       - {x: 1.9311478, y: -1.2726899}
+--- !u!114 &-8620059988387511922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 400
+  current: 400
+  baseArmor: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2336513603423074414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-937888130602118176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 4150e081a62d9e04fad73c61367ca4e3, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0
+--- !u!114 &-11096855824766919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f7b23e2cee2d14582d6d58b93e64d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: 5
+  interactionPrio: 1
+  exitPrefab: {fileID: 0}

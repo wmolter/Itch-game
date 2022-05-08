@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DesertTree
       objectReference: {fileID: 0}
+    - target: {fileID: 3963167477931200616, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sturdy
+      objectReference: {fileID: 0}
     - target: {fileID: 6027587668902137584, guid: c43c091c6eb19a442ab2608740aae4bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,5 +88,51 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 69f5189fb95fdb54991408825be27cb5,
         type: 3}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: max
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: current
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3074771258813357403}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865275802260705907, guid: c43c091c6eb19a442ab2608740aae4bf,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c43c091c6eb19a442ab2608740aae4bf, type: 3}
+--- !u!1 &3074771258813357403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3963167477931200616, guid: c43c091c6eb19a442ab2608740aae4bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2041318076047084851}
+  m_PrefabAsset: {fileID: 0}

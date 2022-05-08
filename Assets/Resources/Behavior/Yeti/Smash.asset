@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08aa8189599f2244ab390b611df7b31d, type: 3}
-  m_Name: LandedAttack
+  m_Name: Smash
   m_EditorClassIdentifier: 
   children: []
   Interruptible: 0
-  speedFactor: 1
+  speedFactor: 0
   resetMotionOnExit: 0
-  attackTime: 0.1
-  cooldown: 0.3
+  attackTime: 3
+  cooldown: 20
   targetInfo:
     minRange: 0
-    maxRange: 0
+    maxRange: 1
     colliderMode: 1
     requireLiving: 1
   speedDuringAttack: 0
   returnOnCooldown: 1
   lockDuringCooldown: 0
-  damage: 30
+  damage: 200
   aoe:
-    range: 0.7
+    range: 2
     searchLayers:
     - Default
     - Neutral
@@ -38,7 +38,6 @@ MonoBehaviour:
     - Tribe3
     requireLiving: 1
     filterOut: 1
-    filterTags:
-    - Sturdy
+    filterTags: []
     filterSorting:
     - Above

@@ -136,7 +136,7 @@ namespace Itch {
             return SpawnObject(objData.type, position);
         }
 
-        Entity SpawnObject(string type, Vector3 position) {
+        public Entity SpawnObject(string type, Vector3 position) {
             Entity newObj = Instantiate(Resources.Load<Entity>("Prefabs/" + type), map.transform);
             newObj.transform.position = position + (Vector3)(Vector2.one*.5f);
             newObj.home = newObj.transform.position;

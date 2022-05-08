@@ -19,7 +19,7 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return Data.targetInfo.ValidTarget(info);
+                return !Data.targetInfo.ValidTarget(info);
             }
 
             public Vector2 MoveDirection(BehaviorInfo info, Transform relation) {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6764086378285484614}
   - component: {fileID: -6964199592220610764}
   - component: {fileID: -1100533218724802879}
+  - component: {fileID: 4463471135479082715}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -179,3 +180,32 @@ MonoBehaviour:
   DestroyOnDeplete: 0
   useLocks: 1
   noLootError: No loot this time.
+--- !u!114 &4463471135479082715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d386193d82d03e443b1da92262154649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 20
+  current: 20
+  baseArmor: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3963167477931200616}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
