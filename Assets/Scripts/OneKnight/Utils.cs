@@ -302,6 +302,20 @@ namespace OneKnight {
             return index;
         }
 
+        public static IEnumerable<Vector2> UniformRadialPositions(int quantity, float radius) {
+            return UniformRadialPositions(quantity, 2*Mathf.PI, radius, radius, 0);
+        }
+
+        public static IEnumerable<Vector2> UniformRadialPositions(int quantity, float totalAngle, float minRadius, float maxRadius, float adjustmentRadius) {
+            for(int i = 0; i < quantity; i++) {
+                float angle = i*totalAngle/quantity;
+                Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+                Vector2 newPos = dir* UnityEngine.Random.Range(minRadius, maxRadius);
+                newPos += UnityEngine.Random.insideUnitCircle*adjustmentRadius;
+                yield return newPos;
+            }
+        }
+
         public static Vector3 FromSpherical(Vector3 sphericalCoord) {
             return FromSpherical(sphericalCoord.x, sphericalCoord.y, sphericalCoord.z);
         }

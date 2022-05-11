@@ -4,6 +4,10 @@ using OneKnight;
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/Avoid Collision")]
     public class AvoidCollision : Moving {
+        [System.Serializable]
+        public enum Mode {
+            Turn, BackCollision, BackMotion
+        }
 
         protected new class Act : Moving.Act {
             private AvoidCollision Data { get { return (AvoidCollision)data; } }
@@ -18,7 +22,24 @@ namespace Itch.Behavior {
             public override void OnStart(BehaviorInfo info) {
                 startTime = Time.time;
                 float angle = Random.Range(Data.angleRange.x, Data.angleRange.y)*Mathf.PI/180;
-                motionDir = Utils.Rotate(-info.move.motionDir, angle);
+                Vector2 chosen;
+                switch(Data.mode) {
+                    case Mode.Turn:
+                        Vector2 left = Utils.Rotate(info.move.collisionDir, Mathf.PI/2);
+                        Vector2 right = Utils.Rotate(info.move.collisionDir, -Mathf.PI/2);
+                        if(Vector2.Dot(info.move.motionDir, left) > 0)
+                            chosen = left;
+                        else
+                            chosen = right;
+                        break;
+                    case Mode.BackCollision:
+                        chosen = info.move.collisionDir;
+                        break;
+                    default:
+                        chosen = -info.move.motionDir;
+                        break;
+                }
+                motionDir = Utils.Rotate(chosen, angle);
             }
 
             public override void OnResume(BehaviorInfo info) {
@@ -44,6 +65,7 @@ namespace Itch.Behavior {
         public Vector2 angleRange;
         public float activateStuckDuration = 1f;
         public float evadeDuration = 1f;
+        public Mode mode = Mode.Turn;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

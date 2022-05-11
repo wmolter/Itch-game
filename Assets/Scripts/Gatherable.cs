@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using OneKnight;
 using OneKnight.Generation;
+using OneKnight.UI;
 
 namespace Itch {
     [RequireComponent(typeof(Interactable))]

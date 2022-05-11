@@ -95,10 +95,12 @@ namespace Itch {
         [SerializeField]
         private float hitStartTime;
         private Collider2D collidingWith;
+        public Vector2 collisionDir;
         
         private void OnCollisionEnter2D(Collision2D collision) {
             if(collidingWith == null) {
                 collidingWith = collision.collider;
+                collisionDir = collision.GetContact(0).normal;
                 hitStartTime = Time.time;
             }
         }

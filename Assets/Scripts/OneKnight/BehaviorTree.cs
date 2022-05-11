@@ -20,6 +20,25 @@ namespace OneKnight {
             current.OnResume(Info);
         }
 
+        public void SetRoot(Node root) {
+            End();
+            current = activeRoot = root.CreateActive(null, 0);
+            OnSetRoot(root);
+            current.OnStart(Info);
+            current.OnResume(Info);
+        }
+
+        protected abstract void OnSetRoot(Node root);
+
+
+        void End() {
+            Node.Act toEnd = current;
+            while(toEnd != null) {
+                toEnd.OnSuspend(Info);
+                toEnd.OnFinish(Info);
+                toEnd = toEnd.parent;
+            }
+        }
         // Update is called once per frame
         void Update() {
             Node.Act interrupt = ChooseInterrupt();

@@ -25,6 +25,11 @@ namespace Itch {
                 return true;
             return !Health.Living(behaviorTarget);
         }
+
+        public void AddEnemyLayer(string layer) {
+            if(!enemyLayers.Contains(layer))
+                enemyLayers.Add(layer);
+        }
         // Use this for initialization
         void Start() {
 

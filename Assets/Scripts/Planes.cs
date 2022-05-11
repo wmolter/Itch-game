@@ -6,6 +6,7 @@ namespace Itch {
 
         static Planes instance;
         public static MapGenerator CurrentPlane { get { return instance.planes[instance.activePlane]; } }
+        public static int CurrentPlaneIndex { get { return instance.activePlane; } }
 
         public static void Activate(int destinationLevel) {
             instance.ActivateInternal(destinationLevel);
@@ -38,8 +39,9 @@ namespace Itch {
                     continue;
                 planes[i].gameObject.SetActive(false);
             }
-            planes[destinationLevel].gameObject.SetActive(true);
+            //needs to be before setActive
             activePlane = destinationLevel;
+            planes[destinationLevel].gameObject.SetActive(true);
         }
     }
 

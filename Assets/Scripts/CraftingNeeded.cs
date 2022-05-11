@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using OneKnight;
+using OneKnight.UI;
 
 namespace Itch {
     [RequireComponent(typeof(SpriteRenderer))]

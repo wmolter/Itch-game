@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using OneKnight;
 using OneKnight.Generation;
+using OneKnight.UI;
 
 namespace Itch {
-    [RequireComponent(typeof(Interactable))]
     public class CraftGather : LevelRequiredAction {
 
         
@@ -29,9 +29,6 @@ namespace Itch {
 
         public DropManager oneHarvestTable { get { return d.oneHarvestTable; } }
 
-        public string buffName { get { return d.buffName; } }
-        public float buffStrength { get { return d.buffStrength; } }
-        public float buffDuration { get { return d.buffDuration; } }
 
         public MonoBehaviour unlockedComponent { get { return (MonoBehaviour)GetComponent(d.unlockedComponentName); } }
         public Sprite finishedSprite { get { return d.finishedSprite; } }
@@ -46,8 +43,10 @@ namespace Itch {
             remainingQuantity = quantity;
             //this must stay in awake so when both are inactive...
             if(oneHarvestTable != null) {
-                GetComponent<Pickup>().AddLock(this);
+                GetComponentInParent<Pickup>().AddLock(this);
             }
+            if(GetComponentInParent<Interactable>() == null)
+                Debug.LogError("CraftGather component has no interactable parent. It will do nothing.");
         }
 
         // Update is called once per frame
@@ -77,10 +76,10 @@ namespace Itch {
 
         IEnumerator Craft(PlayerManager player) {
             gathering = true;
-            ProgressHint hint = Notifications.CreateHint((Vector2)transform.position + hintOffset);
+            ProgressHint hint = Notifications.CreateHint(transform, hintOffset);
             ProgressHint littleHint = null;
             if(gatherSteps > 1) {
-                littleHint = Notifications.CreateHelperHint((Vector2)transform.position + hintOffset);
+                littleHint = Notifications.CreateHelperHint(transform, hintOffset);
             }
             finishTime = Time.time + craftTime;
             while(Time.time < finishTime) {
@@ -134,24 +133,26 @@ namespace Itch {
                     GetComponent<SpriteRenderer>().sprite = finishedSprite;
 
                 //allow this to now be destroyed
-                GetComponent<Pickup>().RemoveLock(this);
+                if(oneHarvestTable != null)
+                    GetComponentInParent<Pickup>()?.RemoveLock(this);
+
+
+                if(d.buff != null) {
+                    d.buff.Apply(player);
+                }
+                //maybe we leave this as an option? but with interaction prio it shouldn't be a problem for enterables
+                if(d.disableOnFinish)
+                    enabled = false;
             }
             if(oneHarvestTable != null) {
-                GetComponent<Pickup>().AddItems(oneHarvestTable.RollDrops(), out int count);
+                GetComponentInParent<Pickup>().AddItems(oneHarvestTable.RollDrops(), out int count);
                 if(count == 0) {
                     Notifications.CreateError(transform.position, d.noDrop);
                 }
-                GetComponent<Pickup>().enabled = true;
+                GetComponentInParent<Pickup>().enabled = true;
                 //still call if count is zero so it destroys if it's supposed to
-                GetComponent<Pickup>().Interact(player);
+                GetComponentInParent<Pickup>().Interact(player);
             }
-
-            if(buffName != "") {
-                player.GiveBuff(buffName, buffStrength, buffDuration, transform.position);
-            }
-            //maybe we leave this as an option? but with interaction prio it shouldn't be a problem for enterables
-            if(d.disableOnFinish)
-                enabled = false;
         }
         private void Start() {
             currentGatherSteps = gatherSteps;

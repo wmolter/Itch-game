@@ -13,9 +13,7 @@ namespace Itch {
 
         public DropManager oneHarvestTable;
 
-        public string buffName = "";
-        public float buffStrength = 1;
-        public float buffDuration = 10;
+        public BuffData buff;
 
         public string unlockedComponentName;
         public Sprite finishedSprite;

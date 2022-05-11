@@ -2,7 +2,6 @@
 using System.Collections;
 
 namespace Itch {
-    [RequireComponent(typeof(Interactable))]
     public abstract class LevelRequiredAction : MonoBehaviour, Interaction {
         public int interactionPrio;
         public int Priority { get { return interactionPrio; } }
@@ -19,12 +18,17 @@ namespace Itch {
         public float levelRequired = 0;
         public int gatherXP = 0;
 
+        protected void Awake() {
+            if(GetComponentInParent<Interactable>() == null)
+                Debug.LogError("LevelRequired component has no interactable parent. It will do nothing.");
+        }
+
         private void OnEnable() {
-            GetComponent<Interactable>().AddInteraction(this);
+            GetComponentInParent<Interactable>().AddInteraction(this);
         }
 
         private void OnDisable() {
-            GetComponent<Interactable>().RemoveInteraction(this);
+            GetComponentInParent<Interactable>()?.RemoveInteraction(this);
         }
 
         public bool Interact(PlayerManager player) {

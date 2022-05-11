@@ -16,6 +16,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59669b23a86a15c44be3512fc6534cbd, type: 2}
   - {fileID: 11400000, guid: fefedd0ef4d8b7b4495630b2f1a23e56, type: 2}
   Interruptible: 0
+  speedFactor: 1
+  resetMotionOnExit: 1
   standstillChance: 0.5
   durationRange: {x: 2, y: 5}
   angleChangeRange: 90
+  continueInDir: 1
+  useParent: 0

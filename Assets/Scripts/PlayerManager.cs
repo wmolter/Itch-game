@@ -41,6 +41,7 @@ namespace Itch {
                 return properties.AdjustProperty("Movement", baseSpeed + speedPerLevel*properties.AdjustProperty("Speed", abilities["Speed"]));
             }
         }
+        public int baseHandlePoints;
         public float interactRadius;
         List<Collider2D> interactingWith;
 
@@ -115,14 +116,23 @@ namespace Itch {
         }
 
         public void MakeLevelChanges(string ability) {
-            if(ability == "Constitution") {
-                float newMax = baseHealth + properties.AdjustProperty(ability, abilities[ability])*healthPerLevel;
-                float change = newMax - GetComponent<Health>().max;
-                GetComponent<Health>().max = newMax;
-                GetComponent<Health>().current = Mathf.Min(newMax, (change < 0 ? 0 : change) + GetComponent<Health>().current);
-            } else if(ability == "Fortitude") {
-                List<InventoryItem> leftover = inventory.SetCapacity((int)(baseInvCapacity + properties.AdjustProperty(ability, abilities[ability])));
-                DropItems(leftover);
+            switch(ability) {
+                case "Constitution":
+                    float newMax = baseHealth + properties.AdjustProperty(ability, abilities[ability])*healthPerLevel;
+                    float change = newMax - GetComponent<Health>().max;
+                    GetComponent<Health>().max = newMax;
+                    GetComponent<Health>().current = Mathf.Min(newMax, (change < 0 ? 0 : change) + GetComponent<Health>().current);
+                    break;
+                case "Fortitude":
+                    List<InventoryItem> leftover = inventory.SetCapacity((int)(baseInvCapacity + properties.AdjustProperty(ability, abilities[ability])));
+                    DropItems(leftover);
+                    break;
+                case "Armor":
+                    GetComponent<Health>().baseArmor = properties.AdjustProperty("Armor", abilities[ability]);
+                    break;
+                case "Handling":
+                    GetComponent<FollowerManager>().SetHandlingCost(baseHandlePoints + Mathf.RoundToInt(properties.AdjustProperty("Handling", abilities[ability])));
+                    break;
             }
         }
 

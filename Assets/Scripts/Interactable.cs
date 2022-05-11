@@ -29,7 +29,7 @@ namespace Itch {
         }
 
         public void RemoveInteraction(Interaction action) {
-            interactions.Remove(action);
+            interactions?.Remove(action);
         }
 
         public bool Interact(PlayerManager player) {

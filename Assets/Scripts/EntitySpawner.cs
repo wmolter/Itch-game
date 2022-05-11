@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using OneKnight;
 
 namespace Itch {
     public class EntitySpawner : MonoBehaviour {
@@ -51,13 +52,7 @@ namespace Itch {
                     int spawnQuantity = 0;
                     foreach(EntitySpawn spawn in spawns)
                         spawnQuantity += spawn.quantity;
-                    for(int i = 0; i < spawnQuantity; i++) {
-                        float angle = i*2*Mathf.PI/spawnQuantity;
-                        Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-                        Vector2 newPos = dir* Random.Range(exclusionRadius, spawnRadius);
-                        newPos += Random.insideUnitCircle*adjustmentRadius;
-                        pos.Add(newPos);
-                    }
+                    pos.AddRange(Utils.UniformRadialPositions(spawnQuantity, Mathf.PI*2, exclusionRadius, spawnRadius, adjustmentRadius));
                     foreach(EntitySpawn spawn in spawns) {
                         for(int i = 0; i < spawn.quantity; i++) {
                             int index = Random.Range(0, pos.Count);
@@ -78,6 +73,8 @@ namespace Itch {
                 newEntity.transform.localPosition += transform.localPosition;
             spawned.Add(newEntity);
             newEntity.home = transform.position;
+            //again, not the best, but should be ok
+            newEntity.homePlane = Planes.CurrentPlaneIndex;
         }
 
         // Update is called once per frame

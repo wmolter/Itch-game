@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using OneKnight.UI;
 
 namespace Itch {
     public class Notifications : MonoBehaviour {
@@ -31,8 +32,20 @@ namespace Itch {
             return CreateHint(position, 0);
         }
 
+        public static ProgressHint CreateHint(Transform follow, Vector2 offset) {
+            return CreateHint(follow, offset, 0);
+        }
+
+        public static ProgressHint CreateHint(Transform follow, Vector2 offset, float progress) {
+            return instance._CreateHint(follow, offset, progress);
+        }
+
         public static ProgressHint CreateHelperHint(Vector2 position) {
             return instance._ConvertToHelper(CreateHint(position));
+        }
+
+        public static ProgressHint CreateHelperHint(Transform follow, Vector2 offset) {
+            return instance._ConvertToHelper(CreateHint(follow, offset));
         }
 
         public static ProgressHint CreateHint(Vector2 position, float progress) {
@@ -100,9 +113,18 @@ namespace Itch {
             return hint;
         }
 
+        public ProgressHint _CreateHint(Transform follow, Vector2 offset, float progress) {
+            ProgressHint result = _CreateHint((Vector2)follow.position + offset, progress);
+            result.GetComponent<Follow2D>().follow = follow;
+            result.GetComponent<Follow2D>().offset = offset;
+            return result;
+        }
+
         private ProgressHint _ConvertToHelper(ProgressHint hint) {
             hint.transform.position = (Vector2)hint.transform.position + littleHintOffset;
             hint.transform.localScale = littleHintScale;
+            if(hint.GetComponent<Follow2D>() != null)
+                hint.GetComponent<Follow2D>().offset += littleHintOffset;
             return hint;
         }
 

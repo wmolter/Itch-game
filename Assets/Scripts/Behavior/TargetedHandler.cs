@@ -20,6 +20,26 @@ namespace Itch.Behavior {
             requireLiving = data.requireLiving;
         }
 
+        public bool WouldBeValid(BehaviorInfo info, Entity target) {
+            return WouldBeEligible(info, target) && WouldBeInRange(info, target);
+        }
+
+        public bool WouldBeEligible(BehaviorInfo info, Entity target) {
+            Entity prevTarget = info.main.behaviorTarget;
+            info.main.behaviorTarget = target;
+            bool result = EligibleTarget(info);
+            info.main.behaviorTarget = prevTarget;
+            return result;
+        }
+
+        public bool WouldBeInRange(BehaviorInfo info, Entity target) {
+            Entity prevTarget = info.main.behaviorTarget;
+            info.main.behaviorTarget = target;
+            bool result = InRange(info);
+            info.main.behaviorTarget = prevTarget;
+            return result;
+        }
+
         public bool ValidTarget(BehaviorInfo info) {
             return EligibleTarget(info) && InRange(info);
         }

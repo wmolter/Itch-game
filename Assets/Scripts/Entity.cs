@@ -9,6 +9,7 @@ namespace Itch {
         public float sortingOffset;
         [HideInInspector]
         public Vector2 home;
+        public int homePlane;
 
 
         public Vector3Int CurrentTile {

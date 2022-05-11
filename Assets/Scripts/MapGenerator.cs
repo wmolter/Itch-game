@@ -140,6 +140,8 @@ namespace Itch {
             Entity newObj = Instantiate(Resources.Load<Entity>("Prefabs/" + type), map.transform);
             newObj.transform.position = position + (Vector3)(Vector2.one*.5f);
             newObj.home = newObj.transform.position;
+            //not great, because a map generator is a plane, and maybe it should know what itself is, and what if we generate things when it's not active? but should be okay for now idk
+            newObj.homePlane = Planes.CurrentPlaneIndex;
             return newObj;
         }
 

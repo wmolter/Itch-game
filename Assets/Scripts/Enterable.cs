@@ -35,6 +35,7 @@ namespace Itch {
                 Enterable newObj = Instantiate<Enterable>(exitPrefab, Planes.CurrentPlane.map.transform);
                 newObj.transform.position = transform.position;
             }
+            player.GetComponent<FollowerManager>().FormUp();
             return true;
         }
     }

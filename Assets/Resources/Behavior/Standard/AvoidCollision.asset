@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea61340d79329940a09d78246b29061, type: 3}
   m_Name: AvoidCollision
   m_EditorClassIdentifier: 
-  children: []
+  children:
+  - {fileID: 11400000, guid: 4decc6eb4cb6f1a469d9c7ae51be715a, type: 2}
   Interruptible: 0
+  speedFactor: 1
+  resetMotionOnExit: 0
   angleRange: {x: -20, y: 20}
   activateStuckDuration: 0.2
   evadeDuration: 1
+  mode: 0

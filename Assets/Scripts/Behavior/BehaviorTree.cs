@@ -20,6 +20,11 @@ namespace Itch.Behavior {
             activeRoot.Init(info);
         }
 
+        protected override void OnSetRoot(Node root) {
+            this.root = (BehaviorNode)root;
+            activeRoot.Init(info);
+        }
+
         public void ValidateInfo() {
             Movement[] moves = GetComponents<Movement>();
             int i = 0;
