@@ -22,7 +22,7 @@ namespace Itch {
         public float StuckDuration { get { return Time.time - hitStartTime; } }
         // Use this for initialization
         void Start() {
-
+            hitStartTime = Mathf.Infinity;
         }
         // Update is called once per frame
         void Update() {

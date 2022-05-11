@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using OneKnight;
+using Itch.Effects;
 
 namespace Itch {
     public static class Consumables {
@@ -21,7 +22,8 @@ namespace Itch {
                 string name = consumable.GetBaseProperty<string>(BuffName);
                 float strength = consumable.GetBaseProperty<float>(BuffStrength);
                 float duration = consumable.GetBaseProperty<float>(BuffDuration);
-                p.GiveBuff(name, strength, duration);
+                ChangeLevel effect = new ChangeLevel() { effectName = name, positive = strength >= 0, strength = Mathf.Abs(strength), duration = duration };
+                p.StartEffect(effect, p.transform.position);
             }
             if(consumable.HasProperty(SummonPrefab)) {
                 Planes.CurrentPlane.SpawnObject(consumable.GetBaseProperty<string>(SummonPrefab), p.transform.position);

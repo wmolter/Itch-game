@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af11f2227cabc04e8b2cf590d1f09a7, type: 3}
+  m_Name: BerryBush
+  m_EditorClassIdentifier: 
+  checkLevel: 0
+  capabilityRequired: Gathering
+  levelRequired: 3
+  gatherXP: 30
+  materialsNeeded: []
+  quantity: 5
+  gatherSteps: 1
+  stepDuration: 0.25
+  oneHarvestTable: {fileID: 11400000, guid: eaa3d7da9d7524649b914b2c037b5eb9, type: 2}
+  effects: []
+  unlockedComponentName: 
+  finishedSprite: {fileID: 6545382614753218560, guid: d5124900630c6694b94fec0bebd2316e,
+    type: 3}
+  finishedAnimationState: 
+  disableOnFinish: 0
+  hintOffset: {x: 0, y: 0}
+  alreadyHarvested: No resources left.
+  noDrop: Harvesting failed.

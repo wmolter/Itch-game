@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8962705090005878789}
   - component: {fileID: 6729404332758989916}
   - component: {fileID: -1216661562382452349}
-  - component: {fileID: 1931441471992709848}
   - component: {fileID: 1888954922053624553}
   - component: {fileID: 6609026474242996819}
+  - component: {fileID: -7929630029388140726}
   m_Layer: 0
   m_Name: Cavern
   m_TagString: Untagged
@@ -115,24 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1931441471992709848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329345405712130171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialsNeeded:
-  - id: fiber
-    count: 5
-  craftTime: 1
-  unlockedComponent: {fileID: 1888954922053624553}
-  craftedSprite: {fileID: 21300000, guid: e8a3cdde881d3974a87c91c59a1c4500, type: 3}
 --- !u!114 &1888954922053624553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: 1
+  interactionPrio: 1
   exitPrefab: {fileID: 1888954922053624553, guid: bfa270f0d4cf8b04ea8ddaf306e6589d,
     type: 3}
 --- !u!114 &6609026474242996819
@@ -160,6 +143,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528b0b07867536840bec01cb559974ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOffset: 0
+  home: {x: 0, y: 0}
+  homePlane: 0
+--- !u!114 &-7929630029388140726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: d0aa807f1902b2d4185eceb8be42cf45, type: 2}
 --- !u!1001 &891567251629276008
 PrefabInstance:
   m_ObjectHideFlags: 0

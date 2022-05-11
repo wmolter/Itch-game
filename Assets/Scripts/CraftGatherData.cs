@@ -13,7 +13,7 @@ namespace Itch {
 
         public DropManager oneHarvestTable;
 
-        public BuffData buff;
+        public List<Effect> effects;
 
         public string unlockedComponentName;
         public Sprite finishedSprite;

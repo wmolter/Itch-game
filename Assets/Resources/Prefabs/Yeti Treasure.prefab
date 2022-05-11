@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 5661617288163567394}
   - component: {fileID: -8110197391426158902}
   - component: {fileID: -847267180570838015}
-  - component: {fileID: -2820283805029169312}
-  - component: {fileID: -8026243364323126718}
   - component: {fileID: -2177084219451032927}
+  - component: {fileID: -1144403184767760947}
   m_Layer: 0
   m_Name: Yeti Treasure
   m_TagString: Untagged
@@ -109,6 +108,7 @@ MonoBehaviour:
   exclusionRadius: 0
   adjustmentRadius: 0
   prefix: Enemies/
+  useParent: 0
 --- !u!114 &5661617288163567394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!60 &-8110197391426158902
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -165,54 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2820283805029169312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296408280688829212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrio: 0
-  checkLevel: 0
-  capabilityRequired: Mining
-  levelRequired: 0
-  gatherXP: 0
-  materialsNeeded:
-  - id: silver_ore
-    Count: 10
-  craftTime: 0
-  unlockedComponent: {fileID: -8026243364323126718}
-  craftedSprite: {fileID: 0}
---- !u!114 &-8026243364323126718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296408280688829212}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrio: 0
-  checkLevel: 1
-  capabilityRequired: Sorcery
-  levelRequired: 2
-  gatherXP: 2000
-  quantity: 1
-  gatherSteps: 4
-  stepDuration: 2
-  buffName: 
-  buffStrength: 1
-  buffDuration: 10
-  depletedSprite: {fileID: 0}
-  alreadyHarvested: No resources left.
 --- !u!114 &-2177084219451032927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,5 +179,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 1
-  generator: {fileID: 11400000, guid: 56c09a5f2bde9b442a9ea70fc54e253a, type: 2}
+  generator: {fileID: 0}
   DestroyOnDeplete: 0
+  useLocks: 1
+  noLootError: No loot this time.
+--- !u!114 &-1144403184767760947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296408280688829212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 4755b26562f9f2149b621747e122a0ff, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0

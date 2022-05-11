@@ -8,6 +8,7 @@ using OneKnight.PropertyManagement;
 using OneKnight.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Itch.Effects;
 
 namespace Itch {
     public class PlayerManager : MonoBehaviour {
@@ -16,7 +17,7 @@ namespace Itch {
 
         public PropertyManager properties;
 
-        List<Buff> allBuffs;
+        List<Effect.State> allBuffs;
         public event UnityAction<string> OnLevel;
 
         public int xp;
@@ -71,7 +72,7 @@ namespace Itch {
             }
 
             properties = new PropertyManager();
-            allBuffs = new List<Buff>();
+            allBuffs = new List<Effect.State>();
             /*abilities["Mining"] = 0;
             abilities["Gathering"] = 0;
             abilities["Speed"] = 0;
@@ -231,75 +232,23 @@ namespace Itch {
             GetComponent<Health>().Damage(amount, GetComponent<Entity>(), ignoreArmor);
         }
 
-
-        class Buff {
-            public string buffName { get; private set; }
-            public List<float> strengths;
-            public List<float> endTimes;
-            public string sourceId = "buff";
-
-            public bool Empty {
-                get {
-                    return strengths.Count == 0;
-                }
-            }
-
-            public Buff(string name) {
-                buffName = name;
-                strengths = new List<float>();
-                endTimes = new List<float>();
-            }
-
-            public void UpdateBuffs(PropertyManager manager, float time) {
-                if(manager.HasAdjustment(buffName))
-                    manager.RemoveAdjustment(buffName, sourceId);
-                int index = 0;
-                while(index < strengths.Count) {
-                    if(endTimes[index] <= time) {
-                        strengths.RemoveAt(index);
-                        endTimes.RemoveAt(index);
-                    } else {
-                        index++;
-                    }
-                }
-                if(strengths.Count > 0) {
-                    float strengthToUse = Utils.Max(strengths);
-                    manager.AddBonus(buffName, strengthToUse, sourceId);
-                }
-            }
-        }
-
-        public void GiveBuff(string name, float str, float dur) {
-            GiveBuff(name, str, dur, transform.position);
-        }
-
-        public void GiveBuff(string name, float str, float dur, Vector2 notifPos) {
-            Buff already = allBuffs.Find(delegate (Buff b) { return b.buffName == name; });
+        public void StartEffect(Effect e, Vector2 notifPos) {
+            Effect.State already = allBuffs.Find(e.Match);
             if(already == null) {
-                Buff newBuff = new Buff(name);
+                Effect.State newBuff = e.Create();
                 already = newBuff;
                 allBuffs.Add(newBuff);
             }
-            already.strengths.Add(str);
-            already.endTimes.Add(dur+Time.time);
-            already.UpdateBuffs(properties, Time.time);
-            MakeLevelChanges(name);
-            StartCoroutine(CheckBuffs(dur));
-            Notifications.CreatePositive(notifPos, "+" + str + " " + name + " for " + dur + " seconds");
-        }
-
-        IEnumerator CancelBuff(string buffName, float strength, float duration, string sourceId) {
-            yield return new WaitForSeconds(duration);
-            properties.RemoveAdjustment(buffName, sourceId);
-            MakeLevelChanges(buffName);
+            already.Add(this, e);
+            StartCoroutine(CheckBuffs(e.duration));
+            e.Notify(notifPos);
         }
 
         IEnumerator CheckBuffs(float timeFromNow) {
             yield return new WaitForSeconds(timeFromNow);
             int index = 0;
             while(index < allBuffs.Count) {
-                allBuffs[index].UpdateBuffs(properties, Time.time);
-                MakeLevelChanges(allBuffs[index].buffName);
+                allBuffs[index].UpdateBuffs(this);
                 if(allBuffs[index].Empty)
                     allBuffs.RemoveAt(index);
                 else

@@ -13,11 +13,6 @@ namespace Itch {
             public int gatherXP = 0;
         }
 
-        public bool checkLevel;
-        public string capabilityRequired = "Mining";
-        public float levelRequired = 0;
-        public int gatherXP = 0;
-
         protected void Awake() {
             if(GetComponentInParent<Interactable>() == null)
                 Debug.LogError("LevelRequired component has no interactable parent. It will do nothing.");
@@ -32,15 +27,6 @@ namespace Itch {
         }
 
         public bool Interact(PlayerManager player) {
-            if(data == null) {
-
-                if(!checkLevel || player.HasCapabilityLevel(capabilityRequired, levelRequired)) {
-                    return DoAction(player);
-                } else {
-                    Notifications.CreateError(transform.position, capabilityRequired + " " + levelRequired + " Required");
-                    return false;
-                }
-            } else
             if(!data.checkLevel || player.HasCapabilityLevel(data.capabilityRequired, data.levelRequired)) {
                 return DoAction(player);
             } else {

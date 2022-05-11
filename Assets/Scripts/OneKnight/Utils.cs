@@ -8,6 +8,7 @@ namespace OneKnight {
     public static class Utils {
 
         public delegate float FloatGetter();
+        public delegate float FloatGetter<T>(T getFrom);
 
         public static void Nothing() { }
 
@@ -67,6 +68,16 @@ namespace OneKnight {
             float max = fs[0];
             for(int i = 1; i < fs.Count; i++) {
                 max = Mathf.Max(fs[i], max);
+            }
+            return max;
+        }
+
+        public static float Max<T>(ICollection<T> ts, FloatGetter<T> Getter) {
+            if(ts.Count == 0)
+                return float.MinValue;
+            float max = float.MinValue;
+            foreach(T t in ts) {
+                max = Mathf.Max(Getter(t), max);
             }
             return max;
         }

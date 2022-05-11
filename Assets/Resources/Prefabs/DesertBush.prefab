@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5832561064050931353}
   - component: {fileID: 8962705090005878789}
   - component: {fileID: -1216661562382452349}
-  - component: {fileID: 3214207404702860687}
   - component: {fileID: 5182412703815347439}
   - component: {fileID: 8638435780096397103}
   - component: {fileID: -7834161648331520972}
   - component: {fileID: -3289526111043037570}
+  - component: {fileID: 6638933498971183739}
   m_Layer: 0
   m_Name: DesertBush
   m_TagString: Untagged
@@ -99,32 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3214207404702860687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329345405712130171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrio: 0
-  data: {fileID: 0}
-  checkLevel: 1
-  capabilityRequired: Gathering
-  levelRequired: 10
-  gatherXP: 200
-  quantity: 1
-  gatherSteps: 5
-  stepDuration: 0.25
-  buffName: 
-  buffStrength: 1
-  buffDuration: 10
-  depletedSprite: {fileID: 21300000, guid: 779166474389cc44d93ffdce9e640d13, type: 3}
-  alreadyHarvested: No resources left.
 --- !u!114 &5182412703815347439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!60 &8638435780096397103
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -184,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 1
-  generator: {fileID: 11400000, guid: 5bf6e7d15a64d9d4dbe20ee5e4c3493e, type: 2}
+  generator: {fileID: 0}
   DestroyOnDeplete: 0
   useLocks: 1
   noLootError: No loot this time.
@@ -217,3 +192,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6638933498971183739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 12ebc883bf6e6274faa18746aaa3e5d6, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5832561064050931353}
   - component: {fileID: 8962705090005878789}
   - component: {fileID: -1216661562382452349}
-  - component: {fileID: 3214207404702860687}
   - component: {fileID: 5182412703815347439}
   - component: {fileID: 8750118260019417620}
   - component: {fileID: 53167918075370103}
   - component: {fileID: -5569380511815177605}
+  - component: {fileID: -6933748593738794192}
   m_Layer: 0
   m_Name: Mushrooms
   m_TagString: Untagged
@@ -100,33 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3214207404702860687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329345405712130171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a5eab22bc0bec4fb7fff34ade346c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPrio: 0
-  data: {fileID: 0}
-  checkLevel: 1
-  capabilityRequired: Gathering
-  levelRequired: 7
-  gatherXP: 30
-  quantity: 3
-  gatherSteps: 4
-  stepDuration: 0.25
-  buffName: 
-  buffStrength: 1
-  buffDuration: 10
-  depletedSprite: {fileID: -8835274597533513770, guid: 0ad896b8f27fb3549b26bfa81f0b516a,
-    type: 3}
-  alreadyHarvested: No resources left.
 --- !u!114 &5182412703815347439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!58 &8750118260019417620
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 1
-  generator: {fileID: 11400000, guid: 59f49e166fb59814b98f31f78cd44036, type: 2}
+  generator: {fileID: 0}
   DestroyOnDeplete: 0
   useLocks: 1
   noLootError: No loot this time.
@@ -203,3 +177,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-6933748593738794192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: e3be91421ef823d479aa7b2d817672c9, type: 2}
+  checkLevel: 0
+  capabilityRequired: Mining
+  levelRequired: 0
+  gatherXP: 0

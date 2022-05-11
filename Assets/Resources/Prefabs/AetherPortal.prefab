@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -4298443658588304863}
   - component: {fileID: 4859946348303902166}
   - component: {fileID: -5002361844686175960}
-  - component: {fileID: -2206860906881956587}
   - component: {fileID: 4960088720009556239}
+  - component: {fileID: 8720575176147445913}
   m_Layer: 0
   m_Name: AetherPortal
   m_TagString: Untagged
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!95 &4859946348303902166
 Animator:
   serializedVersion: 3
@@ -164,30 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2206860906881956587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329345405712130171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59999ef369e7dde4c84d33d5e5a4ec37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkLevel: 0
-  capabilityRequired: Mining
-  levelRequired: 0
-  gatherXP: 0
-  materialsNeeded:
-  - id: gold_ore
-    Count: 10
-  - id: yeti_crystal
-    Count: 1
-  craftTime: 5
-  unlockedComponent: {fileID: 4960088720009556239}
-  craftedSprite: {fileID: 0}
 --- !u!114 &4960088720009556239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,8 +178,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: 2
+  interactionPrio: 1
   exitPrefab: {fileID: 8622062701741034155, guid: bc87e8307d6d3da42aba9eb766d818f6,
     type: 3}
+--- !u!114 &8720575176147445913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329345405712130171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18d4d4d07759b40afe0896acf29df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  data: {fileID: 11400000, guid: 8665bb7f880fe6342acfff8127aedc39, type: 2}
 --- !u!1001 &8267721469162005675
 PrefabInstance:
   m_ObjectHideFlags: 0

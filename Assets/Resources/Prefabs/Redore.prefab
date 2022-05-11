@@ -52,6 +52,12 @@ PrefabInstance:
       propertyPath: oneHarvestDrop.quantities.Array.data[0].y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4979272891395209627, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ef0c07aaa2355744927bc85425782e3,
+        type: 2}
     - target: {fileID: 5832561064050931353, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -107,12 +113,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7109477696501393807, guid: df5b245247be09648bf8eb35b01aa95a,
-        type: 3}
-      propertyPath: generator
-      value: 
-      objectReference: {fileID: 11400000, guid: f172989175c9c3c4b9896ebb0fe81db7,
-        type: 2}
     - target: {fileID: 8329345405712130171, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: m_Name

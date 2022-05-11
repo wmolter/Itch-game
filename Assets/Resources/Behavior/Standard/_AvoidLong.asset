@@ -18,5 +18,5 @@ MonoBehaviour:
   resetMotionOnExit: 0
   angleRange: {x: -20, y: 20}
   activateStuckDuration: 1
-  evadeDuration: 1
+  evadeDuration: 2
   mode: 1

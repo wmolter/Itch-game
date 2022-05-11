@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af11f2227cabc04e8b2cf590d1f09a7, type: 3}
+  m_Name: Yeti Treasure
+  m_EditorClassIdentifier: 
+  checkLevel: 1
+  capabilityRequired: Sorcery
+  levelRequired: 9
+  gatherXP: 2000
+  materialsNeeded:
+  - id: silver_ore
+    Count: 10
+  quantity: 1
+  gatherSteps: 2
+  stepDuration: 0.75
+  oneHarvestTable: {fileID: 11400000, guid: 56c09a5f2bde9b442a9ea70fc54e253a, type: 2}
+  effects: []
+  unlockedComponentName: 
+  finishedSprite: {fileID: -8264311629490444273, guid: 0649a05b0705e074c834f6f6c7ec75c6,
+    type: 3}
+  finishedAnimationState: 
+  disableOnFinish: 0
+  hintOffset: {x: 0, y: 0}
+  alreadyHarvested: No resources left.
+  noDrop: It's empty!

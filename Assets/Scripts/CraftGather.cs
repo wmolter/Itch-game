@@ -40,7 +40,6 @@ namespace Itch {
         float finishTime;
         // Use this for initialization
         void Awake() {
-            remainingQuantity = quantity;
             //this must stay in awake so when both are inactive...
             if(oneHarvestTable != null) {
                 GetComponentInParent<Pickup>().AddLock(this);
@@ -48,7 +47,6 @@ namespace Itch {
             if(GetComponentInParent<Interactable>() == null)
                 Debug.LogError("CraftGather component has no interactable parent. It will do nothing.");
         }
-
         // Update is called once per frame
         void Update() {
 
@@ -135,15 +133,15 @@ namespace Itch {
                 //allow this to now be destroyed
                 if(oneHarvestTable != null)
                     GetComponentInParent<Pickup>()?.RemoveLock(this);
-
-
-                if(d.buff != null) {
-                    d.buff.Apply(player);
-                }
                 //maybe we leave this as an option? but with interaction prio it shouldn't be a problem for enterables
                 if(d.disableOnFinish)
                     enabled = false;
             }
+
+            foreach(Effect e in d.effects) {
+                player.StartEffect(e, player.transform.position);
+            }
+
             if(oneHarvestTable != null) {
                 GetComponentInParent<Pickup>().AddItems(oneHarvestTable.RollDrops(), out int count);
                 if(count == 0) {
@@ -155,6 +153,7 @@ namespace Itch {
             }
         }
         private void Start() {
+            remainingQuantity = quantity;
             currentGatherSteps = gatherSteps;
         }
     }
