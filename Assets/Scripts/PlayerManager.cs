@@ -98,7 +98,7 @@ namespace Itch {
             SqrSightRange = LOS*LOS;
             if(interactingWith.Count > 0) {
                 for(int i = 0; i < interactingWith.Count; i++) {
-                    if((interactingWith[i].ClosestPoint(transform.position)-(Vector2)transform.position).sqrMagnitude > interactRadius*interactRadius)
+                    if(interactingWith[i] == null || (interactingWith[i].ClosestPoint(transform.position)-(Vector2)transform.position).sqrMagnitude > interactRadius*interactRadius)
                         StopInteracting();
                 }
             }
@@ -242,6 +242,20 @@ namespace Itch {
             already.Add(this, e);
             StartCoroutine(CheckBuffs(e.duration));
             e.Notify(notifPos);
+        }
+
+        public void StartEffect(Effect matchWith, float duration, Vector2 notifPos) {
+            Effect.State already = allBuffs.Find(matchWith.Match);
+            if(already == null) {
+                Effect.State newBuff = matchWith.Create();
+                already = newBuff;
+                allBuffs.Add(newBuff);
+            }
+            Effect newEffect = matchWith.Copy();
+            newEffect.duration = duration;
+            already.Add(this, newEffect);
+            StartCoroutine(CheckBuffs(newEffect.duration));
+            newEffect.Notify(notifPos);
         }
 
         IEnumerator CheckBuffs(float timeFromNow) {

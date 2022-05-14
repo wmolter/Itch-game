@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f3a220f4c8fad46bbeb47ec43ea039, type: 3}
   m_Name: Chase
   m_EditorClassIdentifier: 
-  children:
-  - {fileID: 11400000, guid: d233e7dd4d4295c4692078e26abb8e61, type: 2}
+  children: []
   Interruptible: 1
   speedFactor: 1
   resetMotionOnExit: 0

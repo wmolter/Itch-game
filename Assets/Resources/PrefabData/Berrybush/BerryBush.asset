@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af11f2227cabc04e8b2cf590d1f09a7, type: 3}
   m_Name: BerryBush
   m_EditorClassIdentifier: 
-  checkLevel: 0
+  checkLevel: 1
   capabilityRequired: Gathering
   levelRequired: 3
   gatherXP: 30

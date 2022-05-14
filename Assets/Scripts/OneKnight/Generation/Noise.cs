@@ -7,7 +7,7 @@ namespace OneKnight.Generation {
     public delegate Vector4 FullNoiseMethod(Vector3 point, float frequency);
     public delegate float TileNoiseMethod(Vector3 point, int frequency, IntVector3 period, Vector3 offset);
     public enum NoiseMethodType {
-        Value1D, Value2D, Value3D, Perlin1D, Perlin2D, TilePerlin2D, Perlin3D, White3D, Voronoi3D, TileVoronoi3D, VoronoiCell3D, TileVoronoiCell3D, VoronoiTimesCell3D, VoronoiBorderFast3D, TileVoronoiBorderFast3D, VoronoiBorderAccurate3D, TileVoronoiBorderAccurate3D
+        Value1D, Value2D, Value3D, Perlin1D, Perlin2D, TilePerlin2D, Perlin3D, White3D, Voronoi2D, VoronoiCell2D, VoronoiBorderFast2D, Voronoi3D, TileVoronoi3D,  VoronoiCell3D, TileVoronoiCell3D, VoronoiTimesCell3D, VoronoiBorderFast3D, TileVoronoiBorderFast3D, VoronoiBorderAccurate3D, TileVoronoiBorderAccurate3D
     }
 
     [System.Serializable]
@@ -138,12 +138,18 @@ namespace OneKnight.Generation {
                     return Perlin3D;
                 case NoiseMethodType.Voronoi3D:
                     return Voronoi3D;
+                case NoiseMethodType.Voronoi2D:
+                    return Voronoi2D;
                 case NoiseMethodType.VoronoiCell3D:
                     return VoronoiCell3D;
+                case NoiseMethodType.VoronoiCell2D:
+                    return VoronoiCell2D;
                 case NoiseMethodType.VoronoiTimesCell3D:
                     return Voronoi3DTimesCell;
                 case NoiseMethodType.VoronoiBorderFast3D:
                     return VoronoiBorder3D;
+                case NoiseMethodType.VoronoiBorderFast2D:
+                    return VoronoiBorder2D;
                 case NoiseMethodType.VoronoiBorderAccurate3D:
                     return VoronoiBorderAccurate3D;
                 default:
@@ -412,6 +418,7 @@ namespace OneKnight.Generation {
         static float bias = 5.2734f;
         static float sinFreq = 23.291427f;
         const float whiteNoiseConstant = -33.0734f;
+        
         public static float WhiteNoise3D(Vector3 point) {
             return WhiteNoise3D(point, whiteNoiseA);
         }
@@ -426,6 +433,50 @@ namespace OneKnight.Generation {
 
         public static Vector3 WhiteNoise3Dto3D(Vector3 point) {
             return new Vector3(WhiteNoise3D(point, whiteNoiseA), WhiteNoise3D(point, whiteNoiseB), WhiteNoise3D(point, whiteNoiseC));
+        }
+
+        public static float Voronoi2D(Vector3 point, float frequency) {
+            point *= frequency;
+            float minDist = 10;
+            Vector2 floored = new Vector2(Mathf.Floor(point.x), Mathf.Floor(point.y));
+            for(int x = -1; x < 2; x++){
+                for(int y = -1; y < 2; y++) {
+                    Vector2 cell = floored + new Vector2(x, y);
+                    Vector2 cellPosition = cell + (Vector2)WhiteNoise3Dto3D(cell);
+                    Vector2 toCell = cellPosition - (Vector2)point;
+                    float dist = toCell.magnitude;
+                    if(dist < minDist) {
+                        minDist = dist;
+                    }
+                }
+            }
+            return 2*minDist - 1;
+        }
+
+        public static float VoronoiCell2D(Vector3 point, float frequency) {
+            Vector2 minCell = VoronoiCellHelper2D(point, frequency);
+            return 2*WhiteNoise3D(minCell) - 1;
+        }
+
+        public static Vector2 VoronoiCellHelper2D(Vector2 point, float frequency) {
+
+            point *= frequency;
+            float minDist = 10;
+            Vector2 floored = new Vector2(Mathf.Floor(point.x), Mathf.Floor(point.y));
+            Vector2 minCell = Vector2.zero;
+            for(int x = -1; x < 2; x++) {
+                for(int y = -1; y < 2; y++) {
+                    Vector2 cell = floored + new Vector2(x, y);
+                    Vector2 cellPosition = cell + (Vector2)WhiteNoise3Dto3D(cell);
+                    Vector2 toCell = cellPosition - point;
+                    float dist = toCell.magnitude;
+                    if(dist < minDist) {
+                        minDist = dist;
+                        minCell = cell;
+                    }
+                }
+            }
+            return minCell;
         }
 
         public static float Voronoi3D(Vector3 point, float frequency) {
@@ -446,7 +497,6 @@ namespace OneKnight.Generation {
             }
             return 2*minDist-1;
         }
-
         private static IntVector3 CellCoords(Vector3 point, IntVector3 period, Vector3 offset) {
             return IntVector3.Floor(offset + ((point % period) + period) % period);
         }
@@ -520,6 +570,26 @@ namespace OneKnight.Generation {
                 }
             }
             return 2*WhiteNoise3D(minCell) - 1;
+        }
+
+        public static float VoronoiBorder2D(Vector3 point, float frequency) {
+            point *= frequency;
+            float minDist = 10;
+            Vector2 floored = new Vector2(Mathf.Floor(point.x), Mathf.Floor(point.y));
+            float secondMin = 10;
+            for(int x = -1; x < 2; x++) {
+                for(int y = -1; y < 2; y++) {
+                    Vector2 cell = floored + new Vector2(x, y);
+                    Vector2 cellPosition = cell + (Vector2)WhiteNoise3Dto3D(cell);
+                    Vector2 toCell = cellPosition - (Vector2)point;
+                    float dist = toCell.magnitude;
+                    if(dist < minDist) {
+                        secondMin = minDist;
+                        minDist = dist;
+                    }
+                }
+            }
+            return 2*(secondMin - minDist) - 1;
         }
 
         public static float VoronoiBorder3D(Vector3 point, float frequency) {

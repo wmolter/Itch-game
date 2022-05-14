@@ -13,7 +13,7 @@ namespace Itch.Behavior {
             }
 
             public override bool Decide(BehaviorInfo info) {
-                Debug.Log("Component activate decide called: " + comp);
+                //Debug.Log("Component activate decide called: " + comp);
                 if(comp == null)
                     return false;
                 return !comp.enabled;

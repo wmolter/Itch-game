@@ -34,7 +34,7 @@ namespace Itch.Behavior {
                     }
                 }
 
-                Debug.Log("Pack selector decide called: " + packActing + " shouldLead: " + shouldLead);
+                //Debug.Log("Pack selector decide called: " + packActing + " shouldLead: " + shouldLead);
                 return packActing && TestDecide(info, targetToCopy);
             }
 

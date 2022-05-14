@@ -4,6 +4,9 @@ using OneKnight;
 
 namespace Itch {
     public abstract class Effect : ScriptableObject {
+        protected static float GetStrength(Effect e) {
+            return e.strength;
+        }
         public abstract class State {
             public string buffName { get; private set; }
             public List<Effect> activeNow;
@@ -55,9 +58,27 @@ namespace Itch {
 
         public string effectName;
         public float duration;
+        public float strength;
         public bool positive = true;
 
         public abstract State Create();
+        public abstract Effect Copy();
+
+        public Effect CopyInto(Effect e) {
+            e.effectName = effectName;
+            e.duration = duration;
+            e.strength = strength;
+            e.positive = positive;
+            return e;
+        }
+
+        public Effect CopyFrom(Effect e) {
+            effectName = e.effectName;
+            duration = e.duration;
+            strength = e.strength;
+            positive = e.positive;
+            return this;
+        }
 
         public virtual string NotifyText { get { return effectName + " for " + duration + " seconds"; } }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OneKnight.Generation {
     [System.Serializable]
-    public class Drop : ItemEmitter{
+    public class Drop : ItemEmitter {
         [SerializeField]
         private string[] ids;
         [SerializeField]

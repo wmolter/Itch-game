@@ -13,11 +13,13 @@ namespace Itch {
         public NoiseParams settings;
         public bool voronoiMode;
         public float vorFreq;
-        public NoiseParams noise2;
-        public float weight;
+        public NoiseParams preNoise;
+        public float preWeight;
         public float offset = .5f;
         public PlayerManager player;
         public Vector3 noiseOffset;
+        public Vector3 prenoiseOffsetA;
+        public Vector3 prenoiseOffsetB;
         public float SightModifier = 1;
         public float gravity = 5;
         int xpPerTile = 1;
@@ -40,13 +42,18 @@ namespace Itch {
         }
 
         int TileIndex(Vector3Int position) {
-
             float value;
+            float x = preWeight*Noise.Sum(position + prenoiseOffsetA, preNoise);
+            float y = preWeight*Noise.Sum(position + prenoiseOffsetB, preNoise);
+            Vector3 pos = position + new Vector3(x, y, 0);
+            //should be between 0 and 1, if we can, to make distribution of biomes..
+            value = .5f * Noise.Sum(pos, settings) + offset;
+            /*
             if(voronoiMode)
                 value = Noise.VoronoiCellLayer(position, vorFreq, settings);//Noise.LayerNoiseSample(position, genLayers);
             else
                 value = Noise.Sum(position, settings);
-            value += weight*Noise.Sum(position, noise2) + offset;
+            value += weight*Noise.Sum(position, preNoise) + offset;*/
             return Mathf.Clamp(Mathf.FloorToInt(value*allTerrainData.Length), 0, allTerrainData.Length - 1);
         }
 

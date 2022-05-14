@@ -17,9 +17,9 @@ namespace Itch.Behavior {
 
             public override bool Decide(BehaviorInfo info) {
                 candidate = Data.aoe.FindTarget(info);
-                if(info.main.gameObject.name.Contains("Yeti")) {
+                /*if(info.main.gameObject.name.Contains("Yeti")) {
                     Debug.Log("Yeti candidate: " + candidate);
-                }
+                }*/
                 if(candidate != null) {
                     return TestDecide(info, candidate.GetComponent<Entity>());
                 }

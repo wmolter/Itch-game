@@ -29,7 +29,8 @@ namespace Itch {
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             Vector2 currVel = body.velocity;
             Vector2 desiredVel = motionDir*trueSpeed*modifier;
-            GetComponent<Rigidbody2D>().AddForce((desiredVel-currVel)*acceleration, ForceMode2D.Force);
+            float mass = GetComponent<Rigidbody2D>().mass;
+            GetComponent<Rigidbody2D>().AddForce((desiredVel-currVel)*acceleration*mass, ForceMode2D.Force);
         }
     }
 }

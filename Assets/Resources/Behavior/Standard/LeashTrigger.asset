@@ -20,4 +20,4 @@ MonoBehaviour:
     minRange: 20
     maxRange: Infinity
     colliderMode: 0
-    requireLiving: 1
+    mode: 0

@@ -23,6 +23,10 @@ namespace Itch.Effects {
             return new State(positive);
         }
 
+        public override Effect Copy() {
+            return new Scent() {layerName = layerName }.CopyFrom(this);
+        }
+
         //only one scent at a time, therefore all are managed by one. Could also string match "Scent" name...
         public override bool Match(Effect.State manager) {
             return manager is State;

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: WolfRoot
   m_EditorClassIdentifier: 
   children:
-  - {fileID: 11400000, guid: 59669b23a86a15c44be3512fc6534cbd, type: 2}
-  - {fileID: 11400000, guid: fefedd0ef4d8b7b4495630b2f1a23e56, type: 2}
+  - {fileID: 11400000, guid: 3868ad5391651c448acaaa0dc876239d, type: 2}
   Interruptible: 0
   speedFactor: 1
   resetMotionOnExit: 1

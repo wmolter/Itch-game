@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdb00de4d7610942a2879a01bf66c59, type: 3}
+  m_Name: FollowerSelfDefense
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: d233e7dd4d4295c4692078e26abb8e61, type: 2}
+  - {fileID: 11400000, guid: 3f2168b7d14e6684d8bf2b0815050194, type: 2}
+  - {fileID: 11400000, guid: 80c7ccc054f5f3e418492a75d28181bb, type: 2}
+  Interruptible: 1
+  checkChildrenForEnd: 1
+  noticeRange: 10
+  percentageThreshold: 1
+  endPercentage: 1

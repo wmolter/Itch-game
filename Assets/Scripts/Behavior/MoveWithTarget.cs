@@ -10,8 +10,22 @@ namespace Itch.Behavior {
             public Act(MoveWithTarget data, ActiveNode parent, int index) : base(data, parent, index) {
 
             }
+
+            private float timeLeft;
+            private float startTime;
+            Entity current;
+
+            public override void OnStart(BehaviorInfo info) {
+                base.OnStart(info);
+                if(current != info.main.behaviorTarget) {
+                    current = info.main.behaviorTarget;
+                    timeLeft = Data.boredDuration;
+                }
+                startTime = Time.time;
+            }
+
             public override bool Decide(BehaviorInfo info) {
-                return info.main.behaviorTarget != null && !CheckEnd(info);
+                return (timeLeft > 0 || info.main.behaviorTarget != current) && Data.targetInfo.ValidTarget(info);
             }
 
             public override void DoBehavior(BehaviorInfo info) {
@@ -19,7 +33,12 @@ namespace Itch.Behavior {
             }
 
             public override bool CheckEnd(BehaviorInfo info) {
-                return !Data.targetInfo.ValidTarget(info);
+                return Time.time - startTime > timeLeft || !Data.targetInfo.ValidTarget(info);
+            }
+
+            public override void OnFinish(BehaviorInfo info) {
+                base.OnFinish(info);
+                timeLeft -= Time.time - startTime;
             }
 
             public Vector2 MoveDirection(BehaviorInfo info, Transform relation) {
@@ -31,6 +50,8 @@ namespace Itch.Behavior {
         public TargetedHandler targetInfo;
         [Range(-180, 180)]
         public float moveAngle = 0;
+
+        public float boredDuration = 60;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {
             return new Act(this, parent, index);

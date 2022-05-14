@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f11549c5fad5b641a1faf68f9bd6e0f, type: 3}
+  m_Name: PreySearch
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 70af3f3ee5b674d4a8c7f3d967ab49d5, type: 2}
+  - {fileID: 11400000, guid: 9f5f12c03d7fa0f4ba58681b51c2e7dd, type: 2}
+  - {fileID: 11400000, guid: 8b2ca16def4434c43b5b6330af223e8a, type: 2}
+  - {fileID: 11400000, guid: b1532bf2021490e4ba61af4ef5f7b418, type: 2}
+  Interruptible: 1
+  checkChildrenForEnd: 1
+  aoe:
+    range: 7
+    searchLayers:
+    - Neutral
+    requireLiving: 0
+    filterOut: 1
+    filterTags:
+    - Predator
+    filterSorting:
+    - Above

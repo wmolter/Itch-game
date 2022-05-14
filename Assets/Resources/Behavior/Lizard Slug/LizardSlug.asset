@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81a0b002db4aa84d9688654a0f9184f, type: 3}
+  m_Name: LizardSlug
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: 491a966136e8e92499063ea4fd98e3af, type: 2}
+  - {fileID: 11400000, guid: f01d9fbc075158c4db1e6ea047c72ec5, type: 2}
+  Interruptible: 1
+  speedFactor: 0.2
+  resetMotionOnExit: 0
+  standstillChance: 0.5
+  durationRange: {x: 2, y: 5}
+  angleChangeRange: 90
+  continueInDir: 1
+  useParent: 0

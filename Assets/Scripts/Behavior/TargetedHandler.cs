@@ -5,9 +5,14 @@ using OneKnight;
 namespace Itch.Behavior {
     [System.Serializable]
     public class TargetedHandler {
+        [System.Serializable]
+        public enum Mode {
+            Living, Dead, Either
+        }
         public float minRange, maxRange;
         public bool colliderMode = true;
-        public bool requireLiving = true;
+        public Mode mode = Mode.Living;
+
 
         public TargetedHandler() {
 
@@ -17,7 +22,7 @@ namespace Itch.Behavior {
             minRange = data.minRange;
             maxRange = data.maxRange;
             colliderMode = data.colliderMode;
-            requireLiving = data.requireLiving;
+            mode = data.mode;
         }
 
         public bool WouldBeValid(BehaviorInfo info, Entity target) {
@@ -45,10 +50,16 @@ namespace Itch.Behavior {
         }
 
         public bool EligibleTarget(BehaviorInfo info) {
-            if(requireLiving) {
-                return !info.main.TargetDeadOrGone();
+            switch(mode) {
+                case Mode.Living:
+                    return !info.main.TargetDeadOrGone();
+                case Mode.Dead:
+                    return info.main.TargetDeadButExists();
+                case Mode.Either:
+                    return !info.main.TargetGone();
+                default:
+                    return false;
             }
-            return !info.main.TargetGone();
         }
         
         public bool InRange(BehaviorInfo info) {

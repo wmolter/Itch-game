@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Itch.Behavior {
     [CreateAssetMenu(menuName = "Behavior/AOE Attack")]
-    public class AOEAttack : Attack {
+    public class AOEAttack : MeleeAttack {
         public class AOE : AOEHandler {
 
 
@@ -18,7 +18,7 @@ namespace Itch.Behavior {
             }
         }
 
-        protected new class Act : Attack.Act {
+        protected new class Act : MeleeAttack.Act {
             private AOEAttack Data { get { return (AOEAttack)data; } }
             public Act(AOEAttack data, ActiveNode parent, int index) : base(data, parent, index) {
 
@@ -33,16 +33,15 @@ namespace Itch.Behavior {
             }
 
             protected override void Attack() {
-                Debug.Log("AOE attack called.");
+                //Debug.Log("AOE attack called.");
                 foreach(Collider2D aoeHit in Data.aoe.FindAll(info)) {
-                    Debug.Log("Damaging: " + aoeHit.gameObject.name);
-                    aoeHit.GetComponent<Health>().Damage(Data.damage, info.main.GetComponent<Entity>());
+                    //Debug.Log("Damaging: " + aoeHit.gameObject.name);
+                    ApplyAttack(aoeHit.GetComponent<Health>(), info.main.GetComponent<Entity>());
                 }
             }
 
         }
-
-        public float damage;
+        
         public AOEHandler aoe;
 
         protected override ActiveNode CreateActive(ActiveNode parent, int index) {

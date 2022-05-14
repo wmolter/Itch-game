@@ -18,7 +18,7 @@ namespace Itch.Behavior {
                 Entity oldTarget = info.main.behaviorTarget;
                 info.main.behaviorTarget = candidate;
                 bool result = HasWillingChild(info);
-                Debug.Log("Test result: " + result);
+                //Debug.Log("Test result: " + result);
                 info.main.behaviorTarget = oldTarget;
                 return result;
             }

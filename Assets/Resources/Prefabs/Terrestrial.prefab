@@ -307,6 +307,8 @@ MonoBehaviour:
       type: Boulder
     - weight: 0.2
       type: Nest
+    - weight: 2
+      type: GoatSpawner
     effect: {fileID: 0}
     totalWeight: 0
   - tile: {fileID: 11400000, guid: 357486dc5d4bbd94da6a046a62f99ed0, type: 2}
@@ -333,23 +335,25 @@ MonoBehaviour:
     effect: {fileID: 0}
     totalWeight: 0
   settings:
-    method: 10
+    method: 9
     octaves: 1
     frequency: 0.007
     lacunarity: 1
     persistence: 1
   voronoiMode: 0
   vorFreq: 0.1
-  noise2:
+  preNoise:
     method: 4
-    octaves: 1
-    frequency: 1
-    lacunarity: 1
-    persistence: 1
-  weight: 0
+    octaves: 3
+    frequency: 0.01
+    lacunarity: 3.1
+    persistence: 0.58
+  preWeight: 100.03
   offset: 0.5
   player: {fileID: 0}
   noiseOffset: {x: -12.4, y: 121, z: -439.2738}
+  prenoiseOffsetA: {x: 51.81, y: -307.38, z: 0}
+  prenoiseOffsetB: {x: -19.83, y: -174.13, z: 0}
   SightModifier: 1
   gravity: 5
 --- !u!114 &229973358

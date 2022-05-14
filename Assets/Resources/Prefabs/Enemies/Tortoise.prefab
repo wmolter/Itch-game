@@ -81,6 +81,12 @@ PrefabInstance:
       propertyPath: current
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 138812010541448130, guid: ceb2c8b2abcb1af46945974dcacac3ba,
+        type: 3}
+      propertyPath: generator
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cc1a08fcf0bd2e46a8652673607168b,
+        type: 2}
     - target: {fileID: 1089917341630156814, guid: ceb2c8b2abcb1af46945974dcacac3ba,
         type: 3}
       propertyPath: speed

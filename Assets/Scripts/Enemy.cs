@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Itch.Behavior;
+using UnityEngine.Events;
 
 namespace Itch {
     [RequireComponent(typeof(NonPlayerEntity), typeof(BehaviorTree))]
@@ -9,6 +10,8 @@ namespace Itch {
         public List<string> enemyLayers;
 
         public Entity behaviorTarget;
+
+        public UnityEvent OnDeath;
         [HideInInspector]
         public Vector3 Home {
             get {
@@ -16,13 +19,21 @@ namespace Itch {
             }
         }
 
+        public void Die() {
+            OnDeath.Invoke();
+        }
+
         public bool TargetGone() {
             return behaviorTarget == null || !behaviorTarget.gameObject.activeSelf;
         }
 
         public bool TargetDeadOrGone() {
+            return TargetGone() || TargetDeadButExists();
+        }
+
+        public bool TargetDeadButExists() {
             if(TargetGone())
-                return true;
+                return false;
             return !Health.Living(behaviorTarget);
         }
 

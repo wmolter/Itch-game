@@ -17,7 +17,7 @@ namespace Itch.Behavior {
 
             public override void OnStart(BehaviorInfo info) {
                 base.OnStart(info);
-                health.AddRegen(Data.amount, Data.interval, Data.healingTag, info.main.GetComponent<Entity>());
+                health.AddOverTime(Data.amount, Data.interval, Data.healingTag, info.main.GetComponent<Entity>());
             }
 
             public override void DoBehavior(BehaviorInfo info) {
@@ -25,7 +25,7 @@ namespace Itch.Behavior {
 
             public override void OnFinish(BehaviorInfo info) {
                 base.OnFinish(info);
-                health.RemoveRegen(Data.healingTag);
+                health.RemoveOverTime(Data.healingTag);
             }
 
             public override bool CheckEnd(BehaviorInfo info) {

@@ -66,6 +66,7 @@ Animal meat you carved from a carcass.  Some animals might like it.
 glass
 Glass Orb
 A transparent, prismatic orb.  Might be useful in the right place.
+.
 
 cooked_meat
 Cooked Meat
@@ -91,3 +92,33 @@ tortoise_egg
 Tortoise Egg
 A somewhat soft and delicate egg.  Use to spawn what's inside!
 .
+
+tortoise_shell
+Tortoise Shell
+The heavy, hard shell of a tortoise.  Might be some protection.
+.
+
+goat_horn
+Goat Horn
+.
+.
+
+feather
+Eagle Feather
+.
+.
+
+yeti_fur
+Yeti Fur
+Thick and warm.  Might make a good coat.
+.
+
+yeti_claw
+Yeti Claw
+A huge, razor-sharp claw.
+.
+
+goat_cheese
+Goat Cheese
+Cheese made from goat's milk.
+<i>Delicious with lemon.</i>

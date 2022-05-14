@@ -43,9 +43,11 @@ namespace OneKnight {
         void Update() {
             Node.Act interrupt = ChooseInterrupt();
             if(interrupt != current) {
-                Debug.Log("Behavior interrupted: " + current + " by " + interrupt);
+                //Debug.Log("Behavior interrupted: " + current + " by " + interrupt);
+                current.OnSuspend(Info);
                 SetCurrent(interrupt);
             } else if(current.CheckEnd(Info)) {
+                current.OnSuspend(Info);
                 current.OnFinish(Info);
                 SetCurrent(ChooseNext());
             }
@@ -55,7 +57,7 @@ namespace OneKnight {
         Node.Act ChooseNext() {
             Node.Act result = current.parent;
             //go up tree
-            while(result.CheckEnd(Info)) {
+            while(result != activeRoot && result.CheckEnd(Info)) {
                 result.OnFinish(Info);
                 Debug.Log("Behavior just ended: " + current);
                 result = result.parent;
@@ -85,7 +87,7 @@ namespace OneKnight {
             //go up the tree
             Node.Act result = current;
             Node.Act active = current;
-            while(active.interruptible) {
+            while(active.parent != null && active.interruptible) {
                 int index = active.parent.FirstWillingChild(Info);
                 if(index < active.indexInParent) {
                     active.OnFinish(Info);
@@ -101,10 +103,9 @@ namespace OneKnight {
         }
 
         void SetCurrent(Node.Act next) {
-            current.OnSuspend(Info);
             current = next;
             next.OnResume(Info);
-            Debug.Log("New behavior started: " + next);
+            //Debug.Log("New behavior started: " + next);
         }
 
         public void OnDrawGizmos() {

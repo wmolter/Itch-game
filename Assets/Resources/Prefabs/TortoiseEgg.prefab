@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!212 &-4136844608256951943
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -184,11 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 0
-  data: {fileID: 0}
-  checkLevel: 0
-  capabilityRequired: Mining
-  levelRequired: 0
-  gatherXP: 0
+  data: {fileID: 11400000, guid: 65bcf2c816563df47a1057b16801be50, type: 2}
 --- !u!114 &6533167920463500465
 MonoBehaviour:
   m_ObjectHideFlags: 0

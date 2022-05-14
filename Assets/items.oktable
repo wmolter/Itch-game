@@ -78,6 +78,30 @@ Testing/wheat
 0
 10
 
+goat_horn
+43
+Material
+Testing/wheat
+0
+0
+10
+
+feather
+44
+Material
+Testing/wheat
+0
+0
+10
+
+yeti_claw
+45
+Material
+Testing/wheat
+0
+0
+5
+
 yeti_gem
 50
 Material
@@ -86,8 +110,24 @@ Testing/wheat
 0
 1
 
-glass
+goblin_gold
 100
+Material
+Testing/wheat
+0
+0
+100
+
+fabric_scrap
+101
+Material
+Testing/wheat
+0
+0
+10
+
+glass
+200
 Material
 Testing/wheat
 0
@@ -111,12 +151,28 @@ Testing/antimony
 5
 properties
 3
-buffName string
+effectName string
 Sight
-buffStrength float
+effectStrength float
 5
-buffDuration float
+effectDuration float
 60
+
+tortoise_shell
+1002
+Consumable
+Testing/antimony
+0
+0
+1
+properties
+3
+effectName stringarray
+Armor Speed
+effectStrength floatarray
+5 -5
+effectDuration floatarray
+80 80
 
 desert_flowers
 1010
@@ -127,11 +183,11 @@ Testing/antimony
 5
 properties
 3
-buffName string
+effectName string
 Sorcery
-buffStrength float
+effectStrength float
 5
-buffDuration float
+effectDuration float
 60
 
 camel_milk
@@ -142,15 +198,13 @@ Testing/antimony
 0
 5
 properties
-4
-buffName string
-movement
-buffStrength float
-0.5
-buffDuration float
+3
+effectName string
+Speed
+effectStrength float
+-10
+effectDuration float
 90
-buffType string
-debuff
 
 tortoise_egg
 1012
@@ -163,6 +217,34 @@ properties
 1
 summonPrefab string
 Enemies/BabyTortoise
+
+goat_cheese
+1013
+Consumable
+Testing/antimony
+15
+0
+5
+properties
+3
+effectName stringarray
+Fortitude Constitution
+effectStrength floatarray
+3 -8
+effectDuration floatarray
+120 120
+
+yeti_fur
+1014
+Consumable
+Testing/antimony
+0
+0
+1
+properties
+1
+effectName string
+Warm
 
 eagle_egg
 1020

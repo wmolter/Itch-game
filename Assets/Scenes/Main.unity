@@ -1917,6 +1917,7 @@ GameObject:
   - component: {fileID: 1940523034}
   - component: {fileID: 1940523035}
   - component: {fileID: 1940523030}
+  - component: {fileID: 1940523036}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1950,7 +1951,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -2056,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fbe006a8e8db046b3423be4538035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 20000
+  xp: 200000
   usedxp: 0
   LOSLevelFactor: 0.1
   baseLOS: 5
@@ -2079,8 +2080,10 @@ MonoBehaviour:
   - Mining
   - Sorcery
   startingItems:
-  - id: meat
-    Count: 10
+  - id: mushroom
+    Count: 5
+  - id: yeti_fur
+    Count: 1
   inventoryManager: {fileID: 1237000433}
   interacting: 0
   xpInterval: 3
@@ -2164,6 +2167,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.32928073}
   serializedVersion: 2
   m_Radius: 0.17071927
+--- !u!114 &1940523036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940523025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c091d775874fffd4cb347abb56c6b916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationFactor: 1
+  disable:
+  - {fileID: 1940523026}
 --- !u!1 &2039448672
 GameObject:
   m_ObjectHideFlags: 0

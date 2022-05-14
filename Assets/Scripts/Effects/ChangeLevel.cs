@@ -5,9 +5,6 @@ using OneKnight;
 namespace Itch.Effects {
     [CreateAssetMenu(menuName = "Effects/Change Level")]
     public class ChangeLevel : Effect {
-        static float GetStrength(Effect e) {
-            return ((ChangeLevel)e).strength;
-        }
         public new class State : Effect.State{
             public string sourceId = "buff";
             
@@ -38,10 +35,12 @@ namespace Itch.Effects {
             }
         }
         
-        public float strength;
         public override string NotifyText { get { return (positive? "+" : "-") + strength + " " + effectName + " for " + duration + " seconds"; } }
         public override Effect.State Create() {
             return new State(effectName, positive);
+        }
+        public override Effect Copy() {
+            return new ChangeLevel().CopyFrom(this);
         }
     }
 }

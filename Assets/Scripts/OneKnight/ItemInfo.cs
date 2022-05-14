@@ -171,6 +171,10 @@ namespace OneKnight {
             return allItems[id].args != null && allItems[id].args.ContainsKey(property);
         }
 
+        public static bool HasProperty<T>(string id, string property) {
+            return HasProperty(id, property) && allItems[id].args[property] is T;
+        }
+
         public static InventoryItem.Data GetData(string id) {
             return allItems[id];
         }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FollowPack
   m_EditorClassIdentifier: 
   children:
+  - {fileID: 11400000, guid: d233e7dd4d4295c4692078e26abb8e61, type: 2}
   - {fileID: 11400000, guid: 3f2168b7d14e6684d8bf2b0815050194, type: 2}
   - {fileID: 11400000, guid: 80c7ccc054f5f3e418492a75d28181bb, type: 2}
   Interruptible: 1

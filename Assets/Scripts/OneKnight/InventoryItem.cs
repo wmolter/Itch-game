@@ -179,6 +179,10 @@ namespace OneKnight {
             return ItemInfo.HasProperty(id, propertyName);
         }
 
+        public bool HasProperty<T>(string propertyName) {
+            return ItemInfo.HasProperty<T>(id, propertyName);
+        }
+
         public virtual System.Type ControllerType {
             get {
                 return null;

@@ -4,25 +4,33 @@ using System.Collections.Generic;
 namespace OneKnight.Generation {
     [System.Serializable]
     [CreateAssetMenu(menuName = "Generation/DropTable")]
-    public class DropTable : ScriptableObject, ItemEmitter {
-        [SerializeField]
-        private float weight = 1;
+    public class DropTable : ScriptableObject {
+        [System.Serializable]
+        public class Child : ItemEmitter {
+            public DropTable table;
+            public float weight;
+            public float Weight { get { return weight; } }
 
+            public IEnumerable<InventoryItem> Generate() {
+                return table.Generate();
+            }
+
+            public IEnumerable<InventoryItem> Generate(int times) {
+                return table.Generate(times);
+            }
+
+        }
         [SerializeField]
-        private List<DropTable> tables;
+        private List<Child> tables;
         [SerializeField]
         private List<Drop> singles;
         public float emptyWeight = 0;
 
         private float totalWeight;
         private List<ItemEmitter> drops;
-        public float Weight { get { return weight; } }
 
         public DropTable() {
 
-        }
-        public DropTable(float weight) {
-            this.weight = weight;
         }
 
         void Init() {
