@@ -714,7 +714,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &699042317
 GameObject:
@@ -810,7 +810,7 @@ RectTransform:
   - {fileID: 533846587}
   - {fileID: 5630830838965379238}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1086,151 +1086,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
         type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1940523031}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: noiseOffset.x
-      value: 77
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: noiseOffset.y
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: noiseOffset.z
-      value: -2.234
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[2].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[2].type
-      value: Goblin Camp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].objectChance
-      value: 0.007
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[1].weight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[0].weight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[3].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[3].type
-      value: Goblin Camp 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].tile
-      value: 
-      objectReference: {fileID: 11400000, guid: 30a4b5919a3c3ea43af6468da633c907,
-        type: 2}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].tile
-      value: 
-      objectReference: {fileID: 11400000, guid: 663ed2ab1690a824f8a90459e88e9a42,
-        type: 2}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].objectChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[0].weight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[0].type
-      value: Chest
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[1].weight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[1].type
-      value: Speed Crystal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[2].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[2].type
-      value: Goblin Camp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[3].weight
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[1].spawns.Array.data[3].type
-      value: Stalagmites
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[4].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[4].type
-      value: Goblin Camp 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[5].weight
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067589323426671746, guid: 727aae44afeb2784da8fc1f97713b9db,
-        type: 3}
-      propertyPath: allTerrainData.Array.data[0].spawns.Array.data[5].type
-      value: Stalagmites
-      objectReference: {fileID: 0}
     - target: {fileID: 5067589323426671869, guid: 727aae44afeb2784da8fc1f97713b9db,
         type: 3}
       propertyPath: m_Name
@@ -1239,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 5067589323426671869, guid: 727aae44afeb2784da8fc1f97713b9db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 727aae44afeb2784da8fc1f97713b9db, type: 3}
@@ -1395,7 +1253,7 @@ RectTransform:
   m_LocalScale: {x: 0.074074075, y: 0.074074075, z: 0.074074075}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1515,6 +1373,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3386a2b10a5ff428d66973eb4a4044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1332447177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1593854036952878661, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866929528031684155, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_Name
+      value: Salt Pile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.79855
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8060563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219316932249350361, guid: 5f6e9c19892c67a4a834c1c48a4f162f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f6e9c19892c67a4a834c1c48a4f162f, type: 3}
 --- !u!1 &1342137385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +1959,7 @@ Transform:
   - {fileID: 1027157171}
   - {fileID: 425582351}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1940523030
 MonoBehaviour:
@@ -2080,10 +2012,24 @@ MonoBehaviour:
   - Mining
   - Sorcery
   startingItems:
+  - id: red_ore
+    Count: 5
+  - id: gold_ore
+    Count: 5
+  - id: copper_ore
+    Count: 5
+  - id: cave_pearl
+    Count: 5
+  - id: silver_ore
+    Count: 5
+  - id: pink_scale
+    Count: 10
   - id: mushroom
     Count: 5
-  - id: yeti_fur
-    Count: 1
+  - id: yeti_claw
+    Count: 5
+  - id: vial
+    Count: 5
   inventoryManager: {fileID: 1237000433}
   interacting: 0
   xpInterval: 3
@@ -2321,6 +2267,80 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1001 &2102127046
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1217205724019535199, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: waitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393060857205536233, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_Name
+      value: Spherules
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8626324
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.8297737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475564584411219166, guid: d6f0775f368894b4c9a792c49f0c6f05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6f0775f368894b4c9a792c49f0c6f05, type: 3}
 --- !u!1001 &41296185669013907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2525,7 +2545,7 @@ PrefabInstance:
     - target: {fileID: 1714199258889404838, guid: 9fd1ce7653163d74cb954fcbe8f6e014,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1714199258889404889, guid: 9fd1ce7653163d74cb954fcbe8f6e014,
         type: 3}

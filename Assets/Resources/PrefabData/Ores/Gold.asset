@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkLevel: 1
   capabilityRequired: Mining
-  levelRequired: 4
+  levelRequired: 5
   gatherXP: 102
   materialsNeeded: []
   quantity: 1

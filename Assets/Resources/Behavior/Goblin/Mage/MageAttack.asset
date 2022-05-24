@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   children: []
   Interruptible: 1
+  speedFactor: 1
+  resetMotionOnExit: 0
   attackTime: 1
   cooldown: 3
-  range: 7
+  targetInfo:
+    minRange: 2
+    maxRange: 7
+    colliderMode: 1
+    mode: 0
   speedDuringAttack: 0
   returnOnCooldown: 1
   lockDuringCooldown: 0

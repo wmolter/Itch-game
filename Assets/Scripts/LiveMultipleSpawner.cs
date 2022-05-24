@@ -6,30 +6,34 @@ namespace Itch {
 
         public float waitTime;
         public bool multiple;
+        public int maxChildren;
         public bool destroyObject;
+        private bool waiting = false;
         // Use this for initialization
 
         protected override void Start() {
         }
 
         protected virtual void OnEnable() {
-            StartCoroutine(DelaySpawn());
         }
 
         IEnumerator DelaySpawn() {
+            waiting = true;
             yield return new WaitForSeconds(waitTime);
-            Spawn();
-            enabled = false;
+            if(transform.childCount < maxChildren)
+                Spawn();
             if(!multiple) {
                 if(destroyObject)
                     Destroy(gameObject);
                 else
-                    Destroy(this);
+                    enabled = false;
             }
+            waiting = false;
         }
         // Update is called once per frame
         void Update() {
-
+            if(!waiting)
+                StartCoroutine(DelaySpawn());
         }
     }
 }

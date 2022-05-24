@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: Sight
   duration: 600
+  strength: 30
   positive: 1
-  strength: 10

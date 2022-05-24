@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 645424811
-  m_SortingLayer: 1
+  m_SortingLayerID: -26060753
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -6834524911116659543, guid: 29de39b178f415342bda005f9f0b96c4,
     type: 3}
@@ -175,7 +175,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrio: 0
   data: {fileID: 11400000, guid: 35e51d7412994d540b1838827ba90ae4, type: 2}
-  checkLevel: 0
-  capabilityRequired: Mining
-  levelRequired: 0
-  gatherXP: 0

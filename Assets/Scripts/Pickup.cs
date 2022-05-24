@@ -31,7 +31,6 @@ namespace Itch {
 
         private void OnEnable() {
             GetComponent<Interactable>().AddInteraction(this);
-            TryRoll();
         }
 
         private void OnDisable() {
@@ -40,6 +39,7 @@ namespace Itch {
         private void Start() {
             if(enabled) {
                 GetComponent<Interactable>().AddInteraction(this);
+                TryRoll();
             }
         }
 
@@ -81,6 +81,7 @@ namespace Itch {
         }
 
         public void AddItem(InventoryItem item) {
+            Debug.Log("Adding items to pickup.");
             if(remaining == null) {
                 remaining = new List<InventoryItem>();
             }
@@ -118,6 +119,7 @@ namespace Itch {
 
         private void CheckDisableDestroy() {
             if(remaining.Count == 0) {
+                Debug.Log("Ending pickup.");
                 if(DestroyOnDeplete && !(useLocks && Locks.Count > 0))
                     Destroy(gameObject);
                 else

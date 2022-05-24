@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   children: []
   Interruptible: 1
+  speedFactor: 1
+  resetMotionOnExit: 0
+  targetInfo:
+    minRange: 4.9
+    maxRange: 8
+    colliderMode: 1
+    mode: 0
   moveAngle: 0
-  minRange: 5
-  maxRange: 8
-  resetSpeedOnExit: 0
-  colliderMode: 1
+  boredDuration: 60

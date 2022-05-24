@@ -30,7 +30,7 @@ namespace Itch {
         }
 
         private class Overtime {
-            public string tag;
+            public object tag;
             public float amount;
             public float interval;
             public float nextTime;
@@ -38,7 +38,7 @@ namespace Itch {
             public bool ignoreArmor;
             public Entity byWho;
 
-            public static bool HasTag(Overtime o, string tag) {
+            public static bool HasTag(Overtime o, object tag) {
                 return o.tag == tag;
             }
         }
@@ -138,11 +138,11 @@ namespace Itch {
                 Die();
         }
 
-        public void AddOverTime(float amount, float interval, string tag, Entity byWho) {
+        public void AddOverTime(float amount, float interval, object tag, Entity byWho) {
             AddOverTime(amount, interval, tag, byWho, true);
         }
 
-        public void AddOverTime(float amount, float interval, string tag, Entity byWho, bool ignoreArmor) {
+        public void AddOverTime(float amount, float interval, object tag, Entity byWho, bool ignoreArmor) {
             AddOverTime(amount, interval, Mathf.Infinity, tag, byWho, ignoreArmor);
         }
 
@@ -150,7 +150,7 @@ namespace Itch {
             AddOverTime(data.amount, data.interval, data.duration, data.tag, byWho, data.ignoreArmor);
         }
 
-        public void AddOverTime(float amount, float interval, float duration, string tag, Entity byWho, bool ignoreArmor) {
+        public void AddOverTime(float amount, float interval, float duration, object tag, Entity byWho, bool ignoreArmor) {
             Overtime prev = Overtimes.Find(delegate (Overtime o) { return Overtime.HasTag(o, tag); });
             if(prev == null) {
                 Overtimes.Add(new Overtime() { amount=amount, interval=interval, tag=tag, byWho = byWho, nextTime=Time.time + interval, endTime = duration+Time.time });
@@ -160,7 +160,7 @@ namespace Itch {
             }
         }
 
-        public void RemoveOverTime(string tag) {
+        public void RemoveOverTime(object tag) {
             int toRemove = Overtimes.FindIndex(delegate (Overtime o) { return Overtime.HasTag(o, tag); });
             if(toRemove >= 0)
                 Overtimes.RemoveAt(toRemove);

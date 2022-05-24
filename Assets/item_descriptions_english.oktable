@@ -28,6 +28,41 @@ Virid Chunk
 A piece of greenish metal hacked from a rock.
 .
 
+pink_scale
+Pink Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's pink.
+.
+
+yellow_scale
+Yellow Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's yellow.
+.
+
+green_scale
+Green Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's green.
+.
+
+white_scale
+White Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's off-white.
+.
+
+blue_scale
+Blue Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's blue.
+.
+
+purple_scale
+Purple Saurock
+A fragile, scale-shaped mineral from a deposit.  This one's purple.
+.
+
+cave_pearl
+Murky Pearl
+A small, brown-black orb fished from a pool of water.
+.
+
 fiber
 Plant Fiber
 A shoot from a native terrestrial grass.
@@ -60,7 +95,17 @@ Sticky, gooey, and blue, you cleaned this up after a slime.
 
 meat
 Raw Meat
-Animal meat you carved from a carcass.  Some animals might like it.
+Animal meat you carved from a carcass.  Some carnivores might like it.
+.
+
+vial
+Vial
+Used for storing liquids.
+.
+
+potion_1
+Intelligence Potion
+Improves your intelligence.  Temporarily.  May have side effects.
 .
 
 glass
@@ -122,3 +167,8 @@ goat_cheese
 Goat Cheese
 Cheese made from goat's milk.
 <i>Delicious with lemon.</i>
+
+salt
+Salty Mineral
+Tastes good to you and other creatures.
+.

@@ -126,6 +126,70 @@ Testing/wheat
 0
 10
 
+pink_scale
+110
+Material
+Testing/wheat
+0
+0
+20
+
+yellow_scale
+111
+Material
+Testing/wheat
+0
+0
+20
+
+green_scale
+112
+Material
+Testing/wheat
+0
+0
+20
+
+white_scale
+113
+Material
+Testing/wheat
+0
+0
+20
+
+blue_scale
+114
+Material
+Testing/wheat
+0
+0
+20
+
+purple_scale
+115
+Material
+Testing/wheat
+0
+0
+20
+
+cave_pearl
+120
+Material
+Testing/wheat
+0
+0
+10
+
+vial
+130
+Material
+Testing/wheat
+0
+0
+5
+
 glass
 200
 Material
@@ -170,7 +234,7 @@ properties
 effectName stringarray
 Armor Speed
 effectStrength floatarray
-5 -5
+5 -20
 effectDuration floatarray
 80 80
 
@@ -265,3 +329,51 @@ Testing/wheat
 45
 0
 10
+
+potion_1
+1110
+Consumable
+Testing/wheat
+-2
+0
+5
+properties
+3
+effectName stringarray
+Gathering Sorcery Armor
+effectStrength floatarray
+5 5 -10
+effectDuration floatarray
+120 120 120
+
+beetle_egg
+1120
+Consumable
+Testing/wheat
+3
+0
+20
+properties
+3
+effectName stringarray
+Mining Constitution
+effectStrength floatarray
+5 -10
+effectDuration floatarray
+20 120
+
+salt
+1130
+Consumable
+Testing/wheat
+0
+0
+20
+properties
+3
+effectName stringarray
+Sight Speed Constitution Fortitude
+effectStrength floatarray
+4 3 2 1
+effectDuration floatarray
+60 60 60 60

@@ -152,7 +152,9 @@ namespace Itch {
                 GetComponentInParent<Pickup>().Interact(player);
             }
         }
-        private void Start() {
+        public override void InitData(Data data) {
+            base.InitData(data);
+            gathering = false;
             remainingQuantity = quantity;
             currentGatherSteps = gatherSteps;
         }

@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!114 &-6446182041935748100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,10 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrio: 0
-  generator:
-    guaranteed:
-      ids: []
-      quantities: []
-      weight: 0
-    rollFrom: []
-  DestroyOnDeplete: 0
+  generator: {fileID: 0}
+  DestroyOnDeplete: 1
+  useLocks: 1
+  noLootError: No loot this time.

@@ -18,6 +18,10 @@ namespace Itch {
                 Debug.LogError("LevelRequired component has no interactable parent. It will do nothing.");
         }
 
+        protected virtual void Start() {
+            InitData(data);
+        }
+
         private void OnEnable() {
             GetComponentInParent<Interactable>().AddInteraction(this);
         }
@@ -33,6 +37,10 @@ namespace Itch {
                 Notifications.CreateError(transform.position, data.capabilityRequired + " " + data.levelRequired + " Required");
                 return false;
             }
+        }
+
+        public virtual void InitData(Data data) {
+            this.data = data;
         }
 
         protected abstract bool DoAction(PlayerManager player);
