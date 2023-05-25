@@ -40,7 +40,7 @@ namespace OneKnight {
             }
         }
         // Update is called once per frame
-        void Update() {
+        protected virtual void Update() {
             Node.Act interrupt = ChooseInterrupt();
             if(interrupt != current) {
                 //Debug.Log("Behavior interrupted: " + current + " by " + interrupt);

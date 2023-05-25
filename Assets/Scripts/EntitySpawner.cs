@@ -31,10 +31,12 @@ namespace Itch {
         }
 
         protected virtual void Start() {
+            Debug.Log("Started spawner for " + gameObject.name);
             Spawn();
         }
 
-        protected void Spawn() {
+        //only public so disabled scripts can have this called during death through event systems
+        public void Spawn() {
 
             switch(mode) {
                 case Mode.Random:

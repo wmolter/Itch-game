@@ -12,6 +12,7 @@ namespace Itch {
             instance.ActivateInternal(destinationLevel);
         }
 
+        public TMPro.TMP_Text nameDisplay;
         public List<MapGenerator> planes;
         int activePlane;
         // Use this for initialization
@@ -22,6 +23,7 @@ namespace Itch {
                     activePlane = i;
                 }
             }
+            UpdateDisplay();
         }
 
         private void OnDestroy() {
@@ -42,6 +44,11 @@ namespace Itch {
             //needs to be before setActive
             activePlane = destinationLevel;
             planes[destinationLevel].gameObject.SetActive(true);
+            UpdateDisplay();
+        }
+
+        void UpdateDisplay() {
+            nameDisplay.text = CurrentPlane.name;
         }
     }
 

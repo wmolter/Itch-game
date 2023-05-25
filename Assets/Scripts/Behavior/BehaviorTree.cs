@@ -25,6 +25,11 @@ namespace Itch.Behavior {
             activeRoot.Init(info);
         }
 
+        protected override void Update() {
+            ValidateInfo();
+            base.Update();
+        }
+
         public void ValidateInfo() {
             Movement[] moves = GetComponents<Movement>();
             int i = 0;

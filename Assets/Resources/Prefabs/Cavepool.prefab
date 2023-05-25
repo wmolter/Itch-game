@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6726590873182199955}
   - component: {fileID: 5540867876871641679}
   - component: {fileID: 5873714262246667593}
+  - component: {fileID: 5331026603258364754}
   - component: {fileID: 4992009018545831755}
   m_Layer: 0
   m_Name: Cavepool
@@ -49,7 +50,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -145,6 +145,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685a9eb70821d2a419cab6de36c3a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5331026603258364754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963167477931200616}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d70687d5afe3c4f8812d458d0902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrio: 0
+  generator: {fileID: 0}
+  DestroyOnDeplete: 0
+  useLocks: 1
+  noLootError: No loot this time.
 --- !u!114 &4992009018545831755
 MonoBehaviour:
   m_ObjectHideFlags: 0

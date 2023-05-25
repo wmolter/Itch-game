@@ -7,12 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4979272891395209627, guid: df5b245247be09648bf8eb35b01aa95a,
+    - target: {fileID: 8329345405712130171, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
-      propertyPath: data
+      propertyPath: m_Name
+      value: Salt Pile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109477696501393807, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: DestroyOnDeplete
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962705090005878789, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 11400000, guid: e734ebc581284fc4f88b6595f27fc5cf,
-        type: 2}
+      objectReference: {fileID: 21300000, guid: 5c0d37df756cf284e8e0ef12594e0b17,
+        type: 3}
     - target: {fileID: 5677606274683218742, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -21,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 5677606274683218742, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.35
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5677606274683218742, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
@@ -93,6 +103,12 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
       value: 0.41545707
       objectReference: {fileID: 0}
+    - target: {fileID: 4979272891395209627, guid: df5b245247be09648bf8eb35b01aa95a,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: e734ebc581284fc4f88b6595f27fc5cf,
+        type: 2}
     - target: {fileID: 5832561064050931353, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -148,21 +164,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7109477696501393807, guid: df5b245247be09648bf8eb35b01aa95a,
+    - target: {fileID: 3355949498292794041, guid: df5b245247be09648bf8eb35b01aa95a,
         type: 3}
-      propertyPath: DestroyOnDeplete
-      value: 1
+      propertyPath: sortingOffset
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 8329345405712130171, guid: df5b245247be09648bf8eb35b01aa95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Salt Pile
-      objectReference: {fileID: 0}
-    - target: {fileID: 8962705090005878789, guid: df5b245247be09648bf8eb35b01aa95a,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5c0d37df756cf284e8e0ef12594e0b17,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df5b245247be09648bf8eb35b01aa95a, type: 3}

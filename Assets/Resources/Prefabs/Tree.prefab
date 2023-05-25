@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4154305162895740436}
   - component: {fileID: -3919944587143709071}
   - component: {fileID: 8865275802260705907}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Tree
   m_TagString: Sturdy
   m_Icon: {fileID: 0}
@@ -48,7 +48,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -98,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOffset: 0
   home: {x: 0, y: 0}
+  homePlane: 0
 --- !u!60 &-3919944587143709071
 PolygonCollider2D:
   m_ObjectHideFlags: 0

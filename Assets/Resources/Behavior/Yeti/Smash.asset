@@ -22,11 +22,13 @@ MonoBehaviour:
     minRange: 0
     maxRange: 1
     colliderMode: 1
-    requireLiving: 1
+    mode: 0
   speedDuringAttack: 0
   returnOnCooldown: 1
   lockDuringCooldown: 0
   damage: 200
+  ignoreArmor: 0
+  effects: {fileID: 0}
   aoe:
     range: 2
     searchLayers:
@@ -36,6 +38,8 @@ MonoBehaviour:
     - Tribe1
     - Tribe2
     - Tribe3
+    - GiantObstacle
+    - Giant
     requireLiving: 1
     filterOut: 1
     filterTags: []
