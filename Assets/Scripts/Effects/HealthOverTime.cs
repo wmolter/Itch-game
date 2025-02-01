@@ -7,21 +7,18 @@ namespace Itch.Effects {
     public class HealthOverTime : Effect {
         public new class State : Effect.State{
             
-            public State(string name) : this(name, true) { }
+            public State(Effect data) : base(data) { }
 
-            public State(string name, bool positive) : base(name, positive) {
-            }
-
-            public override void Apply(PlayerManager p) {
-                HealthOverTime toUse = (HealthOverTime)activeNow[Utils.ArgMax(activeNow, GetStrength)];
-                float strengthToUse = toUse.strength;
+            protected override void Apply(PlayerManager p, float strength) {
+                HealthOverTime toUse = (HealthOverTime)activeNow[Utils.ArgMax(activeNow, GetOneStrength)];
+                //slight waste here in getting the strength again, but this helps support stacking so...
                 if(!positive)
-                    strengthToUse = -strengthToUse;
+                    strength = -strength;
                 p.GetComponent<Health>().RemoveOverTime(buffName);
-                p.GetComponent<Health>().AddOverTime(strengthToUse, toUse.interval, buffName, p.GetComponent<Entity>());
+                p.GetComponent<Health>().AddOverTime(strength, toUse.interval, buffName, p.GetComponent<Entity>());
             }
 
-            public override void Cancel(PlayerManager p) {
+            protected override void Cancel(PlayerManager p) {
                 p.GetComponent<Health>().RemoveOverTime(buffName);
             }
         }
@@ -39,7 +36,7 @@ namespace Itch.Effects {
         }
 
         public override Effect.State Create() {
-            return new State(effectName, positive);
+            return new State(this);
         }
         public override Effect Copy() {
             return new ChangeLevel().CopyFrom(this);

@@ -8,9 +8,7 @@ namespace Itch.Effects {
         public new class State : Effect.State{
             public string sourceId = "buff";
             
-            public State(string name) : this(name, true) { }
-
-            public State(string name, bool positive) : base(name, positive) {
+            public State(Effect data) : base(data) {
                 if(positive) {
                     sourceId = "buff";
                 } else {
@@ -18,17 +16,16 @@ namespace Itch.Effects {
                 }
             }
 
-            public override void Apply(PlayerManager p) {
+            protected override void Apply(PlayerManager p, float strength) {
                 if(p.properties.HasAdjustment(buffName))
                     p.properties.RemoveAdjustment(buffName, sourceId);
-                float strengthToUse = Utils.Max(activeNow, GetStrength);
                 if(!positive)
-                    strengthToUse = -strengthToUse;
-                p.properties.AddBonus(buffName, strengthToUse, sourceId);
+                    strength = -strength;
+                p.properties.AddBonus(buffName, strength, sourceId);
                 p.MakeLevelChanges(buffName);
             }
 
-            public override void Cancel(PlayerManager p) {
+            protected override void Cancel(PlayerManager p) {
                 if(p.properties.HasAdjustment(buffName))
                     p.properties.RemoveAdjustment(buffName, sourceId);
                 p.MakeLevelChanges(buffName);
@@ -37,7 +34,7 @@ namespace Itch.Effects {
         
         public override string NotifyText { get { return (positive? "+" : "-") + strength + " " + effectName + " for " + duration + " seconds"; } }
         public override Effect.State Create() {
-            return new State(effectName, positive);
+            return new State(this);
         }
         public override Effect Copy() {
             return new ChangeLevel().CopyFrom(this);

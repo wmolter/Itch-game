@@ -372,8 +372,8 @@ Testing/wheat
 properties
 3
 effectName stringarray
-Sight Speed Constitution Fortitude
+Sight Speed Constitution Fortitude Dehydration
 effectStrength floatarray
-4 3 2 1
+4 3 2 1 1 
 effectDuration floatarray
-60 60 60 60
+60 60 60 60 600

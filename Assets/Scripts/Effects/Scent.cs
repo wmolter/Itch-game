@@ -6,13 +6,13 @@ namespace Itch.Effects {
     public class Scent : Effect {
         
         public new class State : Effect.State {
-            public State(bool positive) : base("Scent", positive) {}
+            public State(bool positive) : base("Scent", positive, false) {}
 
-            public override void Apply(PlayerManager p) {
+            protected override void Apply(PlayerManager p, float strength) {
                 p.gameObject.layer = LayerMask.NameToLayer(((Scent)activeNow[activeNow.Count-1]).layerName);
             }
 
-            public override void Cancel(PlayerManager p) {
+            protected override void Cancel(PlayerManager p) {
                 p.gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }

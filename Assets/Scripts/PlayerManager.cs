@@ -232,6 +232,10 @@ namespace Itch {
             GetComponent<Health>().Damage(amount, GetComponent<Entity>(), ignoreArmor);
         }
 
+        public void StartEffect(Effect e) {
+            StartEffect(e, transform.position);
+        }
+
         public void StartEffect(Effect e, Vector2 notifPos) {
             Effect.State already = allBuffs.Find(e.Match);
             if(already == null) {
