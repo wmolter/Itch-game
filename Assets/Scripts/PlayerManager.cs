@@ -61,8 +61,11 @@ namespace Itch {
             instance = this;
             SavingUtils.LoadGameData();
             SavingUtils.NewGame("Test");
+            Preferences.SetDefault("MapXPNotifs", true);
+            Preferences.SetDefault("GatherXPNotifs", true);
 
-            baseInvCapacity = baseInvCapacity + startingItems.Count;
+
+             baseInvCapacity = baseInvCapacity + startingItems.Count;
             inventory = new Inventory(baseInvCapacity);
             inventory.AddStackAll(startingItems);
             abilities = new Dictionary<string, int>();
@@ -192,7 +195,7 @@ namespace Itch {
 
         IEnumerator ExploreXPCounter() {
             while(enabled) {
-                GiveXP(ExploreXPBuffer, Preferences.GetToggle("MapXPNotifs"));
+                GiveXP(ExploreXPBuffer, Preferences.GetToggleSafe("MapXPNotifs"));
                 ExploreXPBuffer = 0;
                 yield return new WaitForSeconds(xpInterval);
             }
@@ -207,7 +210,7 @@ namespace Itch {
         }
 
         public void GiveXP(int amount) {
-            GiveXP(amount, Preferences.GetToggle("GatherXPNotifs"));
+            GiveXP(amount, Preferences.GetToggleSafe("GatherXPNotifs"));
         }
 
         public void GiveXP(int amount, bool notif) {

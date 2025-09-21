@@ -87,7 +87,7 @@ TextureImporter:
       213: 7770896585986550282
     second: water_test2_17
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -104,9 +104,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -116,8 +119,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -138,9 +141,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -152,6 +161,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -164,6 +174,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -176,6 +187,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -188,6 +200,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -209,7 +248,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2807e6129bc94e180800000000000000
-      internalID: -9086965829183049598
+      internalID: 7771362628338820677
       vertices: []
       indices: 
       edges: []
@@ -230,7 +269,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ab4b18854d176b570800000000000000
-      internalID: 8482092105030808762
+      internalID: -3891906856672038926
       vertices: []
       indices: 
       edges: []
@@ -251,7 +290,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 66f86400bf3bfb050800000000000000
-      internalID: 5818567134208757606
+      internalID: -2970349312764174767
       vertices: []
       indices: 
       edges: []
@@ -272,7 +311,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: eed4ec3ec886ceee0800000000000000
-      internalID: -1230493643852329490
+      internalID: -8330373036282290769
       vertices: []
       indices: 
       edges: []
@@ -293,7 +332,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 730966b94b30744b0800000000000000
-      internalID: -5456388349299879881
+      internalID: -5058303468092196875
       vertices: []
       indices: 
       edges: []
@@ -314,7 +353,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 099eb9ee367b8b6b0800000000000000
-      internalID: -5280268923259065968
+      internalID: -2259979894278914424
       vertices: []
       indices: 
       edges: []
@@ -335,7 +374,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ee8cdd822e7fc0bb0800000000000000
-      internalID: -4968323738176206610
+      internalID: 1484361595027875920
       vertices: []
       indices: 
       edges: []
@@ -356,7 +395,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: be316bc78e43ebb20800000000000000
-      internalID: 3152014962335290347
+      internalID: -873632310102959595
       vertices: []
       indices: 
       edges: []
@@ -377,7 +416,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cbc2de4dc003db830800000000000000
-      internalID: 4088476868392332476
+      internalID: -1030014918819908929
       vertices: []
       indices: 
       edges: []
@@ -398,7 +437,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 730fa9a4e46c452e0800000000000000
-      internalID: -2137865883532726217
+      internalID: 9106992515904229556
       vertices: []
       indices: 
       edges: []
@@ -581,9 +620,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      water_test2_0: 7771362628338820677
+      water_test2_1: -3891906856672038926
+      water_test2_10: -5621284285269764857
+      water_test2_11: 1188721222266191349
+      water_test2_12: 5473453820086180894
+      water_test2_13: 123144879833882973
+      water_test2_14: 6162595291840112160
+      water_test2_15: 4729496278410952046
+      water_test2_16: 3339998547370140265
+      water_test2_17: 7770896585986550282
+      water_test2_2: -2970349312764174767
+      water_test2_3: -8330373036282290769
+      water_test2_4: -5058303468092196875
+      water_test2_5: -2259979894278914424
+      water_test2_6: 1484361595027875920
+      water_test2_7: -873632310102959595
+      water_test2_8: -1030014918819908929
+      water_test2_9: 9106992515904229556
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
